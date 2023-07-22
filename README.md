@@ -1,11 +1,11 @@
 # Integrasi Model K-Nearest Neighbors (KNN) dengan Hyperparameter Tunning Optuna Untuk Mendeteksi Penyakit Liver Sejak Dini - Dadan Ahmad Dani
 
 ## Domain Proyek
-Hati adalah salah satu organ penting yang perlu dijaga kesehatannya [[1]](https://www.halodoc.com/artikel/fungsi-hati-perlu-dijaga-ini-8-caranya). Pasalnya, organ terbesar dalam tubuh ini berperan besar dalam semua proses pencernaan dan penyerapan zat gizi dalam tubuh serta membuang racun.
+Hati adalah salah satu organ penting yang perlu dijaga kesehatannya.Pasalnya,organ terbesar dalam tubuh ini berperan besar dalam semua proses pencernaan dan penyerapan zat gizi dalam tubuh serta membuang racun.
 
-Untuk mengetahui kondisi kesehatan liver atau hati , salah satunya dengan cara melakukan Tes Fungsi Hati(TFH) [[2]](https://www.halodoc.com/kesehatan/pemeriksaan-fungsi-hati).Tes Fungsi Hati (TFH) adalah tes darah yang digunakan untuk menilai kondisi kesehatan organ hati yang bisa dilakukan baik secara rutin maupun ketika terjadi penyakit pada hati. Tes ini dilakukan dengan mengukur kadar senyawa kimia tertentu dalam darah, lalu membandingkannya dengan nilai normal senyawa kimia tersebut. Bila hasil pengukuran zat kimia menunjukkan kadar yang tidak normal, maka kemungkinan besar terdapat penyakit hati atau kerusakan hati.
+Untuk mengetahui kondisi kesehatan liver atau hati , salah satunya dengan cara melakukan Tes Fungsi Hati(TFH).Tes Fungsi Hati (TFH) adalah tes darah yang digunakan untuk menilai kondisi kesehatan organ hati yang bisa dilakukan baik secara rutin maupun ketika terjadi penyakit pada hati. Tes ini dilakukan dengan mengukur kadar senyawa kimia tertentu dalam darah, lalu membandingkannya dengan nilai normal senyawa kimia tersebut. Bila hasil pengukuran zat kimia menunjukkan kadar yang tidak normal, maka kemungkinan besar terdapat penyakit hati atau kerusakan hati [[1]](https://www.halodoc.com/artikel/cek-kesehatan-hati-dengan-tes-fungsi-hati-ini).
 
-Berdasarkan penelitian yang dilakukan oleh British Liver Trust memberikan informasi bahwa penyakit hati atau Liver merupakan penyebab kematian terbesar pada orang yang berusia antara 35-49 tahun, khususnya di Inggris. Penelitian tersebut juga mengungkapkan bahwa penyakit hati diperkirakan akan menggeser penyakit jantung sebagai penyebab terbesar kematian dini dalam beberapa tahun mendatang [[3]](https://litbang.kemendagri.go.id/website/liver-disebut-penyebab-kematian-terbesar-di-usia-35-49-tahun/)
+Berdasarkan penelitian yang dilakukan oleh British Liver Trust mengungkapkan bahwa penyakit hati atau Liver merupakan penyebab kematian terbesar pada orang yang berusia antara 35-49 tahun, khususnya di Inggris. Penelitian tersebut juga menyatakan bahwa penyakit hati diperkirakan akan menggeser penyakit jantung sebagai penyebab terbesar kematian dini dalam beberapa tahun mendatang [[2]](https://litbang.kemendagri.go.id/website/liver-disebut-penyebab-kematian-terbesar-di-usia-35-49-tahun/)
 
 ## Business Understanding
 
@@ -15,23 +15,29 @@ Ada beberapa metode yang dapat digunakan untuk mendeteksi penyakit hati sejak di
 
 ### Problem Statements
 
-Bagaimana efektivitas model machine learning dalam membedakan pasien dengan penyakit liver dan pasien tanpa penyakit liver?
+Berdasarkan latar belakang yang telah diuraikan sebelumnya, maka projek ini dikembangkan untuk menjawab permasalahan berikut: 
+   1. Bagaimana cara menerapkan model *Machine Learning* sehingga dapat mendeteksi penyakit liver sejak dini?
+   2. Berapa tingkat akurasi dari model *Machine Learning* yg dibuat?
 
-Rumusan masalah ini berfokus pada penilaian kinerja model machine learning dalam tugas klasifikasi, yaitu membedakan antara dua kelas, yaitu pasien dengan penyakit liver (positif) dan pasien tanpa penyakit liver (negatif).
-
-### Solution
-
-Adapun Solusi yang ditawarkan untuk menjawab rumusan masalah di atas yaitu menggunakan model K-Nearest Neighbors (KNN) dan mengoptimasi kinerjanya dengan tuning hyperparameter. 
-
-KNN adalah metode pembelajaran mesin yang sederhana namun efektif untuk tugas klasifikasi dan regresi. Dalam konteks deteksi dini penyakit liver, KNN dapat digunakan untuk membedakan pasien dengan penyakit liver dan pasien tanpa penyakit liver berdasarkan fitur klinis dan hasil tes laboratorium.
-
-Tuning hyperparameter adalah proses untuk mencari kombinasi hyperparameter yang optimal untuk model KNN. Hyperparameter adalah parameter yang tidak dipelajari oleh model, tetapi nilainya dapat mempengaruhi kinerja model. Proses tuning ini dilakukan untuk mencari hyperparameter terbaik yang menghasilkan model KNN dengan akurasi dan performa prediksi yang tinggi.Dalam penelitian ini akan menggunakan library Optuna sebagai tunning hyperparameternya.
+Rumusan masalah ini berfokus pada penilaian kinerja model *Machine Learning* dalam tugas klasifikasi, yaitu membedakan antara dua kelas, yaitu pasien dengan penyakit liver (positif) dan pasien tanpa penyakit liver (negatif).
 
 ### Goals
 
-Solusi yang diajukan diatas bertujuan untuk memberikan manfaat besar bagi masyarakat dengan meningkatkan deteksi dini penyakit liver. Dengan menggunakan model KNN yang telah dioptimasi, diharapkan lebih banyak pasien dengan penyakit liver dapat terdeteksi secara lebih awal, sehingga mereka dapat segera mendapatkan perawatan medis yang tepat dan menghindari komplikasi yang lebih serius
+Tujuan proyek ini diataranya:
+   1. Membuat model *Machine Learning* untuk mendeteksi pasien penyakit liver
+   2. Mengukur tingkat akurasi dari model *Machine Learning* yang telah dibuat
 
-Solusi ini juga dapat digunakan sebagai dukungan keputusan medis bagi tenaga medis dalam mengidentifikasi pasien dengan risiko tinggi terkena penyakit liver. Dengan informasi yang dihasilkan oleh model KNN yang telah dioptimasi, dokter dapat membuat keputusan yang lebih tepat dan efisien dalam merencanakan perawatan dan pengelolaan pasien.
+### Solution
+
+Solusi yang ditawarkan untuk mendeteksi penyakit liver sejak dini adalah dengan menggunakan model klasifikasi, seperti K-Nearest Neighbors (KNN). Model ini akan memanfaatkan informasi rekam medis dari pasien-pasien sebelumnya untuk membedakan antara asien dengan penyakit liver (positif) dan pasien tanpa penyakit liver (negatif).
+
+Model KNN sangat bergantung pada parameter n_neighbors, weight, dan metric . Parameter n_neighbors menentukan jumlah tetangga terdekat yang akan digunakan dalam proses klasifikasi. Parameter weight mengatur bagaimana bobot (weight) akan diberikan pada tetangga terdekat saat melakukan prediksi, sedangkan parameter metric menentukan metrik jarak yang digunakan untuk mengukur kedekatan antara titik data dalam ruang fitur[[3]](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html).
+
+Pemilihan parameter n_neighbors, weight, dan metric yang optimal dapat sangat mempengaruhi performa model KNN. Namun, menemukan kombinasi parameter yang tepat secara manual dapat menjadi proses yang memakan waktu dan rumit, terutama jika ada banyak opsi parameter yang harus dijelajahi. Oleh karena itu, penting untuk mencari pendekatan otomatis yang dapat mengoptimalkan parameter-parameter ini untuk meningkatkan kinerja model KNN dalam tugas klasifikasi.
+
+Di sinilah peran Hyperparameter Tunning Optuna menjadi relevan. Optuna merupakan salah satu pustaka (library) Python yang menerapkan teknik optimasi hiperparameter dengan menggunakan algoritma cerdas dan efisien[[4]](https://optuna.org/). Dengan mengintegrasikan Optuna pada Model KNN, kemungkinan untuk mencari kombinasi hiperparameter yang optimal dapat dilakukan dengan lebih efisien dan akurat.
+
+Dengan menggunakan solusi ini, diharapkan tingkat deteksi dini penyakit liver dapat ditingkatkan sehingga penanganan lebih lanjut bisa dilakukan dengan lebih tepat dan efektif.
 
 ## Data Understanding
 
@@ -367,30 +373,13 @@ Setelah dilakukan optimasi hiperparameter dengan Optuna,nilai akurasi deteksi pe
 
 ## Referensi
 
-[[1]](https://www.halodoc.com/artikel/fungsi-hati-perlu-dijaga-ini-8-caranya) Halodoc. (2019). *Penyakit Liver*. Diakses pada 22 Juli 2023.https://www.halodoc.com/artikel/fungsi-hati-perlu-dijaga-ini-8-caranya
+[[1]](https://www.halodoc.com/artikel/cek-kesehatan-hati-dengan-tes-fungsi-hati-ini) Halodoc.(2023).*Cek Kesehatan Hati dengan Tes Fungsi Hati*.Diakses pada 22 Juli 2023. https://www.halodoc.com/artikel/cek-kesehatan-hati-dengan-tes-fungsi-hati-ini
 
-[[2]](https://www.halodoc.com/kesehatan/pemeriksaan-fungsi-hati) Halodoc.(2022).*Pemeriksaan Fungsi Hati*.Diakses pada 22 Juli 2023.https://www.halodoc.com/kesehatan/pemeriksaan-fungsi-hati
+[[2]](https://litbang.kemendagri.go.id/website/liver-disebut-penyebab-kematian-terbesar-di-usia-35-49-tahun/) Kemendagri. (2019). *Liver Disebut Penyebab Kematian Terbesar di Usia 35-49 Tahun)*. Diakses pada 22 Juli 2023 https://litbang.kemendagri.go.id/website/liver-disebut-penyebab-kematian-terbesar-di-usia-35-49-tahun/
 
-[[3]](https://www.sehatq.com/tindakan-medis/tes-fungsi-hati) SehatQ.(2023).*Tes Fungsi Hati*.Diakses pada 22 Juli 2023.https://www.sehatq.com/tindakan-medis/tes-fungsi-hati
+[[3]](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html) Scikit-Learn.(2023).*KNeighborsClassifier*.Diakses pada 22 Juli 2023.https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
 
-[[4]](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html) Scikit-Learn.(2023).*KNeighborsClassifier*.Diakses pada 22 Juli 2023.https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
-
-[[5]](https://optuna.org/) Optuna.(2023).*Optuna*.Diakses pada 22 Juli 2023.https://optuna.org
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[[4]](https://optuna.org/) Optuna.(2023).*Optuna*.Diakses pada 22 Juli 2023.https://optuna.org
 
 
 
