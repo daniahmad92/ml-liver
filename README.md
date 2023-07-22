@@ -5,17 +5,7 @@ Hati adalah salah satu organ penting yang perlu dijaga kesehatannya [[1]](https:
 
 Untuk mengetahui kondisi kesehatan liver atau hati , salah satunya dengan cara melakukan Tes Fungsi Hati(TFH) [[2]](https://www.halodoc.com/kesehatan/pemeriksaan-fungsi-hati).Tes Fungsi Hati (TFH) adalah tes darah yang digunakan untuk menilai kondisi kesehatan organ hati yang bisa dilakukan baik secara rutin maupun ketika terjadi penyakit pada hati. Tes ini dilakukan dengan mengukur kadar senyawa kimia tertentu dalam darah, lalu membandingkannya dengan nilai normal senyawa kimia tersebut. Bila hasil pengukuran zat kimia menunjukkan kadar yang tidak normal, maka kemungkinan besar terdapat penyakit hati atau kerusakan hati.
 
-Namun, Hasil normal tes fungsi hati dapat sedikit berbeda antara satu laboratorium dengan laboratorium lainnya. Perbedaan juga bisa muncul dan tergantung pada jenis kelamin maupun usia pasien, serta kondisi hamil atau tidak [[3]](https://www.sehatq.com/tindakan-medis/tes-fungsi-hati).Adapun yang diperiksa dari sampel darah tersebut yaitu SGPT,SGOT,ALP, Bilibrubin,Albumin dan lainnya
-
-Berdasarkan latar belakang diatas bahwa untuk menentukan pasien mengalami penyakit liver atau tidak itu dibutuhkan pembacaan yang akurat dari berbagai parameter hasil tes darah seperti kadar SGPT,SGOT,ALP, Bilibrubin,Albumin dan lainnya.
-
-Klasifikasi merupakan salah satu tugas utama dalam pembelajaran mesin yang bertujuan untuk mengelompokkan data ke dalam kelas atau label yang tepat berdasarkan fitur-fitur tertentu. Salah satu algoritma klasifikasi yang sederhana namun cukup efektif adalah K-Nearest Neighbors (KNN). KNN adalah metode pembelajaran berbasis instan (instance-based) yang memprediksi label suatu data berdasarkan mayoritas label tetangga terdekat dari data tersebut.
-
-Model KNN sangat bergantung pada parameter n_neighbors, weight, dan metric . Parameter n_neighbors menentukan jumlah tetangga terdekat yang akan digunakan dalam proses klasifikasi. Parameter weight mengatur bagaimana bobot (weight) akan diberikan pada tetangga terdekat saat melakukan prediksi, sedangkan parameter metric menentukan metrik jarak yang digunakan untuk mengukur kedekatan antara titik data dalam ruang fitur[[4]](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html).
-
-Pemilihan parameter n_neighbors, weight, dan metric yang optimal dapat sangat mempengaruhi performa model KNN. Namun, menemukan kombinasi parameter yang tepat secara manual dapat menjadi proses yang memakan waktu dan rumit, terutama jika ada banyak opsi parameter yang harus dijelajahi. Oleh karena itu, penting untuk mencari pendekatan otomatis yang dapat mengoptimalkan parameter-parameter ini untuk meningkatkan kinerja model KNN dalam tugas klasifikasi.
-
-Di sinilah peran Hyperparameter Tunning Optuna menjadi relevan. Optuna merupakan salah satu pustaka (library) Python yang menerapkan teknik optimasi hiperparameter dengan menggunakan algoritma cerdas dan efisien[[5]](https://optuna.org/). Dengan mengintegrasikan Optuna pada Model KNN, kemungkinan untuk mencari kombinasi hiperparameter yang optimal dapat dilakukan dengan lebih efisien dan akurat.
+Berdasarkan penelitian yang dilakukan oleh British Liver Trust memberikan informasi bahwa penyakit hati atau Liver merupakan penyebab kematian terbesar pada orang yang berusia antara 35-49 tahun, khususnya di Inggris. Penelitian tersebut juga mengungkapkan bahwa penyakit hati diperkirakan akan menggeser penyakit jantung sebagai penyebab terbesar kematian dini dalam beberapa tahun mendatang [[3]](https://litbang.kemendagri.go.id/website/liver-disebut-penyebab-kematian-terbesar-di-usia-35-49-tahun/)
 
 ## Business Understanding
 
