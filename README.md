@@ -1,7 +1,7 @@
 # Integrasi Model K-Nearest Neighbors (KNN) dengan Hyperparameter Tunning Optuna Untuk Memprediksi Penyakit Liver - Dadan Ahmad Dani
 
 ## Domain Proyek
-Hati adalah salah satu organ penting yang perlu dijaga kesehatannya. Pasalnya, organ terbesar dalam tubuh ini berperan besar dalam semua proses pencernaan dan penyerapan zat gizi dalam tubuh serta membuang racun [[1]](https://www.halodoc.com/artikel/fungsi-hati-perlu-dijaga-ini-8-caranya).
+Hati adalah salah satu organ penting yang perlu dijaga kesehatannya [[1]](https://www.halodoc.com/artikel/fungsi-hati-perlu-dijaga-ini-8-caranya). Pasalnya, organ terbesar dalam tubuh ini berperan besar dalam semua proses pencernaan dan penyerapan zat gizi dalam tubuh serta membuang racun.
 
 Untuk mengetahui kondisi kesehatan liver atau hati , salah satunya dengan cara melakukan Tes Fungsi Hati(TFH) [[2]](https://www.halodoc.com/kesehatan/pemeriksaan-fungsi-hati).Tes Fungsi Hati (TFH) adalah tes darah yang digunakan untuk menilai kondisi kesehatan organ hati yang bisa dilakukan baik secara rutin maupun ketika terjadi penyakit pada hati. Tes ini dilakukan dengan mengukur kadar senyawa kimia tertentu dalam darah, lalu membandingkannya dengan nilai normal senyawa kimia tersebut. Bila hasil pengukuran zat kimia menunjukkan kadar yang tidak normal, maka kemungkinan besar terdapat penyakit hati atau kerusakan hati.
 
@@ -355,13 +355,15 @@ Setelah dilakukan optimasi hiperparameter dengan Optuna,nilai akurasi deteksi pe
 
 ## Referensi
 
-- Liver Function Test: https://www.medicoverhospitals.in/diagnostics-pathology-tests/liver-function-test
+[[1]](https://www.halodoc.com/artikel/fungsi-hati-perlu-dijaga-ini-8-caranya) Halodoc. (2019). *Penyakit Liver*. Diakses pada 22 Juli 2023.https://www.halodoc.com/artikel/fungsi-hati-perlu-dijaga-ini-8-caranya
 
-- Liver dan KNN: https://iptek.its.ac.id/index.php/inferensi/article/download/6810/4428
-  
-- KNeighborsClassifier: https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
+[[2]](https://www.halodoc.com/kesehatan/pemeriksaan-fungsi-hati) Halodoc.(2022).*Pemeriksaan Fungsi Hati*.Diakses pada 22 Juli 2023.https://www.halodoc.com/kesehatan/pemeriksaan-fungsi-hati
 
-- Optuna: https://optuna.org/
+[[3]](https://www.sehatq.com/tindakan-medis/tes-fungsi-hati) SehatQ.(2023).*Tes Fungsi Hati*.Diakses pada 22 Juli 2023.https://www.sehatq.com/tindakan-medis/tes-fungsi-hati
+
+[[4]](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html) Scikit-Learn.(2023).*KNeighborsClassifier*.Diakses pada 22 Juli 2023.https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
+
+[[5]](https://optuna.org/) Optuna.(2023).*Optuna*.Diakses pada 22 Juli 2023.https://optuna.org
 
 
 
