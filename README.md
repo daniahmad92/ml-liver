@@ -1,30 +1,21 @@
 # Integrasi Model K-Nearest Neighbors (KNN) dengan Hyperparameter Tunning Optuna Untuk Memprediksi Penyakit Liver - Dadan Ahmad Dani
 
 ## Domain Proyek
-Hati adalah salah satu organ penting yang perlu dijaga kesehatannya. Pasalnya, organ terbesar dalam tubuh ini berperan besar dalam semua proses pencernaan dan penyerapan zat gizi dalam tubuh serta membuang racun.
+Hati adalah salah satu organ penting yang perlu dijaga kesehatannya. Pasalnya, organ terbesar dalam tubuh ini berperan besar dalam semua proses pencernaan dan penyerapan zat gizi dalam tubuh serta membuang racun [[1]](https://www.halodoc.com/artikel/fungsi-hati-perlu-dijaga-ini-8-caranya).
 
-Untuk mengetahui kondisi kesehatan liver atau hati , salah satunya dengan cara melakukan Tes Fungsi Hati(TFH).Tes Fungsi Hati (TFH) adalah tes darah yang digunakan untuk menilai kondisi kesehatan organ hati yang bisa dilakukan baik secara rutin maupun ketika terjadi penyakit pada hati. Tes ini dilakukan dengan mengukur kadar senyawa kimia tertentu dalam darah, lalu membandingkannya dengan nilai normal senyawa kimia tersebut. Bila hasil pengukuran zat kimia menunjukkan kadar yang tidak normal, maka kemungkinan besar terdapat penyakit hati atau kerusakan hati.
+Untuk mengetahui kondisi kesehatan liver atau hati , salah satunya dengan cara melakukan Tes Fungsi Hati(TFH) [[2]](https://www.halodoc.com/kesehatan/pemeriksaan-fungsi-hati).Tes Fungsi Hati (TFH) adalah tes darah yang digunakan untuk menilai kondisi kesehatan organ hati yang bisa dilakukan baik secara rutin maupun ketika terjadi penyakit pada hati. Tes ini dilakukan dengan mengukur kadar senyawa kimia tertentu dalam darah, lalu membandingkannya dengan nilai normal senyawa kimia tersebut. Bila hasil pengukuran zat kimia menunjukkan kadar yang tidak normal, maka kemungkinan besar terdapat penyakit hati atau kerusakan hati.
 
-Dari berbagai jenis yang ada, berikut ini jenis Tes Fungsi Hati (TFH) yang paling umum dilakukan:
-- Tes Serum Glutamat Piruvat Transaminase (SGPT)
-- Tes Serum Glutamat Oksaloasetat Transaminase (SGOT)
-- Tes Albumin
-- Tes Bilirubin
-- Tes Alkali Fosfatase
+Namun, Hasil normal tes fungsi hati dapat sedikit berbeda antara satu laboratorium dengan laboratorium lainnya. Perbedaan juga bisa muncul dan tergantung pada jenis kelamin maupun usia pasien, serta kondisi hamil atau tidak [[3]](https://www.sehatq.com/tindakan-medis/tes-fungsi-hati).Adapun yang diperiksa dari sampel darah tersebut yaitu SGPT,SGOT,ALP, Bilibrubin,Albumin dan lainnya
 
-Keterbatasan Tes Fungsi Hati (TFH) yaitu tidak adanya tes tunggal yang dapat mendeteksi seluruh penyakit hati/liver sehingga  dokter harus menyimpulkan hasil tes dari berbagi parameter hasil lab untuk menentukan pasien mengalami gejala liver atau tidak.
-
-
-Selain itu, banyaknya hasil lab TFH yg harus dianalisis dengan cepat merupakan kendala yg dialami oleh dokter di lapangan sehingga menyebabkan lambatnya penangan terhadap pasien hati/liver.
+Berdasarkan latar belakang diatas bahwa untuk menentukan pasien mengalami penyakit liver atau tidak itu dibutuhkan pembacaan yang akurat dari berbagai parameter hasil tes darah seperti kadar SGPT,SGOT,ALP, Bilibrubin,Albumin dan lainnya.
 
 Klasifikasi merupakan salah satu tugas utama dalam pembelajaran mesin yang bertujuan untuk mengelompokkan data ke dalam kelas atau label yang tepat berdasarkan fitur-fitur tertentu. Salah satu algoritma klasifikasi yang sederhana namun cukup efektif adalah K-Nearest Neighbors (KNN). KNN adalah metode pembelajaran berbasis instan (instance-based) yang memprediksi label suatu data berdasarkan mayoritas label tetangga terdekat dari data tersebut.
 
-Model KNN sangat bergantung pada parameter n_neighbors, weight, dan metric. Parameter n_neighbors menentukan jumlah tetangga terdekat yang akan digunakan dalam proses klasifikasi. Parameter weight mengatur bagaimana bobot (weight) akan diberikan pada tetangga terdekat saat melakukan prediksi, sedangkan parameter metric menentukan metrik jarak yang digunakan untuk mengukur kedekatan antara titik data dalam ruang fitur.
-
+Model KNN sangat bergantung pada parameter n_neighbors, weight, dan metric . Parameter n_neighbors menentukan jumlah tetangga terdekat yang akan digunakan dalam proses klasifikasi. Parameter weight mengatur bagaimana bobot (weight) akan diberikan pada tetangga terdekat saat melakukan prediksi, sedangkan parameter metric menentukan metrik jarak yang digunakan untuk mengukur kedekatan antara titik data dalam ruang fitur[[4]](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html).
 
 Pemilihan parameter n_neighbors, weight, dan metric yang optimal dapat sangat mempengaruhi performa model KNN. Namun, menemukan kombinasi parameter yang tepat secara manual dapat menjadi proses yang memakan waktu dan rumit, terutama jika ada banyak opsi parameter yang harus dijelajahi. Oleh karena itu, penting untuk mencari pendekatan otomatis yang dapat mengoptimalkan parameter-parameter ini untuk meningkatkan kinerja model KNN dalam tugas klasifikasi.
 
-Di sinilah peran Hyperparameter Tunning Optuna menjadi relevan. Optuna merupakan salah satu pustaka (library) Python yang menerapkan teknik optimasi hiperparameter dengan menggunakan algoritma cerdas dan efisien. Dengan mengintegrasikan Optuna pada Model KNN, kemungkinan untuk mencari kombinasi hiperparameter yang optimal dapat dilakukan dengan lebih efisien dan akurat.
+Di sinilah peran Hyperparameter Tunning Optuna menjadi relevan. Optuna merupakan salah satu pustaka (library) Python yang menerapkan teknik optimasi hiperparameter dengan menggunakan algoritma cerdas dan efisien[[5]](https://optuna.org/). Dengan mengintegrasikan Optuna pada Model KNN, kemungkinan untuk mencari kombinasi hiperparameter yang optimal dapat dilakukan dengan lebih efisien dan akurat.
 
 ## Business Understanding
 
