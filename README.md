@@ -115,9 +115,6 @@ Berikut adalah langkah-langkah untuk mendeteksi outlier menggunakan metode IQR:
 
 1. Urutkan data secara ascending (pengurutan dari nilai terkecil ke nilai terbesar).
 2. Hitung kuartil pertama (Q1) dan kuartil ketiga (Q3):
-   - Kuartil pertama (Q1) adalah nilai median dari setengah bagian bawah data (setengah data dengan nilai lebih rendah dari Q2, median).
-   - Kuartil ketiga (Q3) adalah nilai median dari setengah bagian atas data (setengah data dengan nilai lebih tinggi dari Q2, median).
-
 3. Hitung Interquartile Range (IQR):
    - IQR dihitung sebagai selisih antara Q3 dan Q1: IQR = Q3 - Q1.
 
@@ -146,7 +143,7 @@ Gambar 8. Jumlah Outlier Tiap Fitur
 
 Berdasarkan tabel diatas, fitur yang tidak memiliki outlier adalah Fitur Age dan ALB. sedangkan untuk TP dan A/G jumlahnya sedikit yaitu hanya 8 dan 10 data saja.
 
-sedangkan pada fitur TB,DB, Alkphos,Sgpt,Sgot memiliki jumlah outlier yang cukup banyak
+Sedangkan pada fitur TB,DB, Alkphos,Sgpt,Sgot memiliki jumlah outlier yang cukup banyak
 
 #### Visualisasi Outlier
 
@@ -156,8 +153,11 @@ Gambar 9. Histogram dan Boxplot visualisasi outlier
 
 #### Penangan Outlier
 
-jika outlier diatas upper diganti nilainya dengan nilai upper dan outlier dibawah lower diganti nilainya dengan lower.
-outputnya dapat dilihat dari histogram dan boxplot di bawah ini
+Berikut adalah teknik yang digunakan untuk menangani outlier:
+- Jika outlier nilainya diatas nilai upper,maka diganti nilainya dengan nilai upper
+- Jika outlier dibawah lower diganti nilainya dengan lower.
+
+Outputnya dapat dilihat dari histogram dan boxplot di bawah ini
 
 ![Gambar 10](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/data%20bersih.png)
 
@@ -194,7 +194,6 @@ Langkah-langkah yang dilakukan oleh **StandardScaler** adalah sebagai berikut:
 
 3. Skala Data:
    - Dalam tahap ini, data telah discaling sehingga rata-rata variabel adalah 0 dan standar deviasi adalah 1.
-   - 
 
 ### Resample Data
 
@@ -217,7 +216,7 @@ Teknik ini bekerja dengan cara berikut:
 
 Algoritma K-Nearest Neighbors (KNN) adalah salah satu algoritma yang bekerja dengan cara mencari K tetangga terdekat dari suatu data uji dan kemudian melakukan klasifikasi dari tetangga tersebut untuk menentukan label atau nilai prediksi dari data uji.
 
-adapun parameter input model knn secara default seperti pada tabel di bawah ini
+Adapun parameter input model knn secara default seperti pada tabel di bawah ini
 
 | parameter | Opsi | Default|
 | ---------- | -------------- |-------------- |
@@ -235,6 +234,7 @@ adapun parameter input model knn secara default seperti pada tabel di bawah ini
 
 Gambar 11. Script KNN parameter default
 
+Pada script diatas parameter yang diset diantaranya n_neighbors,weight,dan metric.berikut penjelasannya:
 
 1. **n_neighbors**:
 
