@@ -287,7 +287,7 @@ Grafik Optimization History Plot pada Optuna merupakan alat yang berguna untuk m
 
 Pada plot "Optimization History", sumbu-x mewakili iterasi (trial) yang dilakukan oleh algoritma optimasi, sedangkan sumbu-y mewakili nilai fungsi objektif pada setiap iterasi. Nilai fungsi objektif ini menunjukkan performa model dengan kombinasi hyperparameter yang diuji pada iterasi tersebut
 
-Pada Penelitian ini, saya membuat 100 iterasi
+Jika kita lihat dari history plot gambar di bawah ini, pada iterasi awal sampai 20 terjadi kenaikan nilai akurasi,dan mulai konstan diiterasi ke 40 sampai 100.
 
 ![Gambar 13](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/optuna-histori-plot.JPG)
 
@@ -299,13 +299,23 @@ Gambar 13. Optimazation History Plot
 
 Gambar 14. Hyperparameter Importances Optuna
 
+Berdasarkan grafik diatas, parameter knn yang paling berpengaruh terhadap nilai akurasi yaitu pada penentuan nilai n_neighbors (0,86), kemudian diikuti oleh parameter weights(0,08),dan yang terakhir adalah metrics0,06)
+
+
 ### Best Parameter Optuna
 
 ![Gambar 15 ](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/optuna-best-params.JPG)
 
 Gambar 15. Best Parameter Optuna
 
+Berdasarkan gambar diatas,didapatkan parameter terbaik dari proses tunning menggunakan optuna,diantaranya:
+- n_neighbors: 8
+- weights : distance
+- metrics : manhattan
+
 ### Create Model best Parameter
+
+Setalah mendapatkan best parameter dari proses sebelumnya,kemudian parameter tersebut digunakan untuk membuat model baru hasil tunning seperti script yang dituliskan dibawah ini
 
 ![Gambar 16](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/model-best.JPG)
 
