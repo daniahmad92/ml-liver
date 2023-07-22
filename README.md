@@ -9,6 +9,10 @@ Berdasarkan penelitian yang dilakukan oleh British Liver Trust memberikan inform
 
 ## Business Understanding
 
+Kematian akibat penyakit hati atau liver telah menjadi masalah kesehatan masyarakat yang signifikan di seluruh dunia. Penyakit hati, seperti sirosis dan kanker hati, dapat berkembang secara perlahan tanpa gejala yang jelas pada tahap awal, sehingga seringkali sulit untuk dideteksi sejak dini. Oleh karena itu, penting untuk memiliki alat deteksi dini yang efektif agar dapat mendiagnosis dan mengobati penyakit hati sebelum mencapai tahap lanjut yang lebih serius dan berpotensi fatal.
+
+Ada beberapa metode yang dapat digunakan untuk mendeteksi penyakit hati sejak dini salah satunya yaitu menggunakan Teknologi Kecerdasan Buatan. Dengan kemajuan dalam bidang kecerdasan buatan, teknologi seperti machine learning dapat digunakan untuk menganalisis data medis dan mencari pola yang menunjukkan potensi masalah hati. Ini dapat membantu dalam deteksi dini dan memberikan peringatan lebih awal kepada pasien dan dokter
+
 ### Problem Statements
 
 Bagaimana integrasi Model K-Nearest Neighbors (KNN) dengan Hyperparameter Tunning Optuna dapat digunakan secara efektif untuk memprediksi penyakit liver dengan akurasi yang lebih tinggi?
