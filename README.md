@@ -25,7 +25,11 @@ Tujuan utamanya adalah untuk mengukur seberapa baik model machine learning dapat
 
 ### Solution
 
-Membandingkan tingkat akurasi menggunakan pendekatan model K-Nearest Neighbors (KNN) dengan parameter set default dan parameter hasil dari tunning hyperparameter dengan menggunakan Optuna.
+Adapun Solusi yang ditawarkan untuk menjawab rumusan masalah di atas yaitu menggunakan model K-Nearest Neighbors (KNN) dan mengoptimasi kinerjanya dengan tuning hyperparameter. 
+
+KNN adalah metode pembelajaran mesin yang sederhana namun efektif untuk tugas klasifikasi dan regresi. Dalam konteks deteksi dini penyakit liver, KNN dapat digunakan untuk membedakan pasien dengan penyakit liver dan pasien tanpa penyakit liver berdasarkan fitur klinis dan hasil tes laboratorium.
+
+Tuning hyperparameter adalah proses untuk mencari kombinasi hyperparameter yang optimal untuk model KNN. Hyperparameter adalah parameter yang tidak dipelajari oleh model, tetapi nilainya dapat mempengaruhi kinerja model. Proses tuning ini dilakukan untuk mencari hyperparameter terbaik yang menghasilkan model KNN dengan akurasi dan performa prediksi yang tinggi.Dalam penelitian ini akan menggunakan library Optuna sebagai tunning hyperparameternya.
 
 ## Data Understanding
 
