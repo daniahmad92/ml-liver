@@ -33,7 +33,7 @@ Membandingkan tingkat akurasi menggunakan pendekatan model K-Nearest Neighbors (
 
 ## Data Understanding
 
-### Variabel dalam dataset
+### Dataset
 
 Data yang digunakan dalam proyek ini adalah data sekunder ILPD (Indian Liver Patient Dataset).yang diambil dari [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/ILPD+(Indian+Liver+Patient+Dataset)).Dataset ini berisi 583 data catatan tentang pasien liver (416 pasien yg terkena penyakit liver dan 167 pasien tidak terkena penyakit liver).
 
