@@ -62,17 +62,21 @@ Data yang digunakan dalam proyek ini adalah data sekunder ILPD (Indian Liver Pat
 
 
 ### Exploratory Data Analysis (EDA)- Univariate Analysis
+
 ![Gambar 1](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/perbandingan%20pasien%20liver%20dan%20non%20liver.png)
 
 Gambar 1. perbandingan pasien liver dan non-liver
+
 berdasarkan pie chart diatas,bahwa data pasien penyakit liver (71,4%) lebih banyak dibandingkan dengan data pasien non-liver (28,6%)
 
 ![Gamber 2](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/perbandingan%20pasien%20liver%20berdasarkan%20gender.png)
+
 Gambar 2. Pie Chart Perbandingan Pasien berdasarkan Gender
 
 jika dilihat berdasarkan jenis kelamin, bahwa pasien liver kebanyakan laki-laki (77,9%) dibandingkan perempuan (22,1%)
 
 ![Gambar 3 ](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/distribusi%20pasien%20berdasarkan%20usia.png)
+
 Gambar 3. Distribusi Pasien Liver Berdasarkan Usia
 
 Sedangkan jika dilihat dari rentang jenis usia, kebanyakan yang menjadi pasien liver merupakan di rentang usia 30-60 yang merupakan usia Dewasa dengan rata-rata diusia 45 seperti yang terlihat dari tabel analisis deskriptif di bawah ini
@@ -107,6 +111,7 @@ berdasarkan gambar matrik korelasi diatas ada 4 kelompok yang memiliki korelasi 
 ### Exploratory Data Analysis (EDA)- EDA-Menangani Missing Value
 
 ![Gambar 6](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/jumlah%20missing%20value.JPG)
+
 Gambar 6. Tabel jumlah missing value
 
 pada gambar diatas, ada 4 observasi yang mengalami kasus missing value pada variabel Ratio Albumin and Globuline (A/G). Masalah ini selanjutnya akan diatasi dengan mengimputasikan nilai rata-rata (mean) ke dalam 4 observasi tersebut karena variabel ini mempunyai skala numerik
@@ -145,6 +150,7 @@ Berikut adalah langkah-langkah untuk mendeteksi outlier menggunakan metode IQR:
 Gambar 7. Script untuk menghitung jumlah outlier
 
 ![Gambar 8](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/total%20outlier.JPG)
+
 Gambar 8. Jumlah Outlier Tiap Fitur
 
 Berdasarkan tabel diatas, fitur yang tidak memiliki outlier adalah Fitur Age dan ALB. sedangkan untuk TP dan A/G jumlahnya sedikit yaitu hanya 8 dan 10 data saja.
@@ -154,6 +160,7 @@ sedangkan pada fitur TB,DB, Alkphos,Sgpt,Sgot memiliki jumlah outlier yang cukup
 #### Visualisasi Outlier
 
 ![Gambar 9](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/boxplot%20outlier.png)
+
 Gambar 9. Histogram dan Boxplot visualisasi outlier
 
 #### Penangan Outlier
@@ -162,8 +169,8 @@ jika outlier diatas upper diganti nilainya dengan nilai upper dan outlier dibawa
 outputnya dapat dilihat dari histogram dan boxplot di bawah ini
 
 ![Gambar 10](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/data%20bersih.png)
-Gambar 10. Boxplot dan Histogram setelah penanganan outlier
 
+Gambar 10. Boxplot dan Histogram setelah penanganan outlier
 
 
 ## Data Preparation
