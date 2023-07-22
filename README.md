@@ -19,10 +19,6 @@ Bagaimana efektivitas model machine learning dalam membedakan pasien dengan peny
 
 Rumusan masalah ini berfokus pada penilaian kinerja model machine learning dalam tugas klasifikasi, yaitu membedakan antara dua kelas, yaitu pasien dengan penyakit liver (positif) dan pasien tanpa penyakit liver (negatif).
 
-### Goals
-
-Tujuan utamanya adalah untuk mengukur seberapa baik model machine learning dapat mengidentifikasi pasien dengan penyakit liver dengan akurat.
-
 ### Solution
 
 Adapun Solusi yang ditawarkan untuk menjawab rumusan masalah di atas yaitu menggunakan model K-Nearest Neighbors (KNN) dan mengoptimasi kinerjanya dengan tuning hyperparameter. 
@@ -30,6 +26,12 @@ Adapun Solusi yang ditawarkan untuk menjawab rumusan masalah di atas yaitu mengg
 KNN adalah metode pembelajaran mesin yang sederhana namun efektif untuk tugas klasifikasi dan regresi. Dalam konteks deteksi dini penyakit liver, KNN dapat digunakan untuk membedakan pasien dengan penyakit liver dan pasien tanpa penyakit liver berdasarkan fitur klinis dan hasil tes laboratorium.
 
 Tuning hyperparameter adalah proses untuk mencari kombinasi hyperparameter yang optimal untuk model KNN. Hyperparameter adalah parameter yang tidak dipelajari oleh model, tetapi nilainya dapat mempengaruhi kinerja model. Proses tuning ini dilakukan untuk mencari hyperparameter terbaik yang menghasilkan model KNN dengan akurasi dan performa prediksi yang tinggi.Dalam penelitian ini akan menggunakan library Optuna sebagai tunning hyperparameternya.
+
+### Goals
+
+Solusi yang diajukan diatas bertujuan untuk memberikan manfaat besar bagi masyarakat dengan meningkatkan deteksi dini penyakit liver. Dengan menggunakan model KNN yang telah dioptimasi, diharapkan lebih banyak pasien dengan penyakit liver dapat terdeteksi secara lebih awal, sehingga mereka dapat segera mendapatkan perawatan medis yang tepat dan menghindari komplikasi yang lebih serius
+
+Solusi ini juga dapat digunakan sebagai dukungan keputusan medis bagi tenaga medis dalam mengidentifikasi pasien dengan risiko tinggi terkena penyakit liver. Dengan informasi yang dihasilkan oleh model KNN yang telah dioptimasi, dokter dapat membuat keputusan yang lebih tepat dan efisien dalam merencanakan perawatan dan pengelolaan pasien.
 
 ## Data Understanding
 
