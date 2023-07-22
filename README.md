@@ -29,7 +29,7 @@ Mengoptimalkan hiperparameter Model K-Nearest Neighbors (KNN) menggunakan Optuna
 
 ### Solution
 
-Membandingkan dua pendekatan menggunakan model K-Nearest Neighbors (KNN) dengan parameter set default dan parameter hasil dari tunning hyperparameter dengan menggunakan Optuna.
+Membandingkan tingkat akurasi menggunakan pendekatan model K-Nearest Neighbors (KNN) dengan parameter set default dan parameter hasil dari tunning hyperparameter dengan menggunakan Optuna.
 
 ## Data Understanding
 
