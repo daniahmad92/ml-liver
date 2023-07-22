@@ -15,11 +15,13 @@ Ada beberapa metode yang dapat digunakan untuk mendeteksi penyakit hati sejak di
 
 ### Problem Statements
 
-Bagaimana integrasi Model K-Nearest Neighbors (KNN) dengan Hyperparameter Tunning Optuna dapat digunakan secara efektif untuk memprediksi penyakit liver dengan akurasi yang lebih tinggi?
+Bagaimana efektivitas model machine learning dalam membedakan pasien dengan penyakit liver dan pasien tanpa penyakit liver?
+
+Rumusan masalah ini berfokus pada penilaian kinerja model machine learning dalam tugas klasifikasi, yaitu membedakan antara dua kelas, yaitu pasien dengan penyakit liver (positif) dan pasien tanpa penyakit liver (negatif).
 
 ### Goals
 
-Mengoptimalkan hiperparameter Model K-Nearest Neighbors (KNN) menggunakan Optuna untuk meningkatkan akurasi deteksi penyakit liver.
+Tujuan utamanya adalah untuk mengukur seberapa baik model machine learning dapat mengidentifikasi pasien dengan penyakit liver dengan akurat.
 
 ### Solution
 
