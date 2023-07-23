@@ -133,11 +133,17 @@ Langkah-langkah yang dilakukan oleh **StandardScaler** adalah sebagai berikut:
 
 ### Resample Data
 
-Untuk penanganan ketidakseimbangan kelas, pada penelitian ini saya menggunakan **SMOTE (Synthetic Minority Over-sampling Technique)**
+Berdasarkan pemaparan sebelumnya, bahwa terdapat ketidakseimbangan kelas (imblance) pada data target.Jumlah data kelas liver (71,4%) lebih banyak daripada kelas Non-Liver (28,6%).Dalam Hal ini kelas mayoritas adalah kelas Liver dan Kelas minoritas adalah kelas Non-Liver.
 
-SMOTE digunakan untuk menangani ketidakseimbangan kelas dengan mengoversampling sampel dari kelas minoritas agar jumlah sampel kelas mayoritas dan kelas minoritas menjadi lebih seimbang.
+Untuk penanganan ketidakseimbangan kelas, teknik yang digunakan pada penelitian ini yaitu dengan cara mengoversampling sampel dari kelas minoritas. Dengan Tujuan supaya jumlah sampel kelas mayoritas dan kelas minoritas menjadi lebih seimbang.
+Teknik oversampling yang akan digunakan yaitu teknik SMOTE (Synthetic Minority Over-sampling Technique).
 
-Teknik ini bekerja dengan cara berikut:
+Teknik SMOTE diilustrasikan seperti gambar dibawah ini
+
+![smote](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/SMOTE.JPG)
+
+
+Teknik SMOTE bekerja dengan cara berikut:
 
 1. SMOTE mengidentifikasi sampel individu pada kelas minoritas.
 
