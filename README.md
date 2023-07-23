@@ -47,6 +47,8 @@ Data yang digunakan dalam proyek ini adalah data sekunder ILPD (Indian Liver Pat
 
 Dataset ini memiliki 583 baris and 11 kolom. Dari 11 kolom tersebut, 1 kolom memiliki tipe data object, 5 kolom integer,dan 5 kolom lagi bertipe data float. Adapun deskripsi dan tipe datanya dapat dilihat pada Tabel 1 dibawah ini.
 
+Tabel 1. Variabel dalam dataset
+
 | Variabel | Deskripsi|Tipe Data|
 | ---------- | -------------- |-------------- |
 | *Age* | Usia pasien |int64|
@@ -61,36 +63,50 @@ Dataset ini memiliki 583 baris and 11 kolom. Dari 11 kolom tersebut, 1 kolom mem
 | *A/G* | Rasio albumin dan globulin dalam darah pasien|float64|
 | *Class* |Variabel target yang menunjukkan apakah pasien menderita penyakit liver atau tidak (1 untuk Liver, 2 untuk Non-Liver).|int64|
 
-Tabel 1. Variabel dalam dataset
+### Inisialisasi Variabel Fitur dan Target
 
-Informasi yang didapatkan dalam Tabel 1 diatas bahwa variabel *Class* adalah variabel target klasifikasi yang menunjukkan apakah pasien menderita penyakit liver atau tidak. Sedangkan variabel lainnya digunakan sebagai prediktor.
-Variabel prediktor *Age* dan *Gender* merupakan prediktor yang berkaitan dengan faktor usia dan jenis kelamin. sedangkan 8 predictor lainnya didapatkan dari hasil tes darah laboratorium yaitu *TB,DB,Alkhpos,Sgpt,Sgot,TP,ALB dan A/G*.
+Variabel fitur adalah kolom-kolom dalam dataset yang digunakan sebagai input atau prediktor untuk mengembangkan model deteksi penyakit liver. Sedangkan Variabel target adalah kolom dalam dataset yang menjadi output atau label yang ingin diprediksi oleh model.
 
-### Exploratory Data Analysis (EDA)- Univariate Analysis
+Dari 11 Variabel yang terdapat dalam dataset,ada 10 variabel yang menjadi *Variabel Fitur* dan 1 variabel yang menjadi *Variabel Target*
+
+- Variabel Fitur : Age,Gender,TB,DB,Alkhpos,Sgpt,Sgot,TP,ALB dan A/G
+
+- Variabel Target: Class
+
+Dalam pengembangan model deteksi penyakit liver menggunakan dataset ini, variabel fitur akan digunakan sebagai input untuk memprediksi nilai target (penyakit liver atau tidak). Model akan belajar dari pola yang terdapat pada data untuk melakukan klasifikasi pasien menjadi dua kelas berdasarkan nilai dari variabel-fitur yang telah diberikan.
+
+### Deteksi Missing Value
+
+*Missing Value* (nilai yang hilang) adalah kondisi di mana data atau nilai pada suatu kolom dalam dataset tidak ada atau kosong
+Untuk mendeteksi ada atau tidaknya *Missing value* ,dapat mengggunakan fungsi yang ada pada library Pandas yaitu .isnull().
+
+Melalui deteksi missing value menggunakan .isnull(), didapatkan ada 4 nilai yang kosong pada kolom *A/G*.Terdapat tiga cara untuk mengatasi *missing value* yaitu dibiarkan, dihilangkan dan mensubtitusi nilai yang hilang menggunakan nilai mean / median / modus. Cara yang digunakan untuk mengatasi *missing value* pada proyek ini yaitu dengan cara mensubtitusikan nilai *mean*  kedalam data yang memiliki nilai hilang.
+
+### Deteksi Imbalance pada Variabel Target
+
+Imbalance (ketidakseimbangan) adalah kondisi di mana terdapat perbedaan yang signifikan antara jumlah data pada masing-masing kelas dalam dataset. Dalam konteks klasifikasi, imbalance terjadi ketika jumlah sampel atau data pada satu kelas jauh lebih banyak atau jauh lebih sedikit dibandingkan dengan kelas lainnya.Ketidakseimbangan kelas dapat menjadi masalah dalam pengembangan model klasifikasi, terutama ketika model lebih cenderung memprediksi ke kelas mayoritas dan mengabaikan kelas minoritas. Hal ini dapat menyebabkan akurasi model yang tinggi secara keseluruhan, tetapi performa yang buruk dalam memprediksi kelas minoritas yang sebenarnya lebih penting dalam aplikasi tertentu (misalnya, deteksi penyakit langka).
+
 
 ![Gambar 1](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/perbandingan%20pasien%20liver%20dan%20non%20liver.png)
 
 Gambar 1. perbandingan pasien liver dan non-liver
 
-berdasarkan pie chart diatas,bahwa data pasien penyakit liver (71,4%) lebih banyak dibandingkan dengan data pasien non-liver (28,6%)
+Berdasarkan informasi yang tertera pada Gambar diatas, terdapat dua kelas pada variabel target:
 
-![Gamber 2](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/perbandingan%20pasien%20liver%20berdasarkan%20gender.png)
+   1. Kelas "Penyakit Liver" (positive class) dengan persentase 71,4%.
+   2. Kelas "Non-Liver" (negative class) dengan persentase 28,6%.
 
-Gambar 2. Pie Chart Perbandingan Pasien berdasarkan Gender
+Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **adanya ketidakseimbangan data pada variabel target**. Jumlah data pasien dengan penyakit liver (kelas positif) lebih banyak daripada pasien tanpa penyakit liver (kelas negatif). Kondisi ini dapat mempengaruhi performa model klasifikasi, terutama jika model cenderung memprediksi ke kelas mayoritas (penyakit liver) dan mengabaikan kelas minoritas (non-liver).
 
-jika dilihat berdasarkan jenis kelamin, bahwa pasien liver kebanyakan laki-laki (77,9%) dibandingkan perempuan (22,1%)
 
-![Gambar 3 ](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/distribusi%20pasien%20berdasarkan%20usia.png)
+### Statistik Deskriptif
 
-Gambar 3. Distribusi Pasien Liver Berdasarkan Usia
-
-Sedangkan jika dilihat dari rentang jenis usia, kebanyakan yang menjadi pasien liver merupakan di rentang usia 30-60 yang merupakan usia Dewasa dengan rata-rata diusia 45 seperti yang terlihat dari tabel analisis deskriptif di bawah ini
 
 ![Gambar 4](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/deskripsi%20fitur%20numerik.JPG)
 
 Gambar 4. Statistik Deskriptif Fitur
 
-### Exploratory Data Analysis (EDA)--Multivariate Analysis
+### Multivariate Analysis
 
 Multivariate Analysis adalah analisis yang melibatkan dua atau lebih variabel secara bersamaan untuk memahami hubungan antara variabel-variabel tersebut dan mengidentifikasi pola yang lebih kompleks dalam data.
 
@@ -113,15 +129,8 @@ berdasarkan gambar matrik korelasi diatas ada 4 kelompok yang memiliki korelasi 
 4.ALB dan A/G (nilai korelasi=0,69)
 
 
-### Exploratory Data Analysis (EDA)- EDA-Menangani Missing Value
 
-![Gambar 6](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/jumlah%20missing%20value.JPG)
-
-Gambar 6. Tabel jumlah missing value
-
-pada gambar diatas, ada 4 observasi yang mengalami kasus missing value pada variabel Ratio Albumin and Globuline (A/G). Masalah ini selanjutnya akan diatasi dengan mengimputasikan nilai rata-rata (mean) ke dalam 4 observasi tersebut karena variabel ini mempunyai skala numerik
-
-### Exploratory Data Analysis (EDA)- Visualisasi dan penanganan Outlier
+### Visualisasi dan penanganan Outlier
 
 Outlier adalah nilai yang berada jauh dari mayoritas data dalam distribusi. Metode IQR (Interquartile Range) adalah salah satu cara untuk mendeteksi dan menangani outlier dalam analisis data. IQR dihitung sebagai selisih antara kuartil pertama (Q1) dan kuartil ketiga (Q3) dari data.
 
