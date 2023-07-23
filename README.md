@@ -99,102 +99,19 @@ Berdasarkan informasi yang tertera pada Gambar diatas, terdapat dua kelas pada v
 Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **adanya ketidakseimbangan data pada variabel target**. Jumlah data pasien dengan penyakit liver (kelas positif) lebih banyak daripada pasien tanpa penyakit liver (kelas negatif). Kondisi ini dapat mempengaruhi performa model klasifikasi, terutama jika model cenderung memprediksi ke kelas mayoritas (penyakit liver) dan mengabaikan kelas minoritas (non-liver).
 
 
-### Statistik Deskriptif
 
-
-![Gambar 4](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/deskripsi%20fitur%20numerik.JPG)
-
-Gambar 4. Statistik Deskriptif Fitur
-
-### Multivariate Analysis
-
-Multivariate Analysis adalah analisis yang melibatkan dua atau lebih variabel secara bersamaan untuk memahami hubungan antara variabel-variabel tersebut dan mengidentifikasi pola yang lebih kompleks dalam data.
-
-Adapun Teknik yang saya gunakan yaitu Correlation Matrix
-
-Correlation matrix adalah tabel yang menampilkan koefisien korelasi antara semua pasangan variabel numerik.
-
-![Gambar 5 ](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/korelasi%20fitur.png)
-
-Gambar 5. Tabel Matriks Korelasi Fitur
-
-berdasarkan gambar matrik korelasi diatas ada 4 kelompok yang memiliki korelasi yang tinggi (diatas 0,6) diantaranya:
-
-1.DB dan TB (nilai korelasi=0,87)
-
-2.SGot dan Sgpt (nilai korelasi=0,79)
-
-3 ALB dan TP (nilai korelasi=0,78)
-
-4.ALB dan A/G (nilai korelasi=0,69)
-
-
-
-### Visualisasi dan penanganan Outlier
-
-Outlier adalah nilai yang berada jauh dari mayoritas data dalam distribusi. Metode IQR (Interquartile Range) adalah salah satu cara untuk mendeteksi dan menangani outlier dalam analisis data. IQR dihitung sebagai selisih antara kuartil pertama (Q1) dan kuartil ketiga (Q3) dari data.
-
-Berikut adalah langkah-langkah untuk mendeteksi outlier menggunakan metode IQR:
-
-1. Urutkan data secara ascending (pengurutan dari nilai terkecil ke nilai terbesar).
-2. Hitung kuartil pertama (Q1) dan kuartil ketiga (Q3):
-3. Hitung Interquartile Range (IQR):
-   - IQR dihitung sebagai selisih antara Q3 dan Q1: IQR = Q3 - Q1.
-
-4. Tentukan Batas Atas (Upper Fence) dan Batas Bawah (Lower Fence):
-   - Batas Atas (Upper Fence) adalah nilai maksimum yang masih dianggap tidak outlier: Upper Fence = Q3 + (1.5 * IQR).
-   - Batas Bawah (Lower Fence) adalah nilai minimum yang masih dianggap tidak outlier: Lower Fence = Q1 - (1.5 * IQR).
-
-5. Identifikasi dan Tangani Outlier:
-   - Identifikasi nilai-nilai yang berada di luar Batas Atas dan Batas Bawah sebagai outlier.
-
-6. Tangani outlier dengan memilih salah satu dari tiga opsi berikut:
-
-     a. Menghapus Outlier: Hapus outlier dari dataset jika jumlah dan dampaknya terhadap analisis tidak signifikan.
-
-     b. Imputasi: Gantikan nilai outlier dengan nilai lain yang lebih masuk akal, misalnya nilai median atau rata-rata dari data yang tidak outlier.
-
-     c. Binning: Kelompokkan nilai outlier ke dalam kategori tertentu untuk mengurangi efeknya.
-
-![Gambar 7](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/iqr.JPG)
-
-Gambar 7. Script untuk menghitung jumlah outlier
-
-![Gambar 8](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/total%20outlier.JPG)
-
-Gambar 8. Jumlah Outlier Tiap Fitur
-
-Berdasarkan tabel diatas, fitur yang tidak memiliki outlier adalah Fitur Age dan ALB. sedangkan untuk TP dan A/G jumlahnya sedikit yaitu hanya 8 dan 10 data saja.
-
-Sedangkan pada fitur TB,DB, Alkphos,Sgpt,Sgot memiliki jumlah outlier yang cukup banyak
-
-#### Visualisasi Outlier
-
-![Gambar 9](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/boxplot%20outlier.png)
-
-Gambar 9. Histogram dan Boxplot visualisasi outlier
-
-#### Penangan Outlier
-
-Berikut adalah teknik yang digunakan untuk menangani outlier:
-- Jika outlier nilainya diatas nilai upper,maka diganti nilainya dengan nilai upper
-- Jika outlier dibawah lower diganti nilainya dengan lower.
-
-Outputnya dapat dilihat dari histogram dan boxplot di bawah ini
-
-![Gambar 10](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/data%20bersih.png)
-
-Gambar 10. Boxplot dan Histogram setelah penanganan outlier
 
 
 ## Data Preparation
 
 ### Label Encoding
 
-adapun varibel kategori yang diubah yaitu Gender dan Class
+Tahapan ini bertujuan untuk merubah data kategorik menjadi data numerik.Terdapat 1 variabel yang bertipe data kategori yaitu variabel Gender.Pada variabel Gender berisi kategori "Male" dan "Female".
 
-- pada data Gender,{"Male":1,"Female":0}
-- pada data Class, {"Liver":1 , "Non-Liver":2}
+Untuk melakukan Label Encoding, pada penelitian ini akan menggunakan kelas LabelEncoder dari library scikit-learn dengan tahapan sebagai berikut:
+
+1. Buat objek LabelEncoder yang akan digunakan untuk melakukan Label Encoding
+2. Selanjutnya, lakukan proses fit_transform pada data Gender untuk mengubah nilai kategorikal menjadi nilai numerik.
 
 ### Split data training dan testing
 
