@@ -43,7 +43,9 @@ Dengan menggunakan solusi ini, diharapkan dapat deteksi dini penyakit liver dapa
 
 Data yang digunakan dalam proyek ini adalah data sekunder ILPD (Indian Liver Patient Dataset).yang diambil dari [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/ILPD+(Indian+Liver+Patient+Dataset)).Dataset ini berisi 583 data catatan tentang pasien liver.Dari data tersebut, terdapat 416 pasien yang terkena penyakit liver dan 167 pasien yang tidak terkena penyakit liver.
 
-### Variabel Dataset
+### Deskripsi Dataset
+
+Dataset ini memiliki 583 baris and 11 kolom. Dari 11 kolom,terdapat 9 variabel mempunyai tipe data numerik dan 2 variabel memiliki tipe data kategori: Adapun detail variabel dan tipe datanya dapat dilihat pada tabel dibawah ini.
 
 | Variabel | Keterangan |Tipe Data|
 | ---------- | -------------- |-------------- |
