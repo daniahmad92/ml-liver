@@ -45,9 +45,9 @@ Data yang digunakan dalam proyek ini adalah data sekunder ILPD (Indian Liver Pat
 
 ### Deskripsi Dataset
 
-Dataset ini memiliki 583 baris and 11 kolom. Dari 11 kolom,terdapat 9 variabel mempunyai tipe data numerik dan 2 variabel memiliki tipe data kategori: Adapun detail variabel dan tipe datanya dapat dilihat pada tabel dibawah ini.
+Dataset ini memiliki 583 baris and 11 kolom. Dari 11 kolom,terdapat 9 kolom  mempunyai tipe data numerik dan 2 kolom memiliki tipe data kategori: Adapun deskripsi dan tipe datanya dapat dilihat pada tabel dibawah ini.
 
-| Variabel | Keterangan |Tipe Data|
+| Kolom | Deskripsi|Tipe Data|
 | ---------- | -------------- |-------------- |
 | *Age* | Usia pasien |Numerik|
 | *Gender* | Jenis kelamin pasien |Kategori|
