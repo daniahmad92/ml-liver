@@ -365,6 +365,69 @@ setalah dilakukan tuning hyperparameter dengan optuna, didapatkan adanya peningk
 
 Gambar 19. Grafik Perbandingan NIlai Akurasi Default dan Optuna
 
+## Evaluasi Model
+
+### Confusion matrix
+Confusion matrix (matriks kebingungan) adalah alat yang digunakan untuk mengevaluasi kinerja model klasifikasi dengan menggambarkan hasil prediksi model terhadap data yang sebenarnya
+
+                 |   Predicted Positive   |   Predicted Negative   |
+-----------------------------------------------------------------
+Actual Positive  |   True Positive (TP)   |   False Negative (FN)  |
+-----------------------------------------------------------------
+Actual Negative  |   False Positive (FP)  |   True Negative (TN)   |
+-----------------------------------------------------------------
+
+
+Berikut adalah penjelasan singkat untuk masing-masing sel dalam confusion matrix:
+
+- True Positive (TP):
+
+Ini adalah jumlah kasus positif yang benar diidentifikasi oleh model sebagai positif. Model dengan nilai TP yang tinggi menunjukkan bahwa model dengan baik dalam mengidentifikasi kasus positif.
+
+- True Negative (TN):
+
+Ini adalah jumlah kasus negatif yang benar diidentifikasi oleh model sebagai negatif. Model dengan nilai TN yang tinggi menunjukkan bahwa model dengan baik dalam mengidentifikasi kasus negatif.
+
+- False Positive (FP):
+
+Ini adalah jumlah kasus negatif yang salah diidentifikasi oleh model sebagai positif. Jika FP tinggi, ini menunjukkan bahwa model cenderung memberikan kesalahan dengan mengklasifikasikan data negatif sebagai positif
+
+
+Classification report adalah laporan yang memberikan informasi rinci tentang kinerja model klasifikasi. Laporan ini berisi beberapa metrik evaluasi yang dihitung berdasarkan confusion matrix dan memberikan insight tentang seberapa baik model dapat melakukan klasifikasi pada setiap kelas yang ada dalam data.
+
+Classification report biasanya mencakup beberapa metrik berikut:
+
+1. Precision (Presisi):
+
+Precision mengukur seberapa banyak dari kasus yang diidentifikasi sebagai positif oleh model yang sebenarnya benar positif. Precision dihitung dengan rumus:
+   
+   ```
+   Precision = (True Positives) / (True Positives + False Positives)
+   ```
+
+2. Recall (Sensitivity):
+
+Recall mengukur seberapa banyak dari seluruh kasus positif yang berhasil diidentifikasi oleh model. Recall dihitung dengan rumus:
+   
+   ```
+   Recall = (True Positives) / (True Positives + False Negatives)
+   ```
+3. F1-Score:
+
+F1-score adalah rata-rata harmonik antara presisi dan recall. F1-score memberikan keseimbangan antara presisi dan recall, dan berguna ketika ada ketidakseimbangan kelas. F1-score dihitung dengan rumus:
+
+   ```
+   F1-Score = 2 * (Precision * Recall) / (Precision + Recall)
+   ```
+4. Accuracy (Akurasi):
+
+Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang berhasil diidentifikasi dengan benar oleh model. Akurasi dihitung dengan rumus:
+   ```
+   Accuracy = (True Positives + True Negatives) / (True Positives + True Negatives + False Positives + False Negatives)
+```
+
+
+
 
 ## Kesimpulan
 
