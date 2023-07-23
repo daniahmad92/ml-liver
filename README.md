@@ -370,12 +370,11 @@ Gambar 19. Grafik Perbandingan NIlai Akurasi Default dan Optuna
 ### Confusion matrix
 Confusion matrix (matriks kebingungan) adalah alat yang digunakan untuk mengevaluasi kinerja model klasifikasi dengan menggambarkan hasil prediksi model terhadap data yang sebenarnya
 
-                 |   Predicted Positive   |   Predicted Negative   |
------------------------------------------------------------------
-Actual Positive  |   True Positive (TP)   |   False Negative (FN)  |
------------------------------------------------------------------
-Actual Negative  |   False Positive (FP)  |   True Negative (TN)   |
------------------------------------------------------------------
+| Variabel | Predicted Positive  | Predicted Negative |
+| ---------- | -------------- |-------------- |
+|Actual Positive| True Positive (TP)   |   False Negative (FN)  |
+|Actual Negative |   False Positive (FP)  |   True Negative (TN)   |
+
 
 
 Berikut adalah penjelasan singkat untuk masing-masing sel dalam confusion matrix:
@@ -392,6 +391,9 @@ Ini adalah jumlah kasus negatif yang benar diidentifikasi oleh model sebagai neg
 
 Ini adalah jumlah kasus negatif yang salah diidentifikasi oleh model sebagai positif. Jika FP tinggi, ini menunjukkan bahwa model cenderung memberikan kesalahan dengan mengklasifikasikan data negatif sebagai positif
 
+- False Negative (FN):
+
+Ini adalah jumlah kasus positif yang salah diidentifikasi oleh model sebagai negatif. Jika FN tinggi, ini menunjukkan bahwa model cenderung memberikan kesalahan dengan mengklasifikasikan data positif sebagai negatif. with a standard deviation of 0.06
 
 Classification report adalah laporan yang memberikan informasi rinci tentang kinerja model klasifikasi. Laporan ini berisi beberapa metrik evaluasi yang dihitung berdasarkan confusion matrix dan memberikan insight tentang seberapa baik model dapat melakukan klasifikasi pada setiap kelas yang ada dalam data.
 
