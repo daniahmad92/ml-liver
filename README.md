@@ -47,17 +47,17 @@ Data yang digunakan dalam proyek ini adalah data sekunder ILPD (Indian Liver Pat
 
 | Variabel | Keterangan |Tipe Data|
 | ---------- | -------------- |-------------- |
-| *Age* | Umur pasien |Numerik|
+| *Age* | Usia pasien |Numerik|
 | *Gender* | Jenis kelamin pasien |Kategori|
-| *TB* | Total Bilirubin|Numerik|
-| *DB* | Direct Bilirubin |Numerik|
-| *Alkphos* |  Alkaline Phosphotas |Numerik|
-| *Sgpt* | Alamine Aminotransferase|Numerik|
-| *Sgot* | Aspartate Aminotransferase|Numerik|
-| *TP* | Total Protiens|Numerik|
-| *ALB* | Albumin|Numerik|
-| *A/G* | Albumin and Globulin Ratio|Numerik|
-| *Class* | Kategori kelas pasien|Kategori|
+| *TB* | Kadar total bilirubin dalam darah pasien|Numerik|
+| *DB* | Kadar bilirubin langsung dalam darah pasien|Numerik|
+| *Alkphos* |Kadar fosfatase alkali dalam darah pasien|Numerik|
+| *Sgpt* | Kadar enzim Sgpt dalam darah pasien|Numerik|
+| *Sgot* | Kadar enzim Sgot dalam darah pasien|Numerik|
+| *TP* | Kadar total protein dalam darah pasien|Numerik|
+| *ALB* |Kadar albumin dalam darah pasien|Numerik|
+| *A/G* | Rasio albumin dan globulin dalam darah pasien|Numerik|
+| *Class* |Variabel target yang menunjukkan apakah pasien menderita penyakit liver atau tidak (1 untuk Liver, 2 untuk Non-Liver).|Kategori|
 
 
 ### Exploratory Data Analysis (EDA)- Univariate Analysis
