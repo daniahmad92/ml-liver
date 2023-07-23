@@ -112,24 +112,32 @@ Untuk melakukan Label Encoding, pada penelitian ini akan menggunakan kelas Label
 
 ### Split data training dan testing
 
-***train_test_split*** adalah fungsi dari pustaka scikit-learn yang digunakan untuk membagi dataset menjadi data training dan data testing.Pada penelitian ini , data tersebut dibagi menjadi **80% sebagai training dan 20% sebagai testing**.
+Pada tahap ini, dataset akan dibagi menjadi data latih (data training) dan data uji (data testing).Data training akan digunakan untuk melatih model,sedangkan data testing akan digunakan untuk menguji kinerja model yang telah dilatih pada data training.
+
+***train_test_split*** adalah fungsi dari pustaka scikit-learn yang digunakan untuk membagi dataset menjadi data training dan data testing.Pada penelitian ini , data tersebut dibagi menjadi **80% sebagai data training dan 20% sebagai data testing**.
+
+```
+x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=0.20,random_state=123,stratify= y)
+
+```
+adapun hasilnya yaitu dari 583 dataset awal,sekarang telah menjadi 466 data sebagai data training dan 117 data sebagai data testing.
 
 ### Normalisasi Data
 
-Normalisasi data adalah salah satu tahap penting dalam pra-pemrosesan (preprocessing) data sebelum melatih model pembelajaran mesin. Normalisasi bertujuan untuk mengubah skala nilai fitur-fitur dalam dataset sehingga memiliki mean (rata-rata) 0 dan standar deviasi (standard deviation) 1. Salah satu teknik normalisasi yang umum digunakan adalah menggunakan **StandardScaler** dari pustaka scikit-learn.
+Dalam klasifikasi, normalisasi data merujuk pada proses mengubah skala data sehingga setiap fitur memiliki rentang yang serupa atau sama, tanpa mengubah distribusi relatif antara fitur-fitur tersebut.
 
-Langkah-langkah yang dilakukan oleh **StandardScaler** adalah sebagai berikut:
+K-Nearest Neighbors (KNN)  menghitung jarak antara data untuk menentukan tetangga terdekat. Jika skala fitur berbeda-beda, fitur dengan skala besar akan memiliki pengaruh lebih besar pada perhitungan jarak daripada fitur dengan skala kecil. Normalisasi membantu KNN memberikan klasifikasi yang lebih adil antara fitur-fitur yang berbeda skala.
 
-1. Hitung Mean dan Standar Deviasi:
-   - Pertama, hitung nilai mean dan standar deviasi dari setiap variabel numerik di dataset.
+Salah satu teknik normalisasi yang umum digunakan adalah menggunakan **StandardScaler** dari pustaka scikit-learn.Adapun untuk menormalisasi data dengan menggunakan StandardScaler dengan cara sebagai berikut:
 
-2. Transformasi Data:
-   - Selanjutnya, setiap nilai pada variabel numerik diubah menjadi nilai standar menggunakan rumus z-score:
-     z = (x - mean) / std_dev
-   di mana z adalah nilai standar, x adalah nilai asli, mean adalah rata-rata, dan std_dev adalah standar deviasi.
+1. Buat objek StandardScaler untuk melakukan normalisasi data.
+2. Lakukan normalisasi pada data menggunakan metode fit_transform dari objek StandardScaler.
 
-3. Skala Data:
-   - Dalam tahap ini, data telah discaling sehingga rata-rata variabel adalah 0 dan standar deviasi adalah 1.
+```
+scaler = StandardScaler()
+x_normalized = scaler.fit_transform(x)
+
+```
 
 ### Resample Data
 
@@ -153,6 +161,16 @@ Teknik SMOTE bekerja dengan cara berikut:
 
 4. Sampel sintetis ini ditambahkan ke dataset, sehingga meningkatkan jumlah sampel pada kelas minoritas.
 
+Untuk menggunakan resampling data menggunakan SMOTE, bisa memakai pustaka imblearn.over_sampling .Adapun langkah penggunaanya yaitu:
+
+1. Buat objek SMOTE
+2. Gunakan metode fit_resample() dari objek SMOTE untuk melakukan resampling data
+
+Adapun contoh scriptnya dapat dilihat dibawah ini:
+```
+smote = SMOTE(sampling_strategy='auto')
+X_resampled, y_resampled = smote.fit_resample(X, y)
+```
 
 ## Modeling - Parameter KNN Default
 
