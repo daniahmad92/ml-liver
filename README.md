@@ -200,12 +200,11 @@ Pada script diatas parameter yang diset diantaranya n_neighbors,weight,dan metri
 
 **Optuna** adalah sebuah library Python yang digunakan untuk optimasi hyperparameter secara otomatis
 
+Berikut adalah langkah-langkah untuk melakukan tuning hyperparameter K-Nearest Neighbors (KNN) menggunakan library Optuna
 
-### Fungsi Evaluasi (Objective Function)
+#### 1. Definisikan Objective Function
 
-**Fungsi objektif (Objective Function)** adalah sebuah fungsi yang akan dievaluasi selama proses optimasi hyperparameter.Tujuan utama dari fungsi objektif adalah untuk memberikan nilai skor atau evaluasi berdasarkan performa model. Nilai skor ini akan digunakan oleh algoritma optimasi untuk menentukan kombinasi hyperparameter mana yang menghasilkan hasil terbaik
-
-adapun parameter KNN yang akan ditunning yaitu **n_neighbors,weight,dan metric**
+Fungsi ini akan menerima objek trial yang berisi nilai hyperparameter yang akan diuji.adapun parameter KNN yang akan ditunning yaitu **n_neighbors,weight,dan metric**
 
 | parameter | Opsi |
 | ---------- | --------------|
@@ -216,47 +215,82 @@ adapun parameter KNN yang akan ditunning yaitu **n_neighbors,weight,dan metric**
 
 ```
 def objective(trial):
-    #knn parameter
+    
+    # Definisikan hyperparameter yang akan dioptimasi dan rentang pencariannya
+
     n_neighbors = trial.suggest_int("n_neighbors", 1,10)
     weights = trial.suggest_categorical("weights", ['uniform', 'distance'])
     metric = trial.suggest_categorical("metric", ['euclidean', 'manhattan', 'minkowski'])
 
-    #knn model
+    # Inisialisasi model KNN
     knn_model = KNeighborsClassifier(n_neighbors=n_neighbors, weights=weights, metric=metric)
 
     # Latih model dengan data latih
     knn_model.fit(x_train_resampled, y_train_resampled)
 
-    # Prediksi label pada data uji
+    # Prediksi label kelas pada data uji
     y_pred = knn_model.predict(x_test_resampled)
 
     # Hitung akurasi prediksi
     accuracy = accuracy_score(y_test_resampled, y_pred)
 
-    # Kembalikan akurasi sebagai skor optimasi
+   # Kembalikan nilai akurasi sebagai nilai objektif yang akan dioptimasi
     return accuracy
 
 
 ```
 
+#### 2. Buat dan Mulai Studi Optuna
 
-![Gambar 12](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/tunning-optuna.JPG)
+- buat  objek Studi Optuna
+```
+study = optuna.create_study(direction="maximize")
+```
+Bagian ini digunakan untuk membuat objek Studi Optuna. Studi adalah entitas utama dalam Optuna yang merepresentasikan ruang pencarian hyperparameter. Parameter direction menentukan arah optimasi yang ingin dilakukan. Nilai "maximize" berarti mencari nilai hyperparameter yang memaksimalkan nilai objektif (dalam kasus ini, akurasi)
 
-Gambar 12. Script Tunning Hyperparameter Optuna
+- jalankan proses optimasi
+```
+study.optimize(objective, n_trials=100)
+```
+Bagian ini adalah saat dimana proses optimasi dilakukan. Fungsi optimize() dari objek Studi digunakan untuk memulai proses optimasi. Fungsi ini menerima dua argumen, yaitu objective yang merupakan fungsi tujuan (objective function) yang ingin dioptimasi, dan n_trials yang merupakan jumlah iterasi atau percobaan yang akan dilakukan oleh Optuna untuk mencari nilai hyperparameter yang optimal.
 
-### Optimization History Plot
 
-Grafik Optimization History Plot pada Optuna merupakan alat yang berguna untuk memvisualisasikan progres optimasi hyperparameter selama proses pencarian kombinasi hyperparameter terbaik. Plot dapat memvisualisasikan bagaimana nilai fungsi objektif (akurasi) berubah selama iterasi dari algoritma optimasi
 
-Pada plot "Optimization History", sumbu-x mewakili iterasi (trial) yang dilakukan oleh algoritma optimasi, sedangkan sumbu-y mewakili nilai fungsi objektif pada setiap iterasi. Nilai fungsi objektif ini menunjukkan performa model dengan kombinasi hyperparameter yang diuji pada iterasi tersebut
+#### 3. Hasil Tunning Hyperparameter Optuna
 
-Jika kita lihat dari history plot gambar di bawah ini, pada iterasi awal sampai 20 terjadi kenaikan nilai akurasi,dan mulai konstan diiterasi ke 40 sampai 100.
+- ***Optimization History Plot***
+
+Grafik Optimization History Plot pada Optuna merupakan alat yang berguna untuk memvisualisasikan progres optimasi hyperparameter selama proses pencarian kombinasi hyperparameter terbaik. Plot dapat memvisualisasikan bagaimana nilai fungsi objektif (akurasi) berubah selama iterasi dari algoritma optimasi.
+
+untuk melihat grafiknya, dapat menggunakan script berikut:
+
+```
+optuna.visualization.plot_optimization_history(study)
+
+```
+
 
 ![Gambar 13](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/optuna-histori-plot.JPG)
 
 Gambar 13. Optimazation History Plot
 
-### Hyperparameter Importances Optuna
+Pada plot "Optimization History", sumbu-x mewakili iterasi (trial) yang dilakukan oleh algoritma optimasi, sedangkan sumbu-y mewakili nilai fungsi objektif pada setiap iterasi. Nilai fungsi objektif ini menunjukkan performa model dengan kombinasi hyperparameter yang diuji pada iterasi tersebut
+
+
+Jika kita lihat dari history plot gambar di atas, pada iterasi awal sampai 20 terjadi kenaikan nilai akurasi,dan mulai konstan diiterasi ke 40 sampai 100.
+
+
+
+- ***Hyperparameter Importances***
+
+untuk melihat hyperparameter importance, jalankan script berikut:
+
+```
+optuna.visualization.plot_param_importances(study)
+
+```
+
+adapun outputnya sebagai berikut:
 
 ![Gambar 14](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/optuna-hyperparameter.JPG)
 
@@ -265,52 +299,22 @@ Gambar 14. Hyperparameter Importances Optuna
 Berdasarkan grafik diatas, parameter knn yang paling berpengaruh terhadap nilai akurasi yaitu pada penentuan nilai n_neighbors (0,86), kemudian diikuti oleh parameter weights(0,08),dan yang terakhir adalah metrics0,06)
 
 
-### Best Parameter Optuna
+- ***Best Parameter***
 
-![Gambar 15 ](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/optuna-best-params.JPG)
+Untuk mandapatkan nilai Best Parameter yang telah ditemukan selama proses optimasi,jalankan script berikut:
 
-Gambar 15. Best Parameter Optuna
+```
+study.best_params
 
-Berdasarkan gambar diatas,didapatkan parameter terbaik dari proses tunning menggunakan optuna,diantaranya:
+```
+output yang didapatkan dalam penelitian ini,diantaranya:
+
+```
 - n_neighbors: 8
 - weights : distance
 - metrics : manhattan
 
-### Create Model best Parameter
-
-Setalah mendapatkan best parameter dari proses sebelumnya,kemudian parameter tersebut digunakan untuk membuat model baru hasil tunning seperti script yang dituliskan dibawah ini
-
-![Gambar 16](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/model-best.JPG)
-
-Gambar 16. Script Model KNN dengan menggunakan Best Parameter
-
-## Nilai Akurasi Model
-
-### Nilai Akurasi Model KNN Default
-berikut adalah classification Report dari model KNN dengan parameter:
-- n_neighbors =5
-- weight = uniform
-- metric = minkowski
-
-![Gambar 17](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/klasifikasi-report-default.JPG)
-
-Gambar 17. Hasil Classification Report Dengan parameter Default KNN
-
-berdasarkan gambar diatas, bahwa nilai akurasi model KNN Default adalah 0,68
-
-### Nilai Akurasi Model KNN menggunakan Optuna
-
-berikut adalah classification Report dari model KNN setalah dilaukan hyperparameter tuning dengan best parameter:
-
-- n_neighbors =8
-- weight = distance
-- metric = manhattan
-
-![Gambar 18](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/klasifikasi-report-optuna.JPG)
-
-Gambar 18. Hasil Classification Report Dengan parameter Hasil Tunning Optuna
-
-setalah dilakukan tunning hyperparameter menggunakan optuna, didapatkan nilai akurasinya menjadi 0,72
+```
 
 
 ### Perbandingan NIlai AKurasi model KNN dengan parameter Default dan Best Parameter Optuna
