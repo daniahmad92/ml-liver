@@ -29,7 +29,7 @@ Tujuan proyek ini diataranya:
 
 ### Solution
 
-Solusi yang ditawarkan untuk mendeteksi penyakit liver sejak dini adalah dengan menggunakan model klasifikasi, seperti K-Nearest Neighbors (KNN). Model ini akan memanfaatkan informasi rekam medis dari pasien-pasien sebelumnya untuk membedakan antara asien dengan penyakit liver (positif) dan pasien tanpa penyakit liver (negatif).
+Solusi yang ditawarkan untuk mendeteksi penyakit liver sejak dini adalah dengan menggunakan model klasifikasi, seperti K-Nearest Neighbors (KNN). Model ini akan memanfaatkan informasi rekam medis dari pasien-pasien sebelumnya untuk membedakan antara pasien dengan penyakit liver (positif) dan pasien tanpa penyakit liver (negatif).
 
 Model KNN sangat bergantung pada parameter n_neighbors, weight, dan metric . Parameter n_neighbors menentukan jumlah tetangga terdekat yang akan digunakan dalam proses klasifikasi. Parameter weight mengatur bagaimana bobot (weight) akan diberikan pada tetangga terdekat saat melakukan prediksi, sedangkan parameter metric menentukan metrik jarak yang digunakan untuk mengukur kedekatan antara titik data dalam ruang fitur[[3]](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html).
 
@@ -37,27 +37,27 @@ Pemilihan parameter n_neighbors, weight, dan metric yang optimal dapat sangat me
 
 Di sinilah peran Hyperparameter Tunning Optuna menjadi relevan. Optuna merupakan salah satu pustaka (library) Python yang menerapkan teknik optimasi hiperparameter dengan menggunakan algoritma cerdas dan efisien[[4]](https://optuna.org/). Dengan mengintegrasikan Optuna pada Model KNN, kemungkinan untuk mencari kombinasi hiperparameter yang optimal dapat dilakukan dengan lebih efisien dan akurat.
 
-Dengan menggunakan solusi ini, diharapkan tingkat deteksi dini penyakit liver dapat ditingkatkan sehingga penanganan lebih lanjut bisa dilakukan dengan lebih tepat dan efektif.
+Dengan menggunakan solusi ini, diharapkan dapat deteksi dini penyakit liver dapat ditingkatkan sehingga penanganan lebih lanjut bisa dilakukan dengan lebih tepat dan efektif.
 
 ## Data Understanding
 
-### Dataset
+Data yang digunakan dalam proyek ini adalah data sekunder ILPD (Indian Liver Patient Dataset).yang diambil dari [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/ILPD+(Indian+Liver+Patient+Dataset)).Dataset ini berisi 583 data catatan tentang pasien liver.Dari data tersebut, terdapat 416 pasien yang terkena penyakit liver dan 167 pasien yang tidak terkena penyakit liver.
 
-Data yang digunakan dalam proyek ini adalah data sekunder ILPD (Indian Liver Patient Dataset).yang diambil dari [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/ILPD+(Indian+Liver+Patient+Dataset)).Dataset ini berisi 583 data catatan tentang pasien liver (416 pasien yg terkena penyakit liver dan 167 pasien tidak terkena penyakit liver).
+### Variabel Dataset
 
-| Variabel | Keterangan | Kadar Normal|
+| Variabel | Keterangan |Tipe Data|
 | ---------- | -------------- |-------------- |
-| *Age* | Umur pasien | - |
-| *Gender* | Jenis kelamin pasien |
-| *TB* | Total Bilirubin| 0,3 - 1,2 mg/dL|
-| *DB* | Direct Bilirubin |0 - 0,4 mg/dL|
-| *Alkphos* |  Alkaline Phosphotas |40-129 U/L|
-| *Sgpt* | Alamine Aminotransferase|7 - 55 U/L|
-| *Sgot* | Aspartate Aminotransferase|5 - 40 u/L|
-| *TP* | Total Protiens|6.3-7.9 g/dL|
-| *ALB* | Albumin|3.5-5.0 g/dL|
-| *A/G* | Albumin and Globulin Ratio|-|
-| *Class* | Kategori kelas pasien|1: Liver dan 2:Non-Liver|
+| *Age* | Umur pasien |Numerik|
+| *Gender* | Jenis kelamin pasien |Kategori|
+| *TB* | Total Bilirubin|Numerik|
+| *DB* | Direct Bilirubin |Numerik|
+| *Alkphos* |  Alkaline Phosphotas |Numerik|
+| *Sgpt* | Alamine Aminotransferase|Numerik|
+| *Sgot* | Aspartate Aminotransferase|Numerik|
+| *TP* | Total Protiens|Numerik|
+| *ALB* | Albumin|Numerik|
+| *A/G* | Albumin and Globulin Ratio|Numerik|
+| *Class* | Kategori kelas pasien|Kategori|
 
 
 ### Exploratory Data Analysis (EDA)- Univariate Analysis
@@ -380,6 +380,21 @@ Setelah dilakukan optimasi hiperparameter dengan Optuna,nilai akurasi deteksi pe
 [[3]](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html) Scikit-Learn.(2023).*KNeighborsClassifier*.Diakses pada 22 Juli 2023.https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
 
 [[4]](https://optuna.org/) Optuna.(2023).*Optuna*.Diakses pada 22 Juli 2023.https://optuna.org
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
