@@ -43,24 +43,28 @@ Dengan menggunakan solusi ini, diharapkan dapat deteksi dini penyakit liver dapa
 
 Data yang digunakan dalam proyek ini adalah data sekunder ILPD (Indian Liver Patient Dataset).yang diambil dari [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/ILPD+(Indian+Liver+Patient+Dataset)).Dataset ini berisi 583 data catatan tentang pasien liver.Dari data tersebut, terdapat 416 pasien yang terkena penyakit liver dan 167 pasien yang tidak terkena penyakit liver.
 
-### Deskripsi Dataset
+### Struktur Dataset
 
-Dataset ini memiliki 583 baris and 11 kolom. Dari 11 kolom,terdapat 9 kolom  mempunyai tipe data numerik dan 2 kolom memiliki tipe data kategori: Adapun deskripsi dan tipe datanya dapat dilihat pada tabel dibawah ini.
+Dataset ini memiliki 583 baris and 11 kolom. Dari 11 kolom tersebut, 1 kolom memiliki tipe data object, 5 kolom integer,dan 5 kolom lagi bertipe data float. Adapun deskripsi dan tipe datanya dapat dilihat pada Tabel 1 dibawah ini.
 
-| Kolom | Deskripsi|Tipe Data|
+| Variabel | Deskripsi|Tipe Data|
 | ---------- | -------------- |-------------- |
-| *Age* | Usia pasien |Numerik|
-| *Gender* | Jenis kelamin pasien |Kategori|
-| *TB* | Kadar total bilirubin dalam darah pasien|Numerik|
-| *DB* | Kadar bilirubin langsung dalam darah pasien|Numerik|
-| *Alkphos* |Kadar fosfatase alkali dalam darah pasien|Numerik|
-| *Sgpt* | Kadar enzim Sgpt dalam darah pasien|Numerik|
-| *Sgot* | Kadar enzim Sgot dalam darah pasien|Numerik|
-| *TP* | Kadar total protein dalam darah pasien|Numerik|
-| *ALB* |Kadar albumin dalam darah pasien|Numerik|
-| *A/G* | Rasio albumin dan globulin dalam darah pasien|Numerik|
-| *Class* |Variabel target yang menunjukkan apakah pasien menderita penyakit liver atau tidak (1 untuk Liver, 2 untuk Non-Liver).|Kategori|
+| *Age* | Usia pasien |int64|
+| *Gender* | Jenis kelamin pasien |object|
+| *TB* | Kadar total bilirubin dalam darah pasien|float64|
+| *DB* | Kadar bilirubin langsung dalam darah pasien|float64|
+| *Alkphos* |Kadar fosfatase alkali dalam darah pasien|int64|
+| *Sgpt* | Kadar enzim Sgpt dalam darah pasien|int64|
+| *Sgot* | Kadar enzim Sgot dalam darah pasien|int64|
+| *TP* | Kadar total protein dalam darah pasien|float64|
+| *ALB* |Kadar albumin dalam darah pasien|float64|
+| *A/G* | Rasio albumin dan globulin dalam darah pasien|float64|
+| *Class* |Variabel target yang menunjukkan apakah pasien menderita penyakit liver atau tidak (1 untuk Liver, 2 untuk Non-Liver).|int64|
 
+Tabel 1. Variabel dalam dataset
+
+Informasi yang didapatkan dalam Tabel 1 diatas bahwa variabel *Class* adalah variabel target klasifikasi yang menunjukkan apakah pasien menderita penyakit liver atau tidak. Sedangkan variabel lainnya digunakan sebagai prediktor.
+Variabel prediktor *Age* dan *Gender* merupakan prediktor yang berkaitan dengan faktor usia dan jenis kelamin. sedangkan 8 predictor lainnya didapatkan dari hasil tes darah laboratorium yaitu *TB,DB,Alkhpos,Sgpt,Sgot,TP,ALB dan A/G*.
 
 ### Exploratory Data Analysis (EDA)- Univariate Analysis
 
