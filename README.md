@@ -80,7 +80,7 @@ Dalam pengembangan model deteksi penyakit liver menggunakan dataset ini, variabe
 *Missing Value* (nilai yang hilang) adalah kondisi di mana data atau nilai pada suatu kolom dalam dataset tidak ada atau kosong
 Untuk mendeteksi ada atau tidaknya *Missing value* ,dapat mengggunakan fungsi yang ada pada library Pandas yaitu .isnull().
 
-Melalui deteksi missing value menggunakan .isnull(), didapatkan ada 4 nilai yang kosong pada kolom *A/G*.Terdapat tiga cara untuk mengatasi *missing value* yaitu dibiarkan, dihilangkan dan mensubtitusi nilai yang hilang menggunakan nilai mean / median / modus. Cara yang digunakan untuk mengatasi *missing value* pada proyek ini yaitu dengan cara mensubtitusikan nilai *mean*  kedalam data yang memiliki nilai hilang.
+Melalui deteksi missing value menggunakan .isnull(), didapatkan ada 4 nilai yang kosong pada kolom *A/G*.Terdapat tiga cara untuk mengatasi *missing value* yaitu dibiarkan, dihilangkan dan mensubtitusi nilai yang hilang menggunakan nilai mean / median / modus. Cara yang digunakan untuk mengatasi *missing value* pada proyek ini yaitu dengan cara mensubtitusikan nilai *mean*  kedalam data kosong tersebut.
 
 ### Deteksi Imbalance pada Variabel Target
 
@@ -93,13 +93,10 @@ Gambar 1. perbandingan pasien liver dan non-liver
 
 Berdasarkan informasi yang tertera pada Gambar diatas, terdapat dua kelas pada variabel target:
 
-   1. Kelas "Penyakit Liver" (positive class) dengan persentase 71,4%.
+   1. Kelas "Liver" (positive class) dengan persentase 71,4%.
    2. Kelas "Non-Liver" (negative class) dengan persentase 28,6%.
 
 Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **adanya ketidakseimbangan data pada variabel target**. Jumlah data pasien dengan penyakit liver (kelas positif) lebih banyak daripada pasien tanpa penyakit liver (kelas negatif). Kondisi ini dapat mempengaruhi performa model klasifikasi, terutama jika model cenderung memprediksi ke kelas mayoritas (penyakit liver) dan mengabaikan kelas minoritas (non-liver).
-
-
-
 
 
 ## Data Preparation
@@ -115,12 +112,11 @@ Untuk melakukan Label Encoding, pada penelitian ini akan menggunakan kelas Label
 
 ### Split data training dan testing
 
-***train_test_split*** adalah fungsi dari pustaka scikit-learn yang digunakan untuk membagi dataset menjadi data training dan data testing.Pada penelitian ini saya membagi data tersebut menjadi **80% sebagai training dan 20% sebagai testing**.
+***train_test_split*** adalah fungsi dari pustaka scikit-learn yang digunakan untuk membagi dataset menjadi data training dan data testing.Pada penelitian ini , data tersebut dibagi menjadi **80% sebagai training dan 20% sebagai testing**.
 
 ### Normalisasi Data
 
 Normalisasi data adalah salah satu tahap penting dalam pra-pemrosesan (preprocessing) data sebelum melatih model pembelajaran mesin. Normalisasi bertujuan untuk mengubah skala nilai fitur-fitur dalam dataset sehingga memiliki mean (rata-rata) 0 dan standar deviasi (standard deviation) 1. Salah satu teknik normalisasi yang umum digunakan adalah menggunakan **StandardScaler** dari pustaka scikit-learn.
-
 
 Langkah-langkah yang dilakukan oleh **StandardScaler** adalah sebagai berikut:
 
@@ -216,6 +212,33 @@ adapun parameter KNN yang akan ditunning yaitu **n_neighbors,weight,dan metric**
 | *n_neighbors* | 1 s.d 10|
 | *weights* | uniform,distance|
 | *metric* |euclidean,manhattan,minkowski|
+
+
+```
+def objective(trial):
+    #knn parameter
+    n_neighbors = trial.suggest_int("n_neighbors", 1,10)
+    weights = trial.suggest_categorical("weights", ['uniform', 'distance'])
+    metric = trial.suggest_categorical("metric", ['euclidean', 'manhattan', 'minkowski'])
+
+    #knn model
+    knn_model = KNeighborsClassifier(n_neighbors=n_neighbors, weights=weights, metric=metric)
+
+    # Latih model dengan data latih
+    knn_model.fit(x_train_resampled, y_train_resampled)
+
+    # Prediksi label pada data uji
+    y_pred = knn_model.predict(x_test_resampled)
+
+    # Hitung akurasi prediksi
+    accuracy = accuracy_score(y_test_resampled, y_pred)
+
+    # Kembalikan akurasi sebagai skor optimasi
+    return accuracy
+
+
+```
+
 
 ![Gambar 12](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/tunning-optuna.JPG)
 
