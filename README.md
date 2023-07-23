@@ -110,6 +110,13 @@ Untuk melakukan Label Encoding, pada penelitian ini akan menggunakan kelas Label
 1. Buat objek LabelEncoder yang akan digunakan untuk melakukan Label Encoding
 2. Selanjutnya, lakukan proses fit_transform pada data Gender untuk mengubah nilai kategorikal menjadi nilai numerik.
 
+Output yang dihasilkan adalah sebagai berikut:
+
+| Kategori  | Numerik  |
+| ----------| ---------|
+|  Male     |   0      |
+|  Female   |   1      |
+
 ### Split data training dan testing
 
 Pada tahap ini, dataset akan dibagi menjadi data latih (data training) dan data uji (data testing).Data training akan digunakan untuk melatih model,sedangkan data testing akan digunakan untuk menguji kinerja model yang telah dilatih pada data training.
@@ -120,7 +127,12 @@ Pada tahap ini, dataset akan dibagi menjadi data latih (data training) dan data 
 x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=0.20,random_state=123,stratify= y)
 
 ```
-adapun hasilnya yaitu dari 583 dataset awal,sekarang telah menjadi 466 data sebagai data training dan 117 data sebagai data testing.
+Output yang dihasilkan adalah sebagai berikut:
+
+| data awal | data training| data testing |
+| ----------| ------------ |--------------|
+|  583  rows|   466 rows   |  117  rows   |
+
 
 ### Normalisasi Data
 
@@ -370,7 +382,7 @@ Gambar 19. Grafik Perbandingan NIlai Akurasi Default dan Optuna
 ### Confusion matrix
 Confusion matrix (matriks kebingungan) adalah alat yang digunakan untuk mengevaluasi kinerja model klasifikasi dengan menggambarkan hasil prediksi model terhadap data yang sebenarnya
 
-| Variabel | Predicted Positive  | Predicted Negative |
+|            | Predicted Positive  | Predicted Negative |
 | ---------- | -------------- |-------------- |
 |Actual Positive| True Positive (TP)   |   False Negative (FN)  |
 |Actual Negative |   False Positive (FP)  |   True Negative (TN)   |
@@ -393,7 +405,7 @@ Ini adalah jumlah kasus negatif yang salah diidentifikasi oleh model sebagai pos
 
 - False Negative (FN):
 
-Ini adalah jumlah kasus positif yang salah diidentifikasi oleh model sebagai negatif. Jika FN tinggi, ini menunjukkan bahwa model cenderung memberikan kesalahan dengan mengklasifikasikan data positif sebagai negatif. with a standard deviation of 0.06
+Ini adalah jumlah kasus positif yang salah diidentifikasi oleh model sebagai negatif. Jika FN tinggi, ini menunjukkan bahwa model cenderung memberikan kesalahan dengan mengklasifikasikan data positif sebagai negatif.
 
 Classification report adalah laporan yang memberikan informasi rinci tentang kinerja model klasifikasi. Laporan ini berisi beberapa metrik evaluasi yang dihitung berdasarkan confusion matrix dan memberikan insight tentang seberapa baik model dapat melakukan klasifikasi pada setiap kelas yang ada dalam data.
 
