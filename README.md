@@ -166,9 +166,10 @@ Adapun parameter input model knn secara default seperti pada tabel di bawah ini
 | *n_jobs* |int|None|
 
 
-![Gambar 11](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/model_awal.JPG)
+```
+knn_model_default = KNeighborsClassifier(n_neighbors=5, weights='uniform', metric='minkowski')
 
-Gambar 11. Script KNN parameter default
+```
 
 Pada script diatas parameter yang diset diantaranya n_neighbors,weight,dan metric.berikut penjelasannya:
 
@@ -196,7 +197,7 @@ Pada script diatas parameter yang diset diantaranya n_neighbors,weight,dan metri
 
 
 
-## Tunning Hyperparameter Optuna
+## Evaluasi Model dengan Tunning Hyperparameter Optuna
 
 **Optuna** adalah sebuah library Python yang digunakan untuk optimasi hyperparameter secara otomatis
 
@@ -313,6 +314,21 @@ output yang didapatkan dalam penelitian ini,diantaranya:
 - n_neighbors: 8
 - weights : distance
 - metrics : manhattan
+
+```
+### 4. Buat Model baru dengan parameter input dari Best Parameter Optuna
+
+Setalah mendapatkan best parameter dari proses sebelumnya,kemudian parameter tersebut digunakan untuk membuat model baru hasil tunning seperti script yang dituliskan dibawah ini
+
+```
+def create_model_best_params(best_params):
+    best_n_neighbors =best_params['n_neighbors']
+    best_weights =best_params['weights']
+    best_metric =best_params['metric']
+    knn_optuna=KNeighborsClassifier(n_neighbors=best_n_neighbors,weights=best_weights,metric=best_metric)
+    return knn_optuna
+
+knn_model_optuna=create_model_best_params(best_params)
 
 ```
 
