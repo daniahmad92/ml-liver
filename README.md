@@ -244,56 +244,56 @@ smote = SMOTE(sampling_strategy='auto')
 X_resampled, y_resampled = smote.fit_resample(X, y)
 ```
 
-## Modeling - Parameter KNN Default
+## Modeling
 
 Algoritma K-Nearest Neighbors (KNN) adalah salah satu algoritma yang bekerja dengan cara mencari K tetangga terdekat dari suatu data uji dan kemudian melakukan klasifikasi dari tetangga tersebut untuk menentukan label atau nilai prediksi dari data uji.
 
 Adapun parameter input model knn secara default seperti pada tabel di bawah ini
 
-| parameter | Opsi | Default|
+| parameter | Deskripsi | Default|
 | ---------- | -------------- |-------------- |
-| *n_neighbors* | int |5|
-| *weights* | uniform,distance|uniform|
-| *algorithm* | auto,ball_tree,kd_tree,brute|auto|
-| *leaf_size* |int|30|
-| *p* |int|2|
-| *metric* |euclidean,manhattan,minkowski|minkowski|
-| *metric_params* |dict|None|
-| *n_jobs* |int|None|
+| *n_neighbors* | Jumlah tetangga terdekat untuk klasifikasi atau regresi. |5|
+| *weights* | Fungsi bobot: 'uniform' (semua tetangga sama bobot) atau 'distance' (bobot berbanding terbalik dengan jarak)|uniform|
+| *algorithm* |Algoritma untuk mencari tetangga terdekat: 'auto', 'ball_tree', 'kd_tree', atau 'brute'|auto|
+| *leaf_size* |Ukuran daun dalam pohon jika algorithm='ball_tree' atau 'kd_tree'.|30|
+| *p* |Parameter untuk jenis jarak: 1 (Manhattan) atau 2 (Euclidean)|2|
+| *metric* |Metrik jarak: 'euclidean', 'manhattan', 'minkowski', dll|minkowski|
+| *metric_params* |Parameter tambahan untuk metrik jarak tertentu.|None|
+| *n_jobs* |Jumlah jobs untuk pencarian tetangga.|None|
 
 
-```
-knn_model_default = KNeighborsClassifier(n_neighbors=5, weights='uniform', metric='minkowski')
+Pada Tahap Ini dikembangkan 3 model,diantaranya:
 
-```
+***1. Model v1:***
 
-Pada script diatas parameter yang diset diantaranya n_neighbors,weight,dan metric.berikut penjelasannya:
+- Model : KNeighborsClassifier
+- Paremeter Input Knn:{n_neighbors:5, weights: 'uniform', metric: 'minkowski'}
+- Melatih Model : Data Trining StandarScaler
+- Prediksi  : Data Testing StandarScaler
 
-1. **n_neighbors**:
+***2. Model v2:***
 
-  Parameter **n_neighbors** adalah jumlah tetangga terdekat yang akan digunakan untuk melakukan prediksi pada setiap data baru
+Pada model Ini memakai SMOTE untuk data trainingnya,data ini digunakan untuk melatih Model
 
-2. **weigth**
-
-  Parameter **weight** digunakan untuk memberikan bobot pada tetangga berdasarkan jaraknya dari data baru yang akan diprediksi. Terdapat dua opsi umum untuk weight
-
-  - **uniform**: Setiap tetangga diberi bobot yang sama. Ini berarti tetangga terdekat dan terjauh memiliki kontribusi yang sama dalam proses prediksi.
-  
-  - **distance:** Bobot diberikan berdasarkan jaraknya. Tetangga yang lebih dekat akan memiliki kontribusi yang lebih besar dalam proses prediksi dibandingkan tetangga yang lebih jauh. Ini memungkinkan model untuk memberikan perhatian lebih pada tetangga yang lebih dekat, yang dapat meningkatkan akurasi prediksi
-
-3. **metric:**
-
-	Parameter **metric** digunakan untuk menentukan metrik jarak yang akan digunakan untuk mengukur kedekatan antara data. Metrik ini penting karena akan mempengaruhi bagaimana KNN menghitung jarak antara data poin. Contoh metrik umum yang dapat digunakan adalah:
-  
-  - **euclidean**: Menggunakan jarak Euclidean biasa untuk mengukur kedekatan antara data poin. Ini cocok untuk data yang memiliki skala numerik.
-  
-  - **manhattan**: Menggunakan jarak Manhattan (juga dikenal sebagai jarak L1) yang mengukur jarak horizontal dan vertikal antara data poin. Cocok untuk data yang memiliki fitur diskrit atau data ordinal.
-  
-  - **minkowski**: Metrik umum yang menggeneralisasi jarak Euclidean dan Manhattan dengan memperkenalkan parameter p. Ketika p=1, itu menjadi jarak Manhattan, dan ketika p=2, itu menjadi jarak Euclidean.
+- Model : KNeighborsClassifier
+- Paremeter input knn:{n_neighbors:5, weights: 'uniform', 'metric': 'minkowski'}
+- Melatih Model : Data Trining StandarScaler + SMOTE
+- Prediksi   : Data Testing StandarScaler
 
 
+***3. Model v3:***
 
-## Evaluasi Model dengan Tunning Hyperparameter Optuna
+Pada model Ini digunakan parameter input KNN diambil dari hasil tuning parameter Optuna
+
+- Model : KNeighborsClassifier
+- Paremeter input knn:diambil dari hasil tuning hyperparameter dari Optuna
+- Melatih Model : Data Trining StandarScaler + SMOTE
+- Prediksi   : Data Testing StandarScaler
+
+
+
+
+## Evaluasi
 
 **Optuna** adalah sebuah library Python yang digunakan untuk optimasi hyperparameter secara otomatis
 
