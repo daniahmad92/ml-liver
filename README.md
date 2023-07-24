@@ -179,7 +179,7 @@ Output yang dihasilkan adalah sebagai berikut:
 
 ### Split data training dan testing
 
-Pada tahap ini, dataset akan dibagi menjadi data latih (data training) dan data uji (data testing).Data training akan digunakan untuk melatih model,sedangkan data testing akan digunakan untuk menguji kinerja model yang telah dilatih pada data training.
+Pada tahap ini, dataset akan dibagi menjadi data training dan data uji data testing. Data training akan digunakan untuk melatih model,sedangkan data testing akan digunakan untuk menguji kinerja model yang telah dilatih pada data training.
 
 ***train_test_split*** adalah fungsi dari pustaka scikit-learn yang digunakan untuk membagi dataset menjadi data training dan data testing.Pada penelitian ini , data tersebut dibagi menjadi **80% sebagai data training dan 20% sebagai data testing**.
 
@@ -244,200 +244,69 @@ smote = SMOTE(sampling_strategy='auto')
 X_resampled, y_resampled = smote.fit_resample(X, y)
 ```
 
-## Pembuatan dan Pengembangan Model
+## Modeling
 
-Algoritma K-Nearest Neighbors (KNN) adalah salah satu algoritma yang bekerja dengan cara mencari K tetangga terdekat dari suatu data uji dan kemudian melakukan klasifikasi dari tetangga tersebut untuk menentukan label atau nilai prediksi dari data uji.
+Pada tahap ini, Model dibangun dengan menggunakan Algoritma ***K-Nearest Neighbors (KNN)*** dan dioptimasi dengan menggunakan ***Optuna*** sebagai tuning hyperparameternya
 
-Adapun parameter input model knn secara default seperti pada tabel di bawah ini
+### K-Nearest Neighbors (KNN)
 
-| parameter | Deskripsi | Default|
-| ---------- | -------------- |-------------- |
-| *n_neighbors* | Jumlah tetangga terdekat untuk klasifikasi atau regresi. |5|
-| *weights* | Fungsi bobot: 'uniform' (semua tetangga sama bobot) atau 'distance' (bobot berbanding terbalik dengan jarak)|uniform|
-| *algorithm* |Algoritma untuk mencari tetangga terdekat: 'auto', 'ball_tree', 'kd_tree', atau 'brute'|auto|
-| *leaf_size* |Ukuran daun dalam pohon jika algorithm='ball_tree' atau 'kd_tree'.|30|
-| *p* |Parameter untuk jenis jarak: 1 (Manhattan) atau 2 (Euclidean)|2|
-| *metric* |Metrik jarak: 'euclidean', 'manhattan', 'minkowski', dll|minkowski|
-| *metric_params* |Parameter tambahan untuk metrik jarak tertentu.|None|
-| *n_jobs* |Jumlah jobs untuk pencarian tetangga.|None|
+#### Prinsip Kerja Algoritma KNN
 
+K-Nearest Neighbors (KNN) adalah algoritma klasifikasi yang bekerja berdasarkan prinsip kedekatan data. Ketika diberikan data uji, KNN mencari k tetangga terdekat dari data uji di dalam data latih. Kelas yang paling sering muncul dari k tetangga terdekat akan diambil sebagai prediksi untuk data uji. KNN mengasumsikan bahwa data dengan fitur yang mirip cenderung memiliki label kelas yang sama.
 
-berikut adalah tahapan dalam pembuatan dan pengembangan model supaya bisa menghasilkan performa model yang bagus.
+#### Parameter KNN
 
-***1. Membuat Model KNN dengan parameter default (Model V1)***
+KNN diimplementasikan menggunakan library scikit-learn, yang menyediakan algoritma KNN dengan berbagai pilihan hyperparameter, 
+Pada library scikit-learn, terdapat beberapa parameter default yang digunakan dalam model KNN,diantaranya:
 
-```
-knn_model_scaler = KNeighborsClassifier(n_neighbors=5, weights='uniform', metric='minkowski')
-knn_model_scaler.fit(x_train_scaler, y_train)
-```
-- Model ini menggunakan algoritma KNeighborsClassifier
-- Paremeter Input Knn yang digunakan yaitu parameter default: {n_neighbors:5, weights: 'uniform', metric: 'minkowski'}
-- Model Ini dilatih dengan menggunakan data training yang sudah dinormalisasi menggunakan StandarScaler
+1. ***n_neighbors (int, default=5):*** Parameter ini menentukan jumlah tetangga terdekat yang akan digunakan untuk melakukan prediksi kelas pada data uji. Nilai defaultnya adalah 5, yang berarti KNN akan mencari 5 tetangga terdekat dari data uji dan memilih mayoritas kelas dari kelima tetangga tersebut sebagai prediksi.
 
-Adapun hasil prediksi yang dihasilkan Model V1 ini,dapat dilihat dari gambar Confussion matriks dan Classification report dibawah ini:
+2. ***weights (str or callable, default='uniform'):*** Parameter ini menentukan jenis bobot yang akan digunakan dalam perhitungan jarak antara data uji dengan data latih. Nilai 'uniform' berarti semua tetangga memiliki bobot yang sama, sedangkan nilai 'distance' berarti bobot tetangga sebanding dengan kebalikannya dari jaraknya. Selain itu, kita juga dapat menggunakan fungsi callable yang akan memberikan bobot kustom berdasarkan jarak.
 
-![cm1](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/cm-model-v1.JPG)
+3. ***metric (str or callable, default='minkowski'):*** Parameter ini menentukan metrik jarak yang akan digunakan dalam perhitungan jarak antara data uji dan data latih. Nilai 'minkowski' mengindikasikan penggunaan metrik Minkowski dengan nilai p=2, yang sama dengan metrik Euclidean. Nilai lain yang umum digunakan adalah 'manhattan' untuk metrik Manhattan dan 'euclidean' untuk metrik Euclidean.
 
+4. ***algorithm (str, default='auto'):*** Parameter ini menentukan algoritma yang akan digunakan untuk mencari tetangga terdekat. Nilai 'auto' akan memilih algoritma yang paling sesuai berdasarkan ukuran dataset dan jenis metrik. Nilai 'ball_tree', 'kd_tree', dan 'brute' adalah pilihan algoritma yang dapat ditentukan secara eksplisit.
 
-berdasarkan informasi gambar diatas, bahwa model ini memiliki recall pada class 2 (non-liver) yang sangat kecil yaitu sebesar 0,35. Dengan kata lain bahwa model ini memiliki kemampuan yang rendah dalam memprediksi pasien Non-Liver(kelas 2) dimana hanya bisa memprediksi dengan benar sebanyak 12 dari 34 pasien non-liver (35%). Hal ini disebabkan karena ada ketidakseimbangan kelas (imblance) pada variabel target. Kelas pasien liver lebih banyak dari kelas Non-Liver.
+5. ***leaf_size (int, default=30):*** Parameter ini menentukan ukuran daun (leaf size) yang digunakan dalam algoritma BallTree atau KDTree. Nilai defaultnya adalah 30.
 
-Adapun Solusi yang dipakai yaitu model dilatih menggunakan data latih yang sudah di resample dengan SMOTE.
+6. ***p (int, default=2):*** Parameter ini digunakan jika metrik Minkowski digunakan. Nilai defaultnya adalah 2, yang mengindikasikan penggunaan metrik Euclidean. Jika p=1, maka metrik akan menjadi Manhattan distance.
 
+7. ***n_jobs (int, default=None):*** Parameter ini menentukan jumlah pekerjaan yang akan dijalankan secara paralel. Nilai defaultnya adalah None, yang berarti semua CPU yang tersedia akan digunakan.
 
-***2. Merevisi Model V1 dengan cara membuat model dengan data latih yang sudah diresample menggunakan SMOTE***
+### Optuna untuk Tuning Hyperparameter
 
+Tuning hyperparameter merupakan salah satu tahap penting dalam pengembangan model machine learning. Tujuan dari tuning hyperparameter menggunakan library Optuna adalah untuk mencari kombinasi hyperparameter yang menghasilkan performa model yang optimal. Hyperparameter adalah parameter yang harus diatur sebelum melatih model. Oleh karena itu, penentuan hyperparameter yang tepat sangat mempengaruhi kualitas dan kinerja model.
 
-![cm1](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/cm-model-v2.JPG)
+Berikut adalah langkah-langkah yang diperlukan untuk melakukan tuning hyperparameter pada algoritma k-Nearest Neighbors (KNN) menggunakan Optuna:
 
+***Langkah 1:*** Definisikan fungsi objektif untuk optimisasi dengan Optuna. Fungsi ini akan mengevaluasi model KNN berdasarkan kombinasi hyperparameter yang diuji dan mengembalikan skor akurasi sebagai objektif optimisasi.
 
-***3.Melakukan tunning hyperparameter menggunakan Optuna***
+***Langkah 2:*** Buat variabel studi dengan ***'optuna.create_study()'*** dan mulai proses optimisasi dengan ***'study.optimize()'***. Optuna akan mencoba berbagai kombinasi hyperparameter dan mencari yang menghasilkan skor akurasi tertinggi.
 
+***Langkah 3:*** Setelah proses optimisasi selesai, visualisasikan riwayat optimisasi dan pentingnya masing-masing hyperparameter menggunakan fungsi visualisasi Optuna.
 
-**Optuna** adalah sebuah library Python yang digunakan untuk optimasi hyperparameter secara otomatis
+***Langkah 4:*** Dapatkan nilai hyperparameter terbaik yang dihasilkan oleh Optuna dengan mengakses atribut ***best_params*** dari objek studi.
 
-Berikut adalah langkah-langkah untuk melakukan tuning hyperparameter K-Nearest Neighbors (KNN) menggunakan library Optuna
+***Langkah 5:*** Gunakan nilai hyperparameter terbaik untuk membuat model KNN yang optimal. Latih model tersebut menggunakan seluruh data latih untuk menghasilkan model yang efisien dan akurat.
 
-1. Definisikan Objective Function
-
-Fungsi ini akan menerima objek trial yang berisi nilai hyperparameter yang akan diuji.adapun parameter KNN yang akan ditunning yaitu **n_neighbors,weight,dan metric**
-
-| parameter | Opsi |
-| ---------- | --------------|
-| *n_neighbors* | 1 s.d 10|
-| *weights* | uniform,distance|
-| *metric* |euclidean,manhattan,minkowski|
-
-
-```
-def objective(trial):
-    
-    # Definisikan hyperparameter yang akan dioptimasi dan rentang pencariannya
-
-    n_neighbors = trial.suggest_int("n_neighbors", 1,10)
-    weights = trial.suggest_categorical("weights", ['uniform', 'distance'])
-    metric = trial.suggest_categorical("metric", ['euclidean', 'manhattan', 'minkowski'])
-
-    # Inisialisasi model KNN
-    knn_model = KNeighborsClassifier(n_neighbors=n_neighbors, weights=weights, metric=metric)
-
-    # Latih model dengan data latih
-    knn_model.fit(x_train_resampled, y_train_resampled)
-
-    # Prediksi label kelas pada data uji
-    y_pred = knn_model.predict(x_test_resampled)
-
-    # Hitung akurasi prediksi
-    accuracy = accuracy_score(y_test_resampled, y_pred)
-
-   # Kembalikan nilai akurasi sebagai nilai objektif yang akan dioptimasi
-    return accuracy
-
-
-```
-
-2. Buat dan Mulai Studi Optuna
-
-- buat  objek Studi Optuna
-```
-study = optuna.create_study(direction="maximize")
-```
-Bagian ini digunakan untuk membuat objek Studi Optuna. Studi adalah entitas utama dalam Optuna yang merepresentasikan ruang pencarian hyperparameter. Parameter direction menentukan arah optimasi yang ingin dilakukan. Nilai "maximize" berarti mencari nilai hyperparameter yang memaksimalkan nilai objektif (dalam kasus ini, akurasi)
-
-- jalankan proses optimasi
-```
-study.optimize(objective, n_trials=100)
-```
-Bagian ini adalah saat dimana proses optimasi dilakukan. Fungsi optimize() dari objek Studi digunakan untuk memulai proses optimasi. Fungsi ini menerima dua argumen, yaitu objective yang merupakan fungsi tujuan (objective function) yang ingin dioptimasi, dan n_trials yang merupakan jumlah iterasi atau percobaan yang akan dilakukan oleh Optuna untuk mencari nilai hyperparameter yang optimal.
-
-
-
-3. Hasil Tunning Hyperparameter Optuna
-
-- ***Optimization History Plot***
-
-Grafik Optimization History Plot pada Optuna merupakan alat yang berguna untuk memvisualisasikan progres optimasi hyperparameter selama proses pencarian kombinasi hyperparameter terbaik. Plot dapat memvisualisasikan bagaimana nilai fungsi objektif (akurasi) berubah selama iterasi dari algoritma optimasi.
-
-untuk melihat grafiknya, dapat menggunakan script berikut:
-
-```
-optuna.visualization.plot_optimization_history(study)
-
-```
-
-
-![Gambar 13](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/optuna-histori-plot.JPG)
-
-Gambar 13. Optimazation History Plot
-
-Pada plot "Optimization History", sumbu-x mewakili iterasi (trial) yang dilakukan oleh algoritma optimasi, sedangkan sumbu-y mewakili nilai fungsi objektif pada setiap iterasi. Nilai fungsi objektif ini menunjukkan performa model dengan kombinasi hyperparameter yang diuji pada iterasi tersebut
-
-
-Jika kita lihat dari history plot gambar di atas, pada iterasi awal sampai 20 terjadi kenaikan nilai akurasi,dan mulai konstan diiterasi ke 40 sampai 100.
-
-
-
-- ***Hyperparameter Importances***
-
-untuk melihat hyperparameter importance, jalankan script berikut:
-
-```
-optuna.visualization.plot_param_importances(study)
-
-```
-
-adapun outputnya sebagai berikut:
-
-![Gambar 14](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/optuna-hyperparameter.JPG)
-
-Gambar 14. Hyperparameter Importances Optuna
-
-Berdasarkan grafik diatas, parameter knn yang paling berpengaruh terhadap nilai akurasi yaitu pada penentuan nilai n_neighbors (0,86), kemudian diikuti oleh parameter weights(0,08),dan yang terakhir adalah metrics0,06)
-
-
-- ***Best Parameter***
-
-Untuk mandapatkan nilai Best Parameter yang telah ditemukan selama proses optimasi,jalankan script berikut:
-
-```
-study.best_params
-
-```
-output yang didapatkan dalam penelitian ini,diantaranya:
-
-```
-- n_neighbors: 8
-- weights : distance
-- metrics : manhattan
-
-```
-4. Buat Model baru dengan parameter input dari Best Parameter Optuna
-
-Setalah mendapatkan best parameter dari proses sebelumnya,kemudian parameter tersebut digunakan untuk membuat model baru hasil tunning seperti script yang dituliskan dibawah ini
-
-```
-def create_model_best_params(best_params):
-    best_n_neighbors =best_params['n_neighbors']
-    best_weights =best_params['weights']
-    best_metric =best_params['metric']
-    knn_optuna=KNeighborsClassifier(n_neighbors=best_n_neighbors,weights=best_weights,metric=best_metric)
-    return knn_optuna
-
-knn_model_optuna=create_model_best_params(best_params)
-
-```
+***Langkah 6:*** Evaluasi kinerja model KNN pada data uji untuk mendapatkan estimasi akurasi dan kemampuan generalisasi model dalam memprediksi penyakit liver
 
 
 
 ## Evaluasi Model
 
-### Confusion matrix
-Confusion matrix (matriks kebingungan) adalah alat yang digunakan untuk mengevaluasi kinerja model klasifikasi dengan menggambarkan hasil prediksi model terhadap data yang sebenarnya
+
+Setelah proses pelatihan selesai, model KNN dievaluasi pada data uji untuk mendapatkan estimasi performa model dalam deteksi penyakit liver. Adapun metode yang digunakan dalam evaluasi ini yaitu menggunakan Confusion Matrix dan Classification Report
+
+### Confusion Matrix
+
+Confusion matrix adalah alat yang digunakan untuk mengevaluasi kinerja model klasifikasi dengan menggambarkan hasil prediksi model terhadap data yang sebenarnya
+
 
 |            | Predicted Positive  | Predicted Negative |
 | ---------- | -------------- |-------------- |
 |Actual Positive| True Positive (TP)   |   False Negative (FN)  |
 |Actual Negative |   False Positive (FP)  |   True Negative (TN)   |
-
 
 
 Berikut adalah penjelasan singkat untuk masing-masing sel dalam confusion matrix:
@@ -457,6 +326,8 @@ Ini adalah jumlah kasus negatif yang salah diidentifikasi oleh model sebagai pos
 - False Negative (FN):
 
 Ini adalah jumlah kasus positif yang salah diidentifikasi oleh model sebagai negatif. Jika FN tinggi, ini menunjukkan bahwa model cenderung memberikan kesalahan dengan mengklasifikasikan data positif sebagai negatif.
+
+### Classification Report
 
 Classification report adalah laporan yang memberikan informasi rinci tentang kinerja model klasifikasi. Laporan ini berisi beberapa metrik evaluasi yang dihitung berdasarkan confusion matrix dan memberikan insight tentang seberapa baik model dapat melakukan klasifikasi pada setiap kelas yang ada dalam data.
 
@@ -492,8 +363,6 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
 ```
 
 
-
-
 ## Kesimpulan
 
 Setelah dilakukan optimasi hiperparameter dengan Optuna,nilai akurasi deteksi penyakit liver meningkat dari 0,67 menjadi 0,72 atau dengan peningkatan sebesar 5,9%.Dengan demikian, dapat disimpulkan bahwa integrasi Hyperparameter Tunning Optuna dalam Model KNN berhasil meningkatkan akurasi deteksi penyakit liver
@@ -507,22 +376,3 @@ Setelah dilakukan optimasi hiperparameter dengan Optuna,nilai akurasi deteksi pe
 [[3]](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html) Scikit-Learn.(2023).*KNeighborsClassifier*.Diakses pada 22 Juli 2023.https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
 
 [[4]](https://optuna.org/) Optuna.(2023).*Optuna*.Diakses pada 22 Juli 2023.https://optuna.org
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
