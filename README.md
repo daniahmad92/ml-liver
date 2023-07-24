@@ -100,10 +100,6 @@ Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **ad
 
 ### Exploratory Data Analysis (EDA)- Univariate Analysis
 
-   - Visualisasi Variabel Target (Class)
-
-      ![Liver-nonliver](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/perbandingan%20pasien%20liver%20dan%20non%20liver.png)
-
    - Visualisasi Variabel Fitur (Kategori Gender)
 
       ![Gender](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_gender.png)
