@@ -158,7 +158,8 @@ def count_Outliers(X_num):
 
 ```
 
-     ![outlier_total](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/total%20outlier.JPG)
+
+   ![outlier_total](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/total%20outlier.JPG)
 
 
 
