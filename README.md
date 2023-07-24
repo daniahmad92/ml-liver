@@ -98,6 +98,69 @@ Berdasarkan informasi yang tertera pada Gambar diatas, terdapat dua kelas pada v
 
 Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **adanya ketidakseimbangan data pada variabel target**. Jumlah data pasien dengan penyakit liver (kelas positif) lebih banyak daripada pasien tanpa penyakit liver (kelas negatif). Kondisi ini dapat mempengaruhi performa model klasifikasi, terutama jika model cenderung memprediksi ke kelas mayoritas (penyakit liver) dan mengabaikan kelas minoritas (non-liver).
 
+### Exploratory Data Analysis (EDA)- Univariate Analysis
+
+   - Visualisasi Variabel Target (Class)
+
+      ![Liver-nonliver](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/perbandingan%20pasien%20liver%20dan%20non%20liver.png)
+
+   - Visualisasi Variabel Fitur (Kategori Gender)
+
+      ![Gender](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_gender.png)
+
+   - Viusalisasi Variabel Fitur (Numerik)
+
+      ![Histogram](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_histogram.png)
+
+   - Statistik Deskriptif Variabel Fitur Numerik
+
+      ![stat_des](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/deskripsi%20fitur%20numerik.JPG)
+
+
+### Exploratory Data Analysis (EDA)-Multivariate Analysis
+
+   - Korelasi Variabel Fitur Numerik
+
+   ![Korelasi](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/korelasi%20fitur.png)
+
+
+
+
+### Outlier
+   
+   - Visualisasi Outlier mengguakan Boxplot
+
+     ![outlier_box](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_boxplot.png)
+
+   - Deteksi Jumlah Outlier menggunakan IQR
+
+```
+def count_Outliers(X_num):
+    indices = [x for x in X_num.index]
+    out_indexlist = []
+    outlier_tbl=[]
+    for col in feature_numeric:
+        q1 = np.percentile(X_num[col], 25)
+        q3 = np.percentile(X_num[col], 75)
+        iqr = q3 - q1
+        lower = q1 - (iqr*1.5)
+        upper = q3 + (iqr*1.5)
+        outliers_index = X_num[col][(X_num[col] < lower) | (X_num[col] > upper)].index.tolist()
+        outliers = X_num[col][(X_num[col] < lower) | (X_num[col] > upper)].values
+        out_indexlist.extend(outliers_index)
+        outlier_tbl.append({
+            'Fitur': col,
+            'Jml Outlier': len(outliers),
+        })
+    print('\nTotal outliers: ', len(out_indexlist))
+    out_df = pd.DataFrame(outlier_tbl,columns=['Fitur','Jml Outlier'])
+    return out_df
+
+```
+
+     ![outlier_total](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/total%20outlier.JPG)
+
+
 
 ## Data Preparation
 
