@@ -174,8 +174,8 @@ Output yang dihasilkan adalah sebagai berikut:
 
 | Kategori  | Numerik  |
 | ----------| ---------|
-|  Male     |   0      |
-|  Female   |   1      |
+|  Female   |   0      |
+|  Male     |   1      |
 
 ### Split data training dan testing
 
@@ -244,7 +244,7 @@ smote = SMOTE(sampling_strategy='auto')
 X_resampled, y_resampled = smote.fit_resample(X, y)
 ```
 
-## Modeling
+## Pembuatan dan Pengembangan Model
 
 Algoritma K-Nearest Neighbors (KNN) adalah salah satu algoritma yang bekerja dengan cara mencari K tetangga terdekat dari suatu data uji dan kemudian melakukan klasifikasi dari tetangga tersebut untuk menentukan label atau nilai prediksi dari data uji.
 
@@ -262,44 +262,42 @@ Adapun parameter input model knn secara default seperti pada tabel di bawah ini
 | *n_jobs* |Jumlah jobs untuk pencarian tetangga.|None|
 
 
-Pada Tahap Ini dikembangkan 3 model,diantaranya:
+berikut adalah tahapan dalam pembuatan dan pengembangan model supaya bisa menghasilkan performa model yang bagus.
 
-***1. Model v1:***
+***1. Membuat Model KNN dengan parameter default (Model V1)***
 
-- Model : KNeighborsClassifier
-- Paremeter Input Knn:{n_neighbors:5, weights: 'uniform', metric: 'minkowski'}
-- Melatih Model : Data Trining StandarScaler
-- Prediksi  : Data Testing StandarScaler
+```
+knn_model_scaler = KNeighborsClassifier(n_neighbors=5, weights='uniform', metric='minkowski')
+knn_model_scaler.fit(x_train_scaler, y_train)
+```
+- Model ini menggunakan algoritma KNeighborsClassifier
+- Paremeter Input Knn yang digunakan yaitu parameter default: {n_neighbors:5, weights: 'uniform', metric: 'minkowski'}
+- Model Ini dilatih dengan menggunakan data training yang sudah dinormalisasi menggunakan StandarScaler
 
-***2. Model v2:***
+Adapun hasil prediksi yang dihasilkan Model V1 ini,dapat dilihat dari gambar Confussion matriks dan Classification report dibawah ini:
 
-Pada model Ini memakai SMOTE untuk data trainingnya,data ini digunakan untuk melatih Model
-
-- Model : KNeighborsClassifier
-- Paremeter input knn:{n_neighbors:5, weights: 'uniform', 'metric': 'minkowski'}
-- Melatih Model : Data Trining StandarScaler + SMOTE
-- Prediksi   : Data Testing StandarScaler
+![cm1](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/cm-model-v1.JPG)
 
 
-***3. Model v3:***
+berdasarkan informasi gambar diatas, bahwa model ini memiliki recall pada class 2 (non-liver) yang sangat kecil yaitu sebesar 0,35. Dengan kata lain bahwa model ini memiliki kemampuan yang rendah dalam memprediksi pasien Non-Liver(kelas 2) dimana hanya bisa memprediksi dengan benar sebanyak 12 dari 34 pasien non-liver (35%). Hal ini disebabkan karena ada ketidakseimbangan kelas (imblance) pada variabel target. Kelas pasien liver lebih banyak dari kelas Non-Liver.
 
-Pada model Ini digunakan parameter input KNN diambil dari hasil tuning parameter Optuna
-
-- Model : KNeighborsClassifier
-- Paremeter input knn:diambil dari hasil tuning hyperparameter dari Optuna
-- Melatih Model : Data Trining StandarScaler + SMOTE
-- Prediksi   : Data Testing StandarScaler
+Adapun Solusi yang dipakai yaitu model dilatih menggunakan data latih yang sudah di resample dengan SMOTE.
 
 
+***2. Merevisi Model V1 dengan cara membuat model dengan data latih yang sudah diresample menggunakan SMOTE***
 
 
-## Evaluasi
+![cm1](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/cm-model-v2.JPG)
+
+
+***3.Melakukan tunning hyperparameter menggunakan Optuna***
+
 
 **Optuna** adalah sebuah library Python yang digunakan untuk optimasi hyperparameter secara otomatis
 
 Berikut adalah langkah-langkah untuk melakukan tuning hyperparameter K-Nearest Neighbors (KNN) menggunakan library Optuna
 
-#### 1. Definisikan Objective Function
+1. Definisikan Objective Function
 
 Fungsi ini akan menerima objek trial yang berisi nilai hyperparameter yang akan diuji.adapun parameter KNN yang akan ditunning yaitu **n_neighbors,weight,dan metric**
 
@@ -337,7 +335,7 @@ def objective(trial):
 
 ```
 
-#### 2. Buat dan Mulai Studi Optuna
+2. Buat dan Mulai Studi Optuna
 
 - buat  objek Studi Optuna
 ```
@@ -353,7 +351,7 @@ Bagian ini adalah saat dimana proses optimasi dilakukan. Fungsi optimize() dari 
 
 
 
-#### 3. Hasil Tunning Hyperparameter Optuna
+3. Hasil Tunning Hyperparameter Optuna
 
 - ***Optimization History Plot***
 
@@ -412,7 +410,7 @@ output yang didapatkan dalam penelitian ini,diantaranya:
 - metrics : manhattan
 
 ```
-### 4. Buat Model baru dengan parameter input dari Best Parameter Optuna
+4. Buat Model baru dengan parameter input dari Best Parameter Optuna
 
 Setalah mendapatkan best parameter dari proses sebelumnya,kemudian parameter tersebut digunakan untuk membuat model baru hasil tunning seperti script yang dituliskan dibawah ini
 
@@ -429,13 +427,6 @@ knn_model_optuna=create_model_best_params(best_params)
 ```
 
 
-### Perbandingan NIlai AKurasi model KNN dengan parameter Default dan Best Parameter Optuna
-
-setalah dilakukan tuning hyperparameter dengan optuna, didapatkan adanya peningkatkan nilai akurasi dari 0,68 menjadi 0,72 atau dengan peningkatan 5,9%
-
-![Gambar 19](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/akurasi.JPG)
-
-Gambar 19. Grafik Perbandingan NIlai Akurasi Default dan Optuna
 
 ## Evaluasi Model
 
