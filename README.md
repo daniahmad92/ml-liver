@@ -187,11 +187,19 @@ Pada tahap ini, dataset akan dibagi menjadi data training dan data uji data test
 x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=0.20,random_state=123,stratify= y)
 
 ```
-Output yang dihasilkan adalah sebagai berikut:
+
+Perubahan jumlah data awal menjadi data training dan data testing dapat dilihat dari tabel di bawah ini.
 
 | data awal | data training| data testing |
 | ----------| ------------ |--------------|
 |  583  rows|   466 rows   |  117  rows   |
+
+Sedangkan jumlah pasien liver dan Non-liver pada data training dan testing dapat dilihat dari tabel di bawah ini.
+
+| Class     | data awal    | data training| data testing |
+| ----------| ------------ |--------------|--------------|
+|  Liver    |   416 rows   |  333  rows   |  83  rows    |
+|  Non-Liver|   167 rows   |  133  rows   |  34  rows    |
 
 
 ### Normalisasi Data
@@ -246,7 +254,34 @@ X_resampled, y_resampled = smote.fit_resample(X, y)
 
 ## Modeling
 
-Pada tahap ini, Model dibangun dengan menggunakan Algoritma ***K-Nearest Neighbors (KNN)*** dan dioptimasi dengan menggunakan ***Optuna*** sebagai tuning hyperparameternya
+Pada tahap ini, model dibangun dengan menggunakan Algoritma ***K-Nearest Neighbors (KNN)*** dan dioptimasi dengan menggunakan ***Optuna*** sebagai tuning hyperparameternya.
+
+Untuk mendapatkan performa model KNN yang optimal, dalam pembuatan model ini dilakukan 2 pendekatan:
+
+1. Melihat pengaruh data training terhadap performa model
+
+   Dalam tahap ini peneliti membandingkan 2 buah data training yang diterapkan ke model KNN dengan parameter default.
+   
+   Adapun data yang dibandingkan diantarnya:
+
+   - Data training hasil dari proses normalisasi menggunakan StandarScaler (x_train_scaler,y_train_scaler)
+   - Data training hasil dari proses StandarScaler dan Resample SMOTE (x_train_resampled, y_train_resampled)
+   
+   Sedangkan parameter default yang diterapkan ke dalam model KNN diataranya:
+
+   - n_neighbors= 5 
+   - weights: 'distance'
+   - metric: 'manhattan'
+   
+2. Mencari kombinasi hyperparameter untuk menghasilkan performa model yang optimal
+
+   Dalam tahap ini, peneliti menggunakan Optuna sebagai tunning hyperparameternya.Sedangkan data yang digunakan sebagai data latih adalah data yang memiliki nilai akurasi dan recall model yang paling tinggi dari tahap sebelumnya. 
+   
+   Adapun opsi dari parameter yang diset kedalam optuna diantaranya:
+
+   - n_neighbors: nilainya dari 1 sampai 10
+   - weight: ['uniform', 'distance']
+   - metric : ['euclidean', 'manhattan', 'minkowski']
 
 ### K-Nearest Neighbors (KNN)
 
@@ -292,23 +327,31 @@ Berikut adalah langkah-langkah yang diperlukan untuk melakukan tuning hyperparam
 ***Langkah 6:*** Evaluasi kinerja model KNN pada data uji untuk mendapatkan estimasi akurasi dan kemampuan generalisasi model dalam memprediksi penyakit liver
 
 
-### Hasil Optimasi
+### Hasil Optimasi Optuna
 
 Setelah proses optimasi selesai, diperoleh hyperparameter terbaik untuk model KNN. Hasil dari eksperimen ini adalah sebagai berikut:
 
-Hyperparameter Terbaik:
+1. Hyperparameter Terbaik:
 
-- n_neighbors= 5 
-- weights: 'distance
-- metric:manhattan'
+   - n_neighbors= 5 
+   - weights: 'distance'
+   - metric: 'manhattan'
 
-Nilai Akurasi Training Model : 0,77
+2. Nilai Akurasi Training Model : 0,77
+
+3. Bobot parameter yang berpengaruh terhadap nilai akurasi
+
+   - n_neighbors= 0,50
+   - weights: 0,03
+   - metric: 0,48
+
+   Dari ketiga paremeter yang disetting, parameter n_neighbors dan metric yang mempunyai pengaruh yang tinggi dalam menentukan nilai akurasi model.
 
 
 ## Evaluasi Model
 
 
-Setelah proses pelatihan selesai, model KNN dievaluasi pada data uji untuk mendapatkan estimasi performa model dalam deteksi penyakit liver. Adapun metode yang digunakan dalam evaluasi ini yaitu menggunakan Confusion Matrix dan Classification Report
+Pada tahap ini, model KNN dievaluasi pada data uji untuk mendapatkan estimasi performa model dalam deteksi penyakit liver. Adapun metode yang digunakan dalam evaluasi ini yaitu menggunakan Confusion Matrix dan Classification Report
 
 ### Confusion Matrix
 
