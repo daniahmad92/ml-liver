@@ -417,7 +417,9 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    Accuracy = (True Positives + True Negatives) / (True Positives + True Negatives + False Positives + False Negatives)
 ```
 
-### Hasil Prediksi 
+### Hasil Prediksi terhadap data uji (data testing)
+
+   Pada tahap ini, model diuji dengan menggunakan data testing sebanyak 117 data yang terdiri dari 83 Class Liver dan 34 Class Non-Liver
 
    #### Hasil Prediksi Eksperimen Ke-1:
 
