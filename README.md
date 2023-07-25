@@ -128,22 +128,25 @@ Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **ad
 
    - ***Deteksi Outlier***
 
+
    Berikut adalah cara yang untuk mengetahui adanya outlier dalam sebuah kumpulan data:
 
-      1. Visualisasi Outlier menggunakan Boxplot
+   1. Visualisasi Outlier menggunakan Boxplot
 
-         Cara melihat outlier dengan box plot (diagram kotak) adalah dengan memperhatikan titik-titik yang berada di luar batas maximum (Q1-1.5*IQR) dan batas minimum (Q1+1.5*IQR) pada box plot seperti yang terlihat pada gambar dibawah ini
+   Cara melihat outlier dengan box plot (diagram kotak) adalah dengan memperhatikan titik-titik yang berada di luar batas maximum (Q1-1.5*IQR) dan batas minimum (Q1+1.5*IQR) pada box plot seperti yang terlihat pada gambar dibawah ini
 
-         ![outlier_ilustrator](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Outlier-Ilustrasi.png)
+   ![outlier_ilustrator](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Outlier-Ilustrasi.png)
 
-         Berikut adalah visualsiasi outlier menggunakan Boxplot
+   Berikut adalah visualsiasi outlier menggunakan Boxplot
 
-        ![outlier_box](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_boxplot.png)
+   ![outlier_box](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_boxplot.png)
 
 
-      2. Menghitung Jumlah Outlier tiap Variabel menggunakan IQR
+   2. Menghitung Jumlah Outlier tiap Variabel menggunakan IQR
 
-         Interquartile Range (IQR) adalah selisih antara kuartil ketiga (Q3) dan kuartil pertama (Q1). Nilai yang berada di luar batas atas (Q3 + 1.5 * IQR) dan batas bawah (Q1 - 1.5 * IQR) dapat dianggap sebagai outlier
+   Interquartile Range (IQR) adalah selisih antara kuartil ketiga (Q3) dan kuartil pertama (Q1). Nilai yang berada di luar batas atas (Q3 + 1.5 * IQR) dan batas bawah (Q1 - 1.5 * IQR) dapat dianggap sebagai outlier
+
+
 
    - ***Penangan Outlier***
 
