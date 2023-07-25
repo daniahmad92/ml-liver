@@ -146,7 +146,7 @@ Beradasarkan tabel diatas,
 
    Berikut adalah cara yang untuk mengetahui adanya outlier dalam sebuah kumpulan data:
 
-   1. Visualisasi Outlier menggunakan Boxplot
+##### 1. Visualisasi Outlier menggunakan Boxplot
 
    Cara melihat outlier dengan box plot (diagram kotak) adalah dengan memperhatikan titik-titik yang berada di luar batas maximum (Q1-1.5*IQR) dan batas minimum (Q1+1.5*IQR) pada box plot seperti yang terlihat pada gambar dibawah ini
 
@@ -162,7 +162,7 @@ Beradasarkan tabel diatas,
    - Sedangkan sisanya 7 variabel memiliki outlier
 
 
-   2. Menghitung Jumlah Outlier tiap Variabel menggunakan IQR
+##### 2. Menghitung Jumlah Outlier tiap Variabel menggunakan IQR
 
    Interquartile Range (IQR) adalah selisih antara kuartil ketiga (Q3) dan kuartil pertama (Q1). Nilai yang berada di luar batas atas (Q3 + 1.5 * IQR) dan batas bawah (Q1 - 1.5 * IQR) dapat dianggap sebagai outlier
 
