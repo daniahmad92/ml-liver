@@ -439,7 +439,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    | ---------| ----------|---------|---------|---------|
    |Liver     |  0,75     | 0,78    | 0,76    | 83      |
    |Non-Liver |  0,40     | 0,35    | 0,38    | 34      |
-   |Accuracy = 0,66                           | 117     |
+   |Accuracy = 0,66|||                           | 117     |
 
 
 
@@ -462,7 +462,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    | ---------| ----------|---------|---------|---------|
    |Liver     |  0,87     | 0,63    | 0,73    | 83      |
    |Non-Liver |  0,46     | 0,76    | 0,57    | 34      |
-   |Accuracy = 0,67                           | 117     |
+   |Accuracy = 0,67|||                         | 117     |
 
 
    #### Hasil Prediksi Eksperimen Ke-3:
@@ -483,7 +483,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    | ---------| ----------|---------|---------|---------|
    |Liver     |  0,89     | 0,67    | 0,77    | 83      |
    |Non-Liver |  0,50     | 0,79    | 0,61    | 34      |
-   |Accuracy = 0,71                           | 117     |
+   |Accuracy = 0,71 |||                       | 117     |
 
    
    #### Perbandingan ***Accuracy,Precision,Recall,F1-Score*** dari Eksperimen ke 1,2,3
