@@ -431,6 +431,14 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Actual Non-Liver |  22              | 12                  |
 
 
+   Tabel Classificatio Report Eksperimen Ke-1
+
+   |Class     | Precision | recall  | f1-score| support |
+   | ---------| ----------|---------|---------|---------|
+   |Liver     |  0,75     | 0,78    | 0,76    | 83      |
+   |Non-Liver |  0,40     | 0,35    | 0,38    | 34      |
+
+
 
    #### Hasil Prediksi Eksperimen Ke-2:
 
@@ -444,7 +452,17 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Actual Non-Liver |  8               | 26                  |
 
 
+   Tabel Classificatio Report Eksperimen Ke-2
+
+   |Class     | Precision | recall  | f1-score| support |
+   | ---------| ----------|---------|---------|---------|
+   |Liver     |  0,87     | 0,63    | 0,73    | 83      |
+   |Non-Liver |  0,46     | 0,76    | 0,57    | 34      |
+
+
+
    #### Hasil Prediksi Eksperimen Ke-3:
+
    Eksperimen Ke-3  merupakan hasil optimalisasi model dengan melalukan tunning hyperparameter menggunakan optuna. Adapun hasil prediksinya sebagai berikut:
 
    Tabel Confusion Matriks Eksperimen Ke-3
@@ -453,6 +471,24 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    | ----------      | --------------   |---------------------|
    |Actual Liver     |  56              | 27                  |
    |Actual Non-Liver |  7               | 27                  |
+
+
+   Tabel Classificatio Report Eksperimen Ke-2
+
+   |Class     | Precision | recall  | f1-score| support |
+   | ---------| ----------|---------|---------|---------|
+   |Liver     |  0,89     | 0,67    | 0,77    | 83      |
+   |Non-Liver |  0,50     | 0,79    | 0,61    | 34      |
+
+   
+   #### Perbandingan ***Accuracy,Precision,Recall,F1-Score*** dari Eksperimen ke 1,2,3
+
+   |Class           | Accuracy  | Precision  | Recall  |F1-Score |
+   | ---------------| ----------|------------|---------|---------|
+   |Eksperiman Ke-1 |  0,65     | 0,78       | 0,74    | 0,76    |
+   |Eksperiman Ke-2 |  0,66     | 0,62       | 0,86    | 0,72    |
+   |Eksperiman Ke-3 |  0,70     | 0,67       | 0,88    | 0,76    |
+
 
 
 ## Kesimpulan
