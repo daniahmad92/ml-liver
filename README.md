@@ -147,6 +147,21 @@ Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **ad
    Interquartile Range (IQR) adalah selisih antara kuartil ketiga (Q3) dan kuartil pertama (Q1). Nilai yang berada di luar batas atas (Q3 + 1.5 * IQR) dan batas bawah (Q1 - 1.5 * IQR) dapat dianggap sebagai outlier
 
 
+Tabel Jumlah Outlier tiap variabel Numerik
+
+| Variabel   |Jumlah Outlier|
+| -----------| -------------|
+| *Age*      | 0            |
+| *TB*       | 84           |
+| *DB*       | 81           |
+| *Alkphos*  | 69           |
+| *Sgpt*     | 73           |
+| *Sgot*     | 66           |
+| *TP*       | 8            |
+| *ALB*      | 0            |
+| *A/G*      | 10           |
+
+
 
    - ***Penangan Outlier***
 
