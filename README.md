@@ -432,21 +432,20 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Actual Liver     |  65              | 18                  |
    |Actual Non-Liver |  22              | 12                  |
 
-
-   Tabel Classificatio Report Eksperimen Ke-1
+   
+   Tabel Classification Report Eksperimen Ke-1
 
    |Class     | Precision | recall  | f1-score| support |
    | ---------| ----------|---------|---------|---------|
    |Liver     |  0,75     | 0,78    | 0,76    | 83      |
    |Non-Liver |  0,40     | 0,35    | 0,38    | 34      |
-   |Accuracy = 0,66|||                           | 117     |
+   |Accuracy = 0,66|||                        | 117     |
 
-
-
+   Bila dilihat dari Tabel Classification Report Eksperimen Ke-1, ***Recall*** untuk Non-liver nilainya sangat kecil yaitu 0,35 .Ini hanya 35% pasien Non-liver yang dapat diprediksi benar oleh model. Hal ini disebabkan karena ada keteidakseimbangan kelas (imblanace) pada data target yaitu jumlah data kelas liver (71,4%) lebih banyak daripada kelas Non-Liver (28,6%).Dengan demikian bahwa kelemahan model ini belum bisa memprediksi dengan benar untuk kelas minoritas (NOn-Liver). Selanjutnya model pertama ini akan diperbaiki melalui eksperimen ke-2. 
 
    #### Hasil Prediksi Eksperimen Ke-2:
 
-   Eksperimen Ke 2 dilakukan untuk memperbaiki kinerja model awal, yaitu menggunakan data latih hasil resample SMOTE untuk mengatasi ketidakseimbangan kelas (imbalance).Adapun hasil prediksinya sebagai berikut:
+   Eksperimen Ke 2 dilakukan untuk memperbaiki kinerja model pada eksperimen pertama, yaitu menggunakan data latih hasil resample SMOTE untuk mengatasi ketidakseimbangan kelas (imbalance).Adapun hasil prediksinya sebagai berikut:
 
    Tabel Confusion Matriks Eksperimen Ke-2
 
@@ -456,13 +455,15 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Actual Non-Liver |  8               | 26                  |
 
 
-   Tabel Classificatio Report Eksperimen Ke-2
+   Tabel Classification Report Eksperimen Ke-2
 
    |Class     | Precision | recall  | f1-score| support |
    | ---------| ----------|---------|---------|---------|
    |Liver     |  0,87     | 0,63    | 0,73    | 83      |
    |Non-Liver |  0,46     | 0,76    | 0,57    | 34      |
    |Accuracy = 0,67|||                         | 117     |
+
+   Bila dilihat dari Tabel Classification Report Eksperimen Ke-2, nilai Recall untuk Non-Liver berhasil meningkat menjadi 0,76 (sebelumnya 0,35).Dengan demikian bahwa, diterapkannya resample SMOTE pada data training bisa mengatasi kasus imbalance data.Dalam Hal ini model bisa memprediksi kelas minoritas (NOn-liver) dengan cukup baik.Namun, Akurasi yang dihasilkan oleh model ini masih kecil yaitu 0,67.Untuk mengatasi hal ini,dilakukanlah eksperimen ke 3 untuk mengoptimalkan nilai akurasi dari model tersebut.
 
 
    #### Hasil Prediksi Eksperimen Ke-3:
@@ -477,7 +478,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Actual Non-Liver |  7               | 27                  |
 
 
-   Tabel Classificatio Report Eksperimen Ke-2
+   Tabel Classification Report Eksperimen Ke-3
 
    |Class     | Precision | recall  | f1-score| support |
    | ---------| ----------|---------|---------|---------|
@@ -485,6 +486,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Non-Liver |  0,50     | 0,79    | 0,61    | 34      |
    |Accuracy = 0,71 |||                       | 117     |
 
+   Berdasarkan Tabel Classification Report Eksperimen Ke-3, Nilai Akurasi model meningkat dari 0,67 menjadi 0,71 setelah dilakukan tunning hyperparameter optuna.
    
    #### Perbandingan ***Accuracy,Precision,Recall,F1-Score*** dari Eksperimen ke 1,2,3
 
@@ -494,11 +496,14 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Eksperiman Ke-2 |  0,66     | 0,62       | 0,86    | 0,72    |
    |Eksperiman Ke-3 |  0,71     | 0,67       | 0,88    | 0,76    |
 
+   Bila dilihat dari tabel diatas, bahwa Eksperimen ke-3 (mengintegrasikan model KNN dan Optuna) berhasil meningkatkan nilai AKurasi,Presisi,Recall,dan F1-Score.
+
+   Dengan demikian bahwa mengintegrasikan tunning hyperparameter Optuna ke dalam model KNN dapat meningkatkan performa model
 
 
 ## Kesimpulan
 
-Setelah dilakukan optimasi hiperparameter dengan Optuna,nilai akurasi deteksi penyakit liver meningkat dari 0,67 menjadi 0,72 atau dengan peningkatan sebesar 5,9%.Dengan demikian, dapat disimpulkan bahwa integrasi Hyperparameter Tunning Optuna dalam Model KNN berhasil meningkatkan akurasi deteksi penyakit liver
+
 
 ## Referensi
 
