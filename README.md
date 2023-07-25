@@ -1,51 +1,52 @@
-# Integrasi Model K-Nearest Neighbors (KNN) dengan Hyperparameter Tunning Optuna Untuk Mendeteksi Penyakit Liver Sejak Dini - Dadan Ahmad Dani
+# Optimisasi Model *K-Nearest Neighbors (KNN)* Menggunakan *Hyperparameter Tuning Optuna* untuk Deteksi Penyakit Liver- Dadan Ahmad Dani
 
 ## Domain Proyek
-Hati adalah salah satu organ penting yang perlu dijaga kesehatannya.Pasalnya,organ terbesar dalam tubuh ini berperan besar dalam semua proses pencernaan dan penyerapan zat gizi dalam tubuh serta membuang racun.
+Hati adalah salah satu organ penting yang perlu dijaga kesehatannya. Pasalnya, organ terbesar dalam tubuh ini berperan besar dalam semua proses pencernaan dan penyerapan zat gizi dalam tubuh serta membuang racun.
 
-Untuk mengetahui kondisi kesehatan liver atau hati , salah satunya dengan cara melakukan Tes Fungsi Hati(TFH).Tes Fungsi Hati (TFH) adalah tes darah yang digunakan untuk menilai kondisi kesehatan organ hati yang bisa dilakukan baik secara rutin maupun ketika terjadi penyakit pada hati. Tes ini dilakukan dengan mengukur kadar senyawa kimia tertentu dalam darah, lalu membandingkannya dengan nilai normal senyawa kimia tersebut. Bila hasil pengukuran zat kimia menunjukkan kadar yang tidak normal, maka kemungkinan besar terdapat penyakit hati atau kerusakan hati [[1]](https://www.halodoc.com/artikel/cek-kesehatan-hati-dengan-tes-fungsi-hati-ini).
+Untuk mengetahui kondisi kesehatan liver atau hati, salah satunya dengan cara melakukan Tes Fungsi Hati (TFH). Tes Fungsi Hati (TFH) adalah tes darah yang digunakan untuk menilai kondisi kesehatan organ hati yang bisa dilakukan baik secara rutin maupun ketika terjadi penyakit pada hati. Tes ini dilakukan dengan mengukur kadar senyawa kimia tertentu dalam darah, lalu membandingkannya dengan nilai normal senyawa kimia tersebut. Bila hasil pengukuran zat kimia menunjukkan kadar yang tidak normal, maka kemungkinan besar terdapat penyakit hati atau kerusakan hati[[1]](https://www.halodoc.com/artikel/cek-kesehatan-hati-dengan-tes-fungsi-hati-ini).
 
-Berdasarkan penelitian yang dilakukan oleh British Liver Trust mengungkapkan bahwa penyakit hati atau Liver merupakan penyebab kematian terbesar pada orang yang berusia antara 35-49 tahun, khususnya di Inggris. Penelitian tersebut juga menyatakan bahwa penyakit hati diperkirakan akan menggeser penyakit jantung sebagai penyebab terbesar kematian dini dalam beberapa tahun mendatang [[2]](https://litbang.kemendagri.go.id/website/liver-disebut-penyebab-kematian-terbesar-di-usia-35-49-tahun/)
+Berdasarkan penelitian yang dilakukan oleh British Liver Trust mengungkapkan bahwa penyakit hati atau Liver merupakan penyebab kematian terbesar pada orang yang berusia antara 35-49 tahun, khususnya di Inggris. Penelitian tersebut juga menyatakan bahwa penyakit hati diperkirakan akan menggeser penyakit jantung sebagai penyebab terbesar kematian dini dalam beberapa tahun mendatang[[2]](https://litbang.kemendagri.go.id/website/liver-disebut-penyebab-kematian-terbesar-di-usia-35-49-tahun/).
 
 ## Business Understanding
 
 Kematian akibat penyakit hati atau liver telah menjadi masalah kesehatan masyarakat yang signifikan di seluruh dunia. Penyakit hati, seperti sirosis dan kanker hati, dapat berkembang secara perlahan tanpa gejala yang jelas pada tahap awal, sehingga seringkali sulit untuk dideteksi sejak dini. Oleh karena itu, penting untuk memiliki alat deteksi dini yang efektif agar dapat mendiagnosis dan mengobati penyakit hati sebelum mencapai tahap lanjut yang lebih serius dan berpotensi fatal.
 
-Ada beberapa metode yang dapat digunakan untuk mendeteksi penyakit hati sejak dini salah satunya yaitu menggunakan Teknologi Kecerdasan Buatan. Dengan kemajuan dalam bidang kecerdasan buatan, teknologi seperti machine learning dapat digunakan untuk menganalisis data medis dan mencari pola yang menunjukkan potensi masalah hati. Ini dapat membantu dalam deteksi dini dan memberikan peringatan lebih awal kepada pasien dan dokter
+Ada beberapa metode yang dapat digunakan untuk mendeteksi penyakit hati sejak dini, salah satunya yaitu menggunakan Teknologi Kecerdasan Buatan. Dengan kemajuan dalam bidang kecerdasan buatan, teknologi seperti machine learning dapat digunakan untuk menganalisis data medis dan mencari pola yang menunjukkan potensi masalah hati. Ini dapat membantu dalam deteksi dini dan memberikan peringatan lebih awal kepada pasien dan dokter.
 
 ### Problem Statements
 
 Berdasarkan latar belakang yang telah diuraikan sebelumnya, maka projek ini dikembangkan untuk menjawab permasalahan berikut: 
-   1. Bagaimana cara menerapkan model *Machine Learning* sehingga dapat mendeteksi penyakit liver sejak dini?
-   2. Berapa tingkat akurasi dari model *Machine Learning* yg dibuat?
+
+1. Bagaimana cara menerapkan model *Machine Learning* sehingga dapat mendeteksi penyakit liver sejak dini?
+2. Berapa tingkat akurasi dari model *Machine Learning* yang dibuat?
 
 Rumusan masalah ini berfokus pada penilaian kinerja model *Machine Learning* dalam tugas klasifikasi, yaitu membedakan antara dua kelas, yaitu pasien dengan penyakit liver (positif) dan pasien tanpa penyakit liver (negatif).
 
 ### Goals
 
-Tujuan proyek ini diataranya:
-   1. Membuat model *Machine Learning* untuk mendeteksi pasien penyakit liver
-   2. Mengukur tingkat akurasi dari model *Machine Learning* yang telah dibuat
+Tujuan proyek ini di antaranya:
+1. Membuat model *Machine Learning* untuk mendeteksi pasien penyakit liver.
+2. Mengukur tingkat akurasi dari model *Machine Learning* yang telah dibuat
 
 ### Solution
 
 Solusi yang ditawarkan untuk mendeteksi penyakit liver sejak dini adalah dengan menggunakan model klasifikasi, seperti K-Nearest Neighbors (KNN). Model ini akan memanfaatkan informasi rekam medis dari pasien-pasien sebelumnya untuk membedakan antara pasien dengan penyakit liver (positif) dan pasien tanpa penyakit liver (negatif).
 
-Model KNN sangat bergantung pada parameter n_neighbors, weight, dan metric . Parameter n_neighbors menentukan jumlah tetangga terdekat yang akan digunakan dalam proses klasifikasi. Parameter weight mengatur bagaimana bobot (weight) akan diberikan pada tetangga terdekat saat melakukan prediksi, sedangkan parameter metric menentukan metrik jarak yang digunakan untuk mengukur kedekatan antara titik data dalam ruang fitur[[3]](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html).
+Model KNN sangat bergantung pada parameter *n_neighbors*, *weight*, dan *metric*. Parameter *n_neighbors* menentukan jumlah tetangga terdekat yang akan digunakan dalam proses klasifikasi. Parameter *weight* mengatur bagaimana bobot (weight) akan diberikan pada tetangga terdekat saat melakukan prediksi, sedangkan parameter *metric* menentukan metrik jarak yang digunakan untuk mengukur kedekatan antara titik data dalam ruang fitur[[3]](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html).
 
-Pemilihan parameter n_neighbors, weight, dan metric yang optimal dapat sangat mempengaruhi performa model KNN. Namun, menemukan kombinasi parameter yang tepat secara manual dapat menjadi proses yang memakan waktu dan rumit, terutama jika ada banyak opsi parameter yang harus dijelajahi. Oleh karena itu, penting untuk mencari pendekatan otomatis yang dapat mengoptimalkan parameter-parameter ini untuk meningkatkan kinerja model KNN dalam tugas klasifikasi.
+PPemilihan parameter *n_neighbors*, *weight*, dan *metric* yang optimal dapat sangat mempengaruhi performa model KNN. Namun, menemukan kombinasi parameter yang tepat secara manual dapat menjadi proses yang memakan waktu dan rumit, terutama jika ada banyak opsi parameter yang harus dijelajahi. Oleh karena itu, penting untuk mencari pendekatan otomatis yang dapat mengoptimalkan parameter-parameter ini untuk meningkatkan kinerja model KNN dalam tugas klasifikasi.
 
-Di sinilah peran Hyperparameter Tunning Optuna menjadi relevan. Optuna merupakan salah satu pustaka (library) Python yang menerapkan teknik optimasi hiperparameter dengan menggunakan algoritma cerdas dan efisien[[4]](https://optuna.org/). Dengan mengintegrasikan Optuna pada Model KNN, kemungkinan untuk mencari kombinasi hiperparameter yang optimal dapat dilakukan dengan lebih efisien dan akurat.
+Di sinilah peran Hyperparameter Tuning Optuna menjadi relevan. Optuna merupakan salah satu pustaka (library) Python yang menerapkan teknik optimasi hiperparameter dengan menggunakan algoritma cerdas dan efisien[[4]](https://optuna.org/). Dengan mengintegrasikan Optuna pada Model KNN, kemungkinan untuk mencari kombinasi hiperparameter yang optimal dapat dilakukan dengan lebih efisien dan akurat.
 
-Dengan menggunakan solusi ini, diharapkan dapat deteksi dini penyakit liver dapat ditingkatkan sehingga penanganan lebih lanjut bisa dilakukan dengan lebih tepat dan efektif.
+Dengan menggunakan solusi ini, diharapkan deteksi dini penyakit liver dapat ditingkatkan sehingga penanganan lebih lanjut bisa dilakukan dengan lebih tepat dan efektif.
 
 ## Data Understanding
 
-Data yang digunakan dalam proyek ini adalah data sekunder ILPD (Indian Liver Patient Dataset).yang diambil dari [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/ILPD+(Indian+Liver+Patient+Dataset)).Dataset ini berisi 583 data catatan tentang pasien liver.Dari data tersebut, terdapat 416 pasien yang terkena penyakit liver dan 167 pasien yang tidak terkena penyakit liver.
+Data yang digunakan dalam proyek ini adalah data sekunder ILPD (Indian Liver Patient Dataset) yang diambil dari [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/ILPD+(Indian+Liver+Patient+Dataset)). Dataset ini berisi 583 data catatan tentang pasien liver. Dari data tersebut, terdapat 416 pasien yang terkena penyakit liver dan 167 pasien yang tidak terkena penyakit liver.
 
 ### Struktur Dataset
 
-Dataset ini memiliki 583 baris and 11 kolom. Dari 11 kolom tersebut, 1 kolom memiliki tipe data object, 5 kolom integer,dan 5 kolom lagi bertipe data float. Adapun deskripsi dan tipe datanya dapat dilihat pada Tabel 1 dibawah ini.
+Dataset ini memiliki 583 baris and 11 kolom. Dari 11 kolom tersebut, 1 kolom memiliki tipe data object, 5 kolom integer,dan 5 kolom lagi bertipe data float. Adapun deskripsi dan tipe datanya dapat dilihat pada Tabel 1 di bawah ini.
 
 Tabel 1. Variabel dalam dataset
 
@@ -67,36 +68,40 @@ Tabel 1. Variabel dalam dataset
 
 Variabel fitur adalah kolom-kolom dalam dataset yang digunakan sebagai input atau prediktor untuk mengembangkan model deteksi penyakit liver. Sedangkan Variabel target adalah kolom dalam dataset yang menjadi output atau label yang ingin diprediksi oleh model.
 
-Dari 11 Variabel yang terdapat dalam dataset,ada 10 variabel yang menjadi *Variabel Fitur* dan 1 variabel yang menjadi *Variabel Target*
+Dari 11 Variabel yang terdapat dalam dataset, ada 10 variabel yang menjadi *Variabel Fitur* dan 1 variabel yang menjadi *Variabel Target*.
 
-- Variabel Fitur : Age,Gender,TB,DB,Alkhpos,Sgpt,Sgot,TP,ALB dan A/G
 
-- Variabel Target: Class
+- Variabel *Fitur* : *Age,Gender,TB,DB,Alkhpos,Sgpt,Sgot,TP,ALB dan A/G*
+
+- Variabel *Target*: *Class*
 
 Dalam pengembangan model deteksi penyakit liver menggunakan dataset ini, variabel fitur akan digunakan sebagai input untuk memprediksi nilai target (penyakit liver atau tidak). Model akan belajar dari pola yang terdapat pada data untuk melakukan klasifikasi pasien menjadi dua kelas berdasarkan nilai dari variabel-fitur yang telah diberikan.
 
 ### Deteksi Missing Value
 
-*Missing Value* (nilai yang hilang) adalah kondisi di mana data atau nilai pada suatu kolom dalam dataset tidak ada atau kosong
-Untuk mendeteksi ada atau tidaknya *Missing value* ,dapat mengggunakan fungsi yang ada pada library Pandas yaitu .isnull().
+*Missing Value* (nilai yang hilang) adalah kondisi di mana data atau nilai pada suatu kolom dalam dataset tidak ada atau kosong.
 
-Melalui deteksi missing value menggunakan .isnull(), didapatkan ada 4 nilai yang kosong pada kolom *A/G*.Terdapat tiga cara untuk mengatasi *missing value* yaitu dibiarkan, dihilangkan dan mensubtitusi nilai yang hilang menggunakan nilai mean / median / modus. Cara yang digunakan untuk mengatasi *missing value* pada proyek ini yaitu dengan cara mensubtitusikan nilai *mean*  kedalam data kosong tersebut.
+Untuk mendeteksi ada atau tidaknya *Missing value*, dapat menggunakan fungsi yang ada pada library Pandas yaitu `.isnull()`.
+
+Melalui deteksi missing value menggunakan `.isnull()`, didapatkan ada 4 nilai yang kosong pada kolom *A/G*. Terdapat tiga cara untuk mengatasi *missing value*, yaitu dibiarkan, dihilangkan, dan mensubtitusi nilai yang hilang menggunakan nilai mean / median / modus. Cara yang digunakan untuk mengatasi *missing value* pada proyek ini yaitu dengan cara mensubtitusikan nilai *mean* kedalam data kosong tersebut.
+.
 
 ### Deteksi Imbalance pada Variabel Target
 
-Imbalance (ketidakseimbangan) adalah kondisi di mana terdapat perbedaan yang signifikan antara jumlah data pada masing-masing kelas dalam dataset. Dalam konteks klasifikasi, imbalance terjadi ketika jumlah sampel atau data pada satu kelas jauh lebih banyak atau jauh lebih sedikit dibandingkan dengan kelas lainnya.Ketidakseimbangan kelas dapat menjadi masalah dalam pengembangan model klasifikasi, terutama ketika model lebih cenderung memprediksi ke kelas mayoritas dan mengabaikan kelas minoritas. Hal ini dapat menyebabkan akurasi model yang tinggi secara keseluruhan, tetapi performa yang buruk dalam memprediksi kelas minoritas yang sebenarnya lebih penting dalam aplikasi tertentu (misalnya, deteksi penyakit langka).
+*Imbalance* (ketidakseimbangan data) adalah kondisi di mana terdapat perbedaan yang signifikan antara jumlah data pada masing-masing kelas dalam dataset. Dalam konteks klasifikasi, ketidakseimbangan terjadi ketika jumlah sampel atau data pada satu kelas jauh lebih banyak atau jauh lebih sedikit dibandingkan dengan kelas lainnya. Ketidakseimbangan kelas dapat menjadi masalah dalam pengembangan model klasifikasi, terutama ketika model lebih cenderung memprediksi ke kelas mayoritas dan mengabaikan kelas minoritas. Hal ini dapat menyebabkan akurasi model yang tinggi secara keseluruhan, tetapi performa yang buruk dalam memprediksi kelas minoritas yang sebenarnya lebih penting dalam aplikasi tertentu (misalnya, deteksi penyakit langka).
 
 
 ![Gambar 1](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/perbandingan%20pasien%20liver%20dan%20non%20liver.png)
 
 Gambar 1. perbandingan pasien liver dan non-liver
 
-Berdasarkan informasi yang tertera pada Gambar diatas, terdapat dua kelas pada variabel target:
+Berdasarkan informasi yang tertera pada Gambar di atas, terdapat dua kelas pada variabel target:
 
-   1. Kelas "Liver" (positive class) dengan persentase 71,4%.
-   2. Kelas "Non-Liver" (negative class) dengan persentase 28,6%.
+1. Kelas "Liver" (positive class) dengan persentase 71,4%.
+2. Kelas "Non-Liver" (negative class) dengan persentase 28,6%.
 
 Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **adanya ketidakseimbangan data pada variabel target**. Jumlah data pasien dengan penyakit liver (kelas positif) lebih banyak daripada pasien tanpa penyakit liver (kelas negatif). Kondisi ini dapat mempengaruhi performa model klasifikasi, terutama jika model cenderung memprediksi ke kelas mayoritas (penyakit liver) dan mengabaikan kelas minoritas (non-liver).
+
 
 ### Exploratory Data Analysis (EDA)- Univariate Analysis
 
@@ -104,11 +109,11 @@ Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **ad
 
       ![Gender](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_gender.png)
 
-   - Viusalisasi Variabel Fitur (Numerik)
+   - Visualisasi Variabel Fitur (Numerik)
 
       ![Histogram](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_histogram.png)
 
-   - Statistik Deskriptif Variabel Fitur Numerik dan Kadar Normal Enzim dan protein dalam darah
+   - Statistik Deskriptif Variabel Fitur Numerik dan Kadar Normal Enzim dan Protein dalam Darah
 
 | Variabel   |Mean |Min  |Max  |Kadar Normal |
 | -----------| ----| ----| ----| ------------|
@@ -122,10 +127,10 @@ Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **ad
 | *ALB*      | 3,1 |0,9  |5,5  |3.5 - 5.0    |
 | *A/G*      | 0,9 |0,3  |2,8  |1.0 - 2.5    | 
 
-Beradasarkan tabel diatas,
-- Usia pasien yang paling muda adalah 4 tahun dan yang paling tua adalah 90 tahun.Sedangkan secara rata-rata (Mean) usia pasien termasuk kategori Dewasa (usia 45 tahn)
-- ada 5 variabel (TB,DB,Alkhpos,Sgot,Sgpt) dimana nilai rata-ratanya (Mean) diluar kadar normal
-- Ada 3 variabel (Akphos,Sgpt dan Sgot) nilai Maksimumnya sangat jauh dari nilai rata-rata (Mean)
+Berdasarkan tabel di atas:
+- Usia pasien yang paling muda adalah 4 tahun dan yang paling tua adalah 90 tahun. Sedangkan secara rata-rata (Mean) usia pasien termasuk kategori Dewasa (usia 45 tahun).
+- Ada 5 variabel (TB, DB, Alkhpos, Sgot, Sgpt) dimana nilai rata-ratanya (Mean) berada di luar kadar normal.
+- Ada 3 variabel (Akphos, Sgpt, dan Sgot) nilai Maksimumnya sangat jauh dari nilai rata-rata (Mean).
 
 ### Exploratory Data Analysis (EDA)-Multivariate Analysis
 
@@ -136,10 +141,10 @@ Beradasarkan tabel diatas,
 
 
 ### Outlier
-   
-   Outlier adalah nilai yang berbeda jauh dari mayoritas data dalam sebuah kelompok data. Dalam bahasa statistik, outlier juga sering disebut sebagai "pencilan" atau "data ekstrim".
 
-   Algoritma KNN  sensitif terhadap data pencilan (outlier),karena kehadiran data pencilan dapat menyebabkan perhitungan jarak menjadi tidak akurat dan mengganggu hasil prediksi.
+Outlier adalah nilai yang berbeda jauh dari mayoritas data dalam sebuah kelompok data. Dalam bahasa statistik, outlier juga sering disebut sebagai "pencilan" atau "data ekstrim".
+
+Algoritma KNN sensitif terhadap data pencilan (outlier), karena kehadiran data pencilan dapat menyebabkan perhitungan jarak menjadi tidak akurat dan mengganggu hasil prediksi.
 
 #### ***Deteksi Outlier***
 
@@ -148,7 +153,7 @@ Beradasarkan tabel diatas,
 
 ##### 1. Visualisasi Outlier menggunakan Boxplot
 
-   Cara melihat outlier dengan box plot (diagram kotak) adalah dengan memperhatikan titik-titik yang berada di luar batas maximum (Q1-1.5*IQR) dan batas minimum (Q1+1.5*IQR) pada box plot seperti yang terlihat pada gambar dibawah ini
+   Cara melihat outlier dengan box plot (diagram kotak) adalah dengan memperhatikan titik-titik yang berada di luar batas maksimum (Q1 - 1.5 * IQR) dan batas minimum (Q3 + 1.5 * IQR) pada box plot seperti yang terlihat pada gambar di bawah ini.
 
    ![outlier_ilustrator](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Outlier-Ilustrasi.png)
 
@@ -157,9 +162,9 @@ Beradasarkan tabel diatas,
    ![outlier_box](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_boxplot.png)
 
 
-   Informasi yang didapatkan dari gambar di atas ,diantaranya:
-   - Ada 2 variabel yang tidak memiliki outlier yaitu Age dan ALB. Sedangkan sisanya 7 variabel memiliki outlier
-   - Variabel yang hanya memiliki Outlier diluar batas atas (maximum) diantaranya TB,DB,Alkhpos,Sgpt,Sgot dan A/G
+   Informasi yang didapatkan dari gambar di atas, antara lain:
+   - Ada 2 variabel yang tidak memiliki outlier, yaitu Age dan ALB. Sedangkan sisanya, 7 variabel memiliki outlier.
+   - Variabel yang hanya memiliki outlier di luar batas atas (maximum) di antaranya TB, DB, Alkhpos, Sgpt, Sgot, dan A/G.
 
 ##### 2. Menghitung Jumlah Outlier tiap Variabel menggunakan IQR
 
@@ -180,30 +185,31 @@ Tabel Jumlah Outlier tiap variabel Numerik
 | *ALB*      | 0            |
 | *A/G*      | 10           |
 
-   Informasi yang didapatkan dari tabel diatas,diantaranya:
-   - Ada 2 variabel yang tidak memiliki outlier, yaituAge dan ALB
-   - Ada 2 variabel yang memiliki outlier yang sedikit, yaitu TP dan A/G
-   - Ada 5 variabel yang memiliki outlier yang banyak , yaitu TB,DB,Alkphos,Sgpt,Sgot
+Informasi yang didapatkan dari tabel di atas, antara lain:
+- Ada 2 variabel yang tidak memiliki outlier, yaitu Age dan ALB.
+- Ada 2 variabel yang memiliki outlier yang sedikit, yaitu TP dan A/G.
+- Ada 5 variabel yang memiliki outlier yang banyak, yaitu TB, DB, Alkphos, Sgpt, dan Sgot.
+
 
 #### ***Penanganan Outlier***
 
-   Untuk tetap mempertahan jumlah data, maka untuk penanganan outlier dilakukan dengan cara sebagai berikut:
+   Untuk tetap mempertahankan jumlah data, penanganan outlier dilakukan dengan cara sebagai berikut:
 
       - Jika nilai outlier lebih kecil dari batas bawah (Q1 - 1.5 * IQR), gantilah nilai outlier dengan nilai batas bawah
       - Jika nilai outlier lebih besar dari batas atas (Q3 + 1.5 * IQR), gantilah nilai outlier dengan nilai batas atas
    
-   Dengan demikian, metode ini dapat membantu mengurangi pengaruh outlier pada analisis statistik, sambil tetap mempertahankan informasi dari data asli.
+   Dengan demikian, metode ini dapat membantu mengurangi pengaruh outlier pada analisis statistik, namun tetap mempertahankan informasi dari data asli.
 
 
 ## Data Preparation
 
 ### Label Encoding
 
-Tahapan ini bertujuan untuk merubah data kategorik menjadi data numerik.Terdapat 1 variabel yang bertipe data kategori yaitu variabel Gender.Pada variabel Gender berisi kategori "Male" dan "Female".
+Tahapan ini bertujuan untuk mengubah data kategorik menjadi data numerik. Terdapat 1 variabel yang bertipe data kategori, yaitu variabel Gender. Pada variabel Gender, terdapat kategori "Male" dan "Female".
 
-Untuk melakukan Label Encoding, pada penelitian ini akan menggunakan kelas LabelEncoder dari library scikit-learn dengan tahapan sebagai berikut:
+Untuk melakukan Label Encoding, penelitian ini akan menggunakan kelas LabelEncoder dari library scikit-learn dengan tahapan sebagai berikut:
 
-1. Buat objek LabelEncoder yang akan digunakan untuk melakukan Label Encoding
+1. Buat objek LabelEncoder yang akan digunakan untuk melakukan Label Encoding.
 2. Selanjutnya, lakukan proses fit_transform pada data Gender untuk mengubah nilai kategorikal menjadi nilai numerik.
 
 Output yang dihasilkan adalah sebagai berikut:
@@ -215,22 +221,24 @@ Output yang dihasilkan adalah sebagai berikut:
 
 ### Split data training dan testing
 
-Pada tahap ini, dataset akan dibagi menjadi data training dan data uji data testing. Data training akan digunakan untuk melatih model,sedangkan data testing akan digunakan untuk menguji kinerja model yang telah dilatih pada data training.
+Pada tahap ini, dataset akan dibagi menjadi data training dan data testing. Data training akan digunakan untuk melatih model, sedangkan data testing akan digunakan untuk menguji kinerja model.
 
-***train_test_split*** adalah fungsi dari pustaka scikit-learn yang digunakan untuk membagi dataset menjadi data training dan data testing.Pada penelitian ini , data tersebut dibagi menjadi **80% sebagai data training dan 20% sebagai data testing**.
+`train_test_split` adalah fungsi dari pustaka scikit-learn yang digunakan untuk membagi dataset menjadi data training dan data testing. Pada penelitian ini, data tersebut dibagi menjadi **80% sebagai data training dan 20% sebagai data testing**.
 
 ```
 x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=0.20,random_state=123,stratify= y)
 
 ```
 
-Perubahan jumlah data awal menjadi data training dan data testing dapat dilihat dari tabel di bawah ini.
+Perubahan jumlah data awal menjadi "data training dan data testing" dapat dilihat dari tabel di bawah ini.
+
 
 | data awal | data training| data testing |
 | ----------| ------------ |--------------|
 |  583  rows|   466 rows   |  117  rows   |
 
-Sedangkan jumlah pasien liver dan Non-liver pada data training dan testing dapat dilihat dari tabel di bawah ini.
+Sedangkan jumlah pasien dengan penyakit liver dan non-liver pada data training dan testing dapat dilihat dari tabel di bawah ini.
+
 
 | Class     | data awal    | data training| data testing |
 | ----------| ------------ |--------------|--------------|
@@ -242,9 +250,9 @@ Sedangkan jumlah pasien liver dan Non-liver pada data training dan testing dapat
 
 Dalam klasifikasi, normalisasi data merujuk pada proses mengubah skala data sehingga setiap fitur memiliki rentang yang serupa atau sama, tanpa mengubah distribusi relatif antara fitur-fitur tersebut.
 
-K-Nearest Neighbors (KNN)  menghitung jarak antara data untuk menentukan tetangga terdekat. Jika skala fitur berbeda-beda, fitur dengan skala besar akan memiliki pengaruh lebih besar pada perhitungan jarak daripada fitur dengan skala kecil. Normalisasi membantu KNN memberikan klasifikasi yang lebih adil antara fitur-fitur yang berbeda skala.
+Metode K-Nearest Neighbors (KNN) menghitung jarak antara data untuk menentukan tetangga terdekat. Jika skala fitur berbeda-beda, fitur dengan skala besar akan memiliki pengaruh lebih besar pada perhitungan jarak daripada fitur dengan skala kecil. Normalisasi membantu KNN memberikan klasifikasi yang lebih adil antara fitur-fitur yang memiliki skala yang berbeda.
 
-Salah satu teknik normalisasi yang umum digunakan adalah menggunakan **StandardScaler** dari pustaka scikit-learn.Adapun untuk menormalisasi data dengan menggunakan StandardScaler dengan cara sebagai berikut:
+Salah satu teknik normalisasi yang umum digunakan adalah menggunakan **StandardScaler** dari pustaka scikit-learn. Berikut adalah cara untuk menormalisasi data dengan menggunakan StandardScaler:
 
 1. Buat objek StandardScaler untuk melakukan normalisasi data.
 2. Lakukan normalisasi pada data menggunakan metode fit_transform dari objek StandardScaler.
@@ -257,12 +265,13 @@ x_normalized = scaler.fit_transform(x)
 
 ### Resample Data Training
 
-Berdasarkan pemaparan sebelumnya, bahwa terdapat ketidakseimbangan kelas (imblance) pada data target.Jumlah data kelas liver (71,4%) lebih banyak daripada kelas Non-Liver (28,6%).Dalam Hal ini kelas mayoritas adalah kelas Liver dan Kelas minoritas adalah kelas Non-Liver.
+Berdasarkan pemaparan sebelumnya, terdapat ketidakseimbangan kelas (imblance) pada data target. Jumlah data pada kelas liver (71,4%) lebih banyak daripada kelas Non-Liver (28,6%). Dalam hal ini, kelas mayoritas adalah kelas Liver dan kelas minoritas adalah kelas Non-Liver.
 
-Untuk penanganan ketidakseimbangan kelas, teknik yang digunakan pada penelitian ini yaitu dengan cara mengoversampling sampel dari kelas minoritas. Dengan Tujuan supaya jumlah sampel kelas mayoritas dan kelas minoritas menjadi lebih seimbang.
-Teknik oversampling yang akan digunakan yaitu teknik SMOTE (Synthetic Minority Over-sampling Technique).
+Untuk penanganan ketidakseimbangan kelas, teknik yang digunakan pada penelitian ini adalah dengan cara mengoversampling sampel dari kelas minoritas. Tujuannya adalah agar jumlah sampel kelas mayoritas dan kelas minoritas menjadi lebih seimbang.
+Teknik oversampling yang akan digunakan adalah teknik SMOTE (Synthetic Minority Over-sampling Technique).
 
-Teknik SMOTE diilustrasikan seperti gambar dibawah ini
+Ilustrasi teknik SMOTE dapat dilihat pada gambar di bawah ini:
+
 
 ![smote](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/SMOTE.JPG)
 
@@ -277,18 +286,18 @@ Teknik SMOTE bekerja dengan cara berikut:
 
 4. Sampel sintetis ini ditambahkan ke dataset, sehingga meningkatkan jumlah sampel pada kelas minoritas.
 
-Untuk menggunakan resampling data menggunakan SMOTE, bisa memakai pustaka imblearn.over_sampling .Adapun langkah penggunaanya yaitu:
+Untuk menggunakan resampling data dengan menggunakan SMOTE, dapat menggunakan pustaka **imblearn.over_sampling**. Berikut adalah langkah-langkah penggunaannya:
 
-1. Buat objek SMOTE
-2. Gunakan metode fit_resample() dari objek SMOTE untuk melakukan resampling data
+1. Buat objek SMOTE.
+2. Gunakan metode fit_resample() dari objek SMOTE untuk melakukan resampling data.
 
-Adapun contoh scriptnya dapat dilihat dibawah ini:
+Contoh scriptnya dapat dilihat di bawah ini:
 ```
 smote = SMOTE(sampling_strategy='auto')
 X_resampled, y_resampled = smote.fit_resample(X, y)
 ```
 
-Setalah dilakukan resample pada data training,sekarang Jumlah Class Liver dan Non-liver menjadi seimbang 
+Setelah dilakukan resampling pada data training, sekarang jumlah kelas Liver dan Non-liver menjadi seimbang.
 
 | Class     | data training| data testing SMOTE |
 | ----------| ------------ |--------------------|
@@ -304,22 +313,22 @@ Untuk mendapatkan performa model KNN yang optimal, dalam pembuatan model ini dil
 
 1. Melihat pengaruh data training terhadap performa model
 
-   Dalam tahap ini peneliti membandingkan 2 buah data training yang diterapkan ke model KNN dengan parameter default.
+   Dalam tahap ini, peneliti membandingkan dua set data training yang diterapkan ke model KNN dengan menggunakan parameter default.
    
-   Adapun data yang dibandingkan diantarnya:
+   Adapun data yang dibandingkan antara lain:
 
-   - Data training hasil dari proses normalisasi menggunakan StandarScaler (x_train_scaler,y_train_scaler)
-   - Data training hasil dari proses StandarScaler dan Resample SMOTE (x_train_resampled, y_train_resampled)
+   - Data training hasil dari proses normalisasi menggunakan StandarScaler `(x_train_scaler, y_train_scaler)`
+   - Data training hasil dari proses StandarScaler dan Resample SMOTE `(x_train_resampled, y_train_resampled)`
    
-   Sedangkan parameter default yang diterapkan ke dalam model KNN diataranya:
+   Parameter default yang diterapkan dalam model KNN antara lain:
 
-   - n_neighbors= 5 
-   - weights: 'distance'
-   - metric: 'manhattan'
+   - `n_neighbors`= 5 
+   - `weights`: 'distance'
+   - `metric`: 'manhattan'
    
 2. Mencari kombinasi hyperparameter untuk menghasilkan performa model yang optimal
 
-   Dalam tahap ini, peneliti menggunakan Optuna sebagai tunning hyperparameternya.Sedangkan data yang digunakan sebagai data latih adalah data yang memiliki nilai akurasi dan recall model yang paling tinggi dari tahap sebelumnya. 
+   Dalam tahap ini, peneliti menggunakan Optuna untuk menyetel hyperparameter. Data yang digunakan sebagai data latih adalah data yang menghasilkan nilai akurasi dan recall model paling tinggi dari tahap sebelumnya.
    
    Adapun opsi dari parameter yang diset kedalam optuna diantaranya:
 
@@ -335,8 +344,9 @@ K-Nearest Neighbors (KNN) adalah algoritma klasifikasi yang bekerja berdasarkan 
 
 #### Parameter KNN
 
-KNN diimplementasikan menggunakan library scikit-learn, yang menyediakan algoritma KNN dengan berbagai pilihan hyperparameter, 
-Pada library scikit-learn, terdapat beberapa parameter default yang digunakan dalam model KNN,diantaranya:
+KNN diimplementasikan menggunakan library scikit-learn, yang menyediakan algoritma KNN dengan berbagai pilihan hyperparameter. 
+
+Pada library scikit-learn, terdapat beberapa parameter default yang digunakan dalam model KNN, diantaranya::
 
 1. ***n_neighbors (int, default=5):*** Parameter ini menentukan jumlah tetangga terdekat yang akan digunakan untuk melakukan prediksi kelas pada data uji. Nilai defaultnya adalah 5, yang berarti KNN akan mencari 5 tetangga terdekat dari data uji dan memilih mayoritas kelas dari kelima tetangga tersebut sebagai prediksi.
 
@@ -485,11 +495,12 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Non-Liver |  0,40     | 0,35    | 0,38    | 34      |
    |Accuracy = 0,66|||                        | 117     |
 
-   Bila dilihat dari Tabel Classification Report Eksperimen Ke-1, ***Recall*** untuk Non-liver nilainya sangat kecil yaitu 0,35 .Ini hanya 35% pasien Non-liver yang dapat diprediksi benar oleh model. Hal ini disebabkan karena ada keteidakseimbangan kelas (imblanace) pada data target yaitu jumlah data kelas liver (71,4%) lebih banyak daripada kelas Non-Liver (28,6%).Dengan demikian bahwa kelemahan model ini belum bisa memprediksi dengan benar untuk kelas minoritas (NOn-Liver). Selanjutnya model pertama ini akan diperbaiki melalui eksperimen ke-2. 
+   Bila dilihat dari Tabel Classification Report Eksperimen Ke-1, **Recall** untuk Non-liver nilainya sangat kecil, yaitu 0,35. Ini hanya 35% pasien Non-liver yang dapat diprediksi benar oleh model. Hal ini disebabkan karena ada ketidakseimbangan kelas (imbalance) pada data target, yaitu jumlah data kelas liver (71,4%) lebih banyak daripada kelas Non-Liver (28,6%). Dengan demikian, kelemahan model ini adalah belum bisa memprediksi dengan benar untuk kelas minoritas (Non-Liver). Selanjutnya, model pertama ini akan diperbaiki melalui eksperimen ke-2.
+
 
    #### Hasil Prediksi Eksperimen Ke-2:
 
-   Eksperimen Ke 2 dilakukan untuk memperbaiki kinerja model pada eksperimen pertama, yaitu menggunakan data latih hasil resample SMOTE untuk mengatasi ketidakseimbangan kelas (imbalance).Adapun hasil prediksinya sebagai berikut:
+   Eksperimen Ke-2 dilakukan untuk memperbaiki kinerja model pada eksperimen pertama, yaitu menggunakan data latih hasil resample SMOTE untuk mengatasi ketidakseimbangan kelas (imbalance). Adapun hasil prediksinya sebagai berikut:
 
    Tabel Confusion Matriks Eksperimen Ke-2
 
@@ -507,12 +518,13 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Non-Liver |  0,46     | 0,76    | 0,57    | 34      |
    |Accuracy = 0,67|||                         | 117     |
 
-   Bila dilihat dari Tabel Classification Report Eksperimen Ke-2, nilai Recall untuk Non-Liver berhasil meningkat menjadi 0,76 (sebelumnya 0,35).Dengan demikian bahwa, diterapkannya resample SMOTE pada data training bisa mengatasi kasus imbalance data.Dalam Hal ini model bisa memprediksi kelas minoritas (NOn-liver) dengan cukup baik.Namun, Akurasi yang dihasilkan oleh model ini masih kecil yaitu 0,67.Untuk mengatasi hal ini,dilakukanlah eksperimen ke 3 untuk mengoptimalkan nilai akurasi dari model tersebut.
+   Bila dilihat dari Tabel Classification Report Eksperimen Ke-2, nilai *Recall* untuk Non-Liver berhasil meningkat menjadi 0,76 (sebelumnya 0,35). Dengan demikian, diterapkannya resample SMOTE pada data training berhasil mengatasi ketidakseimbangan data. Dalam hal ini, model dapat memprediksi kelas minoritas (Non-liver) dengan cukup baik. Namun, akurasi yang dihasilkan oleh model ini masih rendah, yaitu 0,67. Untuk mengatasi hal ini, dilakukanlah Eksperimen Ke-3 untuk mengoptimalkan nilai akurasi dari model tersebut.
 
 
    #### Hasil Prediksi Eksperimen Ke-3:
 
-   Eksperimen Ke-3  merupakan hasil optimalisasi model dengan melalukan tunning hyperparameter menggunakan optuna. Adapun hasil prediksinya sebagai berikut:
+   Eksperimen Ke-3 merupakan hasil optimalisasi model dengan melakukan tuning hyperparameter menggunakan **Optuna**. Adapun hasil prediksinya sebagai berikut:
+
 
    Tabel Confusion Matriks Eksperimen Ke-3
 
@@ -540,7 +552,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Eksperiman Ke-2 |  0,66     | 0,62       | 0,86    | 0,72    |
    |Eksperiman Ke-3 |  0,71     | 0,67       | 0,88    | 0,76    |
 
-   Bila dilihat dari tabel diatas, bahwa Eksperimen ke-3 (mengintegrasikan model KNN dan Optuna) berhasil meningkatkan nilai AKurasi,Presisi,Recall,dan F1-Score.
+   Bila dilihat dari tabel diatas, bahwa Eksperimen ke-3 (mengintegrasikan model KNN dan Optuna) berhasil meningkatkan nilai Akurasi,Presisi,Recall,dan F1-Score.
 
    Dengan demikian bahwa mengintegrasikan tunning hyperparameter Optuna ke dalam model KNN dapat meningkatkan performa model
 
