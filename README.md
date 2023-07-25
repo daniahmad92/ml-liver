@@ -142,6 +142,11 @@ Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **ad
    ![outlier_box](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_boxplot.png)
 
 
+   Informasi yang didapatkan dari gambar di atas ,diantaranya:
+   - Ada 2 variabel yang tidak memiliki outlier adalah Age dan ALB
+   - Sedangkan sisanya 7 variabel memiliki outlier
+
+
    2. Menghitung Jumlah Outlier tiap Variabel menggunakan IQR
 
    Interquartile Range (IQR) adalah selisih antara kuartil ketiga (Q3) dan kuartil pertama (Q1). Nilai yang berada di luar batas atas (Q3 + 1.5 * IQR) dan batas bawah (Q1 - 1.5 * IQR) dapat dianggap sebagai outlier
@@ -161,7 +166,10 @@ Tabel Jumlah Outlier tiap variabel Numerik
 | *ALB*      | 0            |
 | *A/G*      | 10           |
 
-
+   Informasi yang didapatkan dari tabel diatas,diantaranya:
+   - Ada 2 variabel yang tidak memiliki outlier adalah Age dan ALB
+   - Ada 2 variabel yang memiliki outlier yang sedikit adalah TP dan A/G
+   - Ada 9 variabel yang memiliki outlier yang banyak adalah TB,DB,Alkphos,Sgpt,Sgot
 
    - ***Penangan Outlier***
 
