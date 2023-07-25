@@ -108,9 +108,19 @@ Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **ad
 
       ![Histogram](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_histogram.png)
 
-   - Statistik Deskriptif Variabel Fitur Numerik
+   - Statistik Deskriptif Variabel Fitur Numerik dan Kadar Normal Enzim dan protein dalam darah
 
-      ![stat_des](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/deskripsi%20fitur%20numerik.JPG)
+| Variabel   |Mean |Min  |Max  |Kadar Normal |
+| -----------| ----| ----| ----| ------------|
+| *Age*      | 45  |4    |90   |-            |
+| *TB*       | 3,3 |0,4  |75   |0.2 - 1.2    |
+| *DB*       | 1,5 |0,1  |19,7 |0   - 0.3    |
+| *Alkphos*  | 290 |63   |2110 |20 - 140     |
+| *Sgpt*     | 81  |10   |2000 |5 - 40       |
+| *Sgot*     | 109 |10   |4929 |8 - 40       |
+| *TP*       | 6,5 |2,7  |9,6  |6.4 - 8.3    |
+| *ALB*      | 3,1 |0,9  |5,5  |3.5 - 5.0    |
+| *A/G*      | 0,9 |0,3  |2,8  |1.0 - 2.5    | 
 
 
 ### Exploratory Data Analysis (EDA)-Multivariate Analysis
@@ -169,7 +179,7 @@ Tabel Jumlah Outlier tiap variabel Numerik
    Informasi yang didapatkan dari tabel diatas,diantaranya:
    - Ada 2 variabel yang tidak memiliki outlier adalah Age dan ALB
    - Ada 2 variabel yang memiliki outlier yang sedikit adalah TP dan A/G
-   - Ada 9 variabel yang memiliki outlier yang banyak adalah TB,DB,Alkphos,Sgpt,Sgot
+   - Ada 5 variabel yang memiliki outlier yang banyak adalah TB,DB,Alkphos,Sgpt,Sgot
 
    - ***Penangan Outlier***
 
