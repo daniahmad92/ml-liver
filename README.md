@@ -292,6 +292,18 @@ Berikut adalah langkah-langkah yang diperlukan untuk melakukan tuning hyperparam
 ***Langkah 6:*** Evaluasi kinerja model KNN pada data uji untuk mendapatkan estimasi akurasi dan kemampuan generalisasi model dalam memprediksi penyakit liver
 
 
+### Hasil Optimasi
+
+Setelah proses optimasi selesai, diperoleh hyperparameter terbaik untuk model KNN. Hasil dari eksperimen ini adalah sebagai berikut:
+
+Hyperparameter Terbaik:
+
+- n_neighbors= 5 
+- weights: 'distance
+- metric:manhattan'
+
+Nilai Akurasi Training Model : 0,77
+
 
 ## Evaluasi Model
 
