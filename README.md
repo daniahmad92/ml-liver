@@ -122,6 +122,10 @@ Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **ad
 | *ALB*      | 3,1 |0,9  |5,5  |3.5 - 5.0    |
 | *A/G*      | 0,9 |0,3  |2,8  |1.0 - 2.5    | 
 
+Beradasarkan tabel diatas,
+- Usia pasien yang paling muda adalah 4 tahun dan yang paling tua adalah 90 tahun.Sedangkan secara rata-rata (Mean) usia pasien termasuk kategori Dewasa (usia 45 tahn)
+- ada 5 variabel (TB,DB,Alkhpos,Sgot,Sgpt) dimana nilai rata-ratanya (Mean) diluar kadar normal
+- Ada 3 variabel (Akphos,Sgpt dan Sgot) nilai Maksimumnya sangat jauh dari nilai rata-rata (Mean)
 
 ### Exploratory Data Analysis (EDA)-Multivariate Analysis
 
@@ -131,12 +135,13 @@ Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **ad
 
 
 
-
 ### Outlier
    
    Outlier adalah nilai yang berbeda jauh dari mayoritas data dalam sebuah kelompok data. Dalam bahasa statistik, outlier juga sering disebut sebagai "pencilan" atau "data ekstrim".
 
-   - ***Deteksi Outlier***
+   Algoritma KNN  sensitif terhadap data pencilan (outlier),karena kehadiran data pencilan dapat menyebabkan perhitungan jarak menjadi tidak akurat dan mengganggu hasil prediksi.
+
+#### ***Deteksi Outlier***
 
 
    Berikut adalah cara yang untuk mengetahui adanya outlier dalam sebuah kumpulan data:
@@ -181,7 +186,7 @@ Tabel Jumlah Outlier tiap variabel Numerik
    - Ada 2 variabel yang memiliki outlier yang sedikit adalah TP dan A/G
    - Ada 5 variabel yang memiliki outlier yang banyak adalah TB,DB,Alkphos,Sgpt,Sgot
 
-   - ***Penangan Outlier***
+#### ***Penanganan Outlier***
 
    Untuk tetap mempertahan jumlah data, maka untuk penanganan outlier dilakukan dengan cara sebagai berikut:
 
