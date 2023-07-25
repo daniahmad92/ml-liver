@@ -124,39 +124,35 @@ Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **ad
 
 ### Outlier
    
-   - Visualisasi Outlier mengguakan Boxplot
+   Outlier adalah nilai yang berbeda jauh dari mayoritas data dalam sebuah kelompok data. Dalam bahasa statistik, outlier juga sering disebut sebagai "pencilan" atau "data ekstrim".
 
-     ![outlier_box](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_boxplot.png)
+   - ***Deteksi Outlier***
 
-   - Deteksi Jumlah Outlier menggunakan IQR
+   Berikut adalah cara yang untuk mengetahui adanya outlier dalam sebuah kumpulan data:
 
-```
-def count_Outliers(X_num):
-    indices = [x for x in X_num.index]
-    out_indexlist = []
-    outlier_tbl=[]
-    for col in feature_numeric:
-        q1 = np.percentile(X_num[col], 25)
-        q3 = np.percentile(X_num[col], 75)
-        iqr = q3 - q1
-        lower = q1 - (iqr*1.5)
-        upper = q3 + (iqr*1.5)
-        outliers_index = X_num[col][(X_num[col] < lower) | (X_num[col] > upper)].index.tolist()
-        outliers = X_num[col][(X_num[col] < lower) | (X_num[col] > upper)].values
-        out_indexlist.extend(outliers_index)
-        outlier_tbl.append({
-            'Fitur': col,
-            'Jml Outlier': len(outliers),
-        })
-    print('\nTotal outliers: ', len(out_indexlist))
-    out_df = pd.DataFrame(outlier_tbl,columns=['Fitur','Jml Outlier'])
-    return out_df
+      1. Visualisasi Outlier menggunakan Boxplot
 
-```
+         Cara melihat outlier dengan box plot (diagram kotak) adalah dengan memperhatikan titik-titik yang berada di luar batas maximum (Q1-1.5*IQR) dan batas minimum (Q1+1.5*IQR) pada box plot seperti yang terlihat pada gambar dibawah ini
+
+         ![outlier_ilustrator](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Outlier-Ilustrasi.png)
+
+         Berikut adalah visualsiasi outlier menggunakan Boxplot
+
+        ![outlier_box](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_boxplot.png)
 
 
-   ![outlier_total](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/total%20outlier.JPG)
+      2. Menghitung Jumlah Outlier tiap Variabel menggunakan IQR
 
+         Interquartile Range (IQR) adalah selisih antara kuartil ketiga (Q3) dan kuartil pertama (Q1). Nilai yang berada di luar batas atas (Q3 + 1.5 * IQR) dan batas bawah (Q1 - 1.5 * IQR) dapat dianggap sebagai outlier
+
+   - ***Penangan Outlier***
+
+   Untuk tetap mempertahan jumlah data, maka untuk penanganan outlier dilakukan dengan cara sebagai berikut:
+
+      - Jika nilai outlier lebih kecil dari batas bawah (Q1 - 1.5 * IQR), gantilah nilai outlier dengan nilai batas bawah
+      - Jika nilai outlier lebih besar dari batas atas (Q3 + 1.5 * IQR), gantilah nilai outlier dengan nilai batas atas
+   
+   Dengan demikian, metode ini dapat membantu mengurangi pengaruh outlier pada analisis statistik, sambil tetap mempertahankan informasi dari data asli.
 
 
 ## Data Preparation
@@ -498,7 +494,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    
    #### Perbandingan ***Accuracy,Precision,Recall,F1-Score*** dari Eksperimen ke 1,2,3
 
-   |                | Accuracy  | Precision  | Recall  |F1-Score |
+   |          | Accuracy  | Precision  | Recall  |F1-Score |
    | ---------------| ----------|------------|---------|---------|
    |Eksperiman Ke-1 |  0,65     | 0,78       | 0,74    | 0,76    |
    |Eksperiman Ke-2 |  0,66     | 0,62       | 0,86    | 0,72    |
