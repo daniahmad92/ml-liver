@@ -158,9 +158,8 @@ Beradasarkan tabel diatas,
 
 
    Informasi yang didapatkan dari gambar di atas ,diantaranya:
-   - Ada 2 variabel yang tidak memiliki outlier adalah Age dan ALB
-   - Sedangkan sisanya 7 variabel memiliki outlier
-
+   - Ada 2 variabel yang tidak memiliki outlier yaitu Age dan ALB. Sedangkan sisanya 7 variabel memiliki outlier
+   - Variabel yang hanya memiliki Outlier diluar batas atas (maximum) diantaranya TB,DB,Alkhpos,Sgpt,Sgot dan A/G
 
 ##### 2. Menghitung Jumlah Outlier tiap Variabel menggunakan IQR
 
@@ -182,9 +181,9 @@ Tabel Jumlah Outlier tiap variabel Numerik
 | *A/G*      | 10           |
 
    Informasi yang didapatkan dari tabel diatas,diantaranya:
-   - Ada 2 variabel yang tidak memiliki outlier adalah Age dan ALB
-   - Ada 2 variabel yang memiliki outlier yang sedikit adalah TP dan A/G
-   - Ada 5 variabel yang memiliki outlier yang banyak adalah TB,DB,Alkphos,Sgpt,Sgot
+   - Ada 2 variabel yang tidak memiliki outlier, yaituAge dan ALB
+   - Ada 2 variabel yang memiliki outlier yang sedikit, yaitu TP dan A/G
+   - Ada 5 variabel yang memiliki outlier yang banyak , yaitu TB,DB,Alkphos,Sgpt,Sgot
 
 #### ***Penanganan Outlier***
 
