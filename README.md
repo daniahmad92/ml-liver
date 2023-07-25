@@ -219,7 +219,7 @@ x_normalized = scaler.fit_transform(x)
 
 ```
 
-### Resample Data
+### Resample Data Training
 
 Berdasarkan pemaparan sebelumnya, bahwa terdapat ketidakseimbangan kelas (imblance) pada data target.Jumlah data kelas liver (71,4%) lebih banyak daripada kelas Non-Liver (28,6%).Dalam Hal ini kelas mayoritas adalah kelas Liver dan Kelas minoritas adalah kelas Non-Liver.
 
@@ -251,6 +251,14 @@ Adapun contoh scriptnya dapat dilihat dibawah ini:
 smote = SMOTE(sampling_strategy='auto')
 X_resampled, y_resampled = smote.fit_resample(X, y)
 ```
+
+Setalah dilakukan resample pada data training,sekarang Jumlah Class Liver dan Non-liver menjadi seimbang 
+
+| Class     | data training| data testing SMOTE |
+| ----------| ------------ |--------------------|
+|  Liver    |  333  rows   | 333  rows          |
+|  Non-Liver|  167 rows    | 333  rows          |
+
 
 ## Modeling
 
@@ -490,7 +498,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    
    #### Perbandingan ***Accuracy,Precision,Recall,F1-Score*** dari Eksperimen ke 1,2,3
 
-   |Class           | Accuracy  | Precision  | Recall  |F1-Score |
+   |                | Accuracy  | Precision  | Recall  |F1-Score |
    | ---------------| ----------|------------|---------|---------|
    |Eksperiman Ke-1 |  0,65     | 0,78       | 0,74    | 0,76    |
    |Eksperiman Ke-2 |  0,66     | 0,62       | 0,86    | 0,72    |
