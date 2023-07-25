@@ -417,6 +417,26 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    Accuracy = (True Positives + True Negatives) / (True Positives + True Negatives + False Positives + False Negatives)
 ```
 
+### Hasil Prediksi 
+
+   #### Hasil Prediksi Eksperimen Ke-1:
+
+   Pada eksperimen ke-1, model dilatih dengan menggunakan data latih hasil nomralisasi dari StandardScaler, adapun hasil prediksinya dapat dilihat pada gambar dibawah ini
+
+   ![model1](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/cm-model-v1.JPG)
+
+
+   #### Hasil Prediksi Eksperimen Ke-2:
+
+   Eksperimen Ke 2 dilakukan untuk memperbaiki kinerja model awal, yaitu menggunakan data latih hasil resample SMOTE untuk mengatasi ketidakseimbangan kelas (imbalance).Adapun hasil prediksinya sebagai berikut:
+
+   ![model2](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/cm-model-v2.JPG)
+
+   #### Hasil Prediksi Eksperimen Ke-3:
+   Eksperimen Ke-3  merupakan hasil optimalisasi model dengan melalukan tunning hyperparameter menggunakan optuna. Adapun hasil prediksinya sebagai berikut:
+   
+   ![model3](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/cm-model-v3.JPG)
+
 
 ## Kesimpulan
 
