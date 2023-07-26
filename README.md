@@ -105,27 +105,27 @@ Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **ad
 
 ### Exploratory Data Analysis (EDA)- Univariate Analysis
 
-   - Visualisasi Variabel Fitur (Kategori Gender)
+##### Visualisasi Variabel Fitur (Kategori Gender)
 
-      ![Gender](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_gender.png)
+   ![Gender](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_gender.png)
 
-      Gambar 2. Grafik Perbandingan Pasien Berdasarkan kategori Gender 
+   Gambar 2. Grafik Perbandingan Pasien Berdasarkan kategori Gender 
 
-      Berdasarkan informasi pada Gambar 2, bahwa jumlah pasien Laki-Laki (Male=75,6%) lebih banyak dari pasien perempuan (Female=24,4%)
+   Berdasarkan informasi pada Gambar 2, bahwa jumlah pasien Laki-Laki (Male=75,6%) lebih banyak dari pasien perempuan (Female=24,4%)
 
-   - Visualisasi Variabel Fitur (Numerik)
+##### Visualisasi Variabel Fitur (Numerik)
 
-      ![Histogram](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_histogram.png)
+   ![Histogram](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_histogram.png)
 
-      Gambar 3. Histogram Variabel Numerik
-
-
-      Secara visual bahwa histogram pada gambar 3 terbagi menjadi 2 kelompok,diantaranya:
-      - Kelompok pertama, Bentuk histogram cenderung simetris terlihat pada variabel Age,TP,Alb,serta A/g dikarenakan data memiliki kecenderungan untuk terpusat disekitar nilai tengah
-      - Kelompok kedua, bentuk histogram memiliki puncak disebelah kiri dan ekor yang lebih panjang membentang ke sebelah kiri (Skewness Positif).Terlihat pada variabel TB,DB,Alkphos,Sgpt,Sgot.  
+   Gambar 3. Histogram Variabel Numerik
 
 
-   - Statistik Deskriptif Variabel Fitur Numerik dan Kadar Normal Enzim dan Protein dalam Darah
+   Secara visual bahwa histogram pada gambar 3 terbagi menjadi 2 kelompok,diantaranya:
+   - Kelompok pertama, Bentuk histogram cenderung simetris terlihat pada variabel Age,TP,Alb,serta A/g dikarenakan data memiliki kecenderungan untuk terpusat disekitar nilai tengah
+   - Kelompok kedua, bentuk histogram memiliki puncak disebelah kiri dan ekor yang lebih panjang membentang ke sebelah kiri (Skewness Positif).Terlihat pada variabel TB,DB,Alkphos,Sgpt,Sgot.  
+
+
+##### Statistik Deskriptif Variabel Fitur Numerik dan Kadar Normal Enzim dan Protein dalam Darah
 
 Tabel 2. Statistik Deskriptif Variabel Numerik dan Kadar Normal
 
@@ -153,6 +153,15 @@ Berdasarkan informasi pada Tabel 2 di atas:
    ![Korelasi](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/korelasi%20fitur.png)
 
    Gambar 4. Tabel Korelasi Variabel Numerik
+
+   Brdasarkan informasi pada Gambar 4,ada 4 kelompok yang memiliki korelasi yang tinggi (diatas 0,6) yang menunjukkan bahwa ada hubungan positif yang cukup kuat antara kedua variabel tersebut. diantaranya:
+
+   1. DB dan TB (nilai korelasi=0,87)
+   2. SGot dan Sgpt (nilai korelasi=0,79)
+   3.  ALB dan TP (nilai korelasi=0,78)
+   4. ALB dan A/G (nilai korelasi=0,69)
+
+
 
 ### Outlier
 
