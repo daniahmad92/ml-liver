@@ -559,7 +559,16 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
 
 ## Kesimpulan
 
-Berdasarkan penelitian yang dilakukan pada deteksi dini penyakit liver dengan metode klasifikasi K-Nearest Neighbors (KNN) yang dioptimasi menggunakan Hyperparameter Tuning Optuna dihasilkan akurasi testing sebesar 71 %,presesi sebesar 67%, recall sebesar 88 % dan f1-score sebesar 76% dengan parameter metrik perhitungan jarak menggunakan metode Manhattan,pembobotan menggunakan *distance*,serta nilai *n_neighbors* yaitu 5. Nilai akurasi testing menggunakan tuning hyperparamter optuna menghasilkan nilai akurasi sebesar 71% lebih tinggi dibandingkan tanpa optuna yang hanya 66%.Dengan demikian bahwa mengintegrasikan tunning hyperparameter Optuna ke dalam model K-Nearest Neighbors (KNN) dapat meningkatkan performa akurasi model.
+Dalam penelitian ini, penerapan Optuna pada model K-Nearest Neighbors (KNN) untuk deteksi penyakit liver telah dilakukan. Hasil penelitian menunjukkan bahwa performa model KNN berhasil ditingkatkan secara signifikan dengan bantuan Optuna dalam mengklasifikasikan pasien yang menderita penyakit liver.
+
+Akurasi model meningkat dari 65% (hasil tuning manual) menjadi 71% dengan penerapan Optuna. Kombinasi hiperparameter optimal yang terdiri dari nilai n_neighbors=5, metrik jarak "Manhattan," dan bobot jarak "distance" berhasil diidentifikasi sebagai pengaturan yang memberikan kinerja terbaik.
+
+Melalui penggunaan Optuna, proses pencarian kombinasi hiperparameter terbaik dapat diselesaikan lebih efisien dan lebih cepat, mengurangi waktu dan usaha yang diperlukan dalam pengembangan model.
+
+Hasil eksperimen juga mengindikasikan bahwa nilai n_neighbors  dan metrik jarak (metrics) memiliki pengaruh yang signifikan terhadap akurasi model, sementara bobot jarak (weights) tidak memiliki pengaruh yang besar dalam kasus ini.
+
+Dengan demikian, penerapan Optuna pada model K-Nearest Neighbors (KNN) untuk deteksi penyakit liver telah berhasil meningkatkan performa model secara signifikan.
+
 
 ## Referensi
 
