@@ -93,7 +93,7 @@ Melalui deteksi missing value menggunakan `.isnull()`, didapatkan ada 4 nilai ya
 
 ![Gambar 1](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/perbandingan%20pasien%20liver%20dan%20non%20liver.png)
 
-Gambar 1. perbandingan pasien liver dan non-liver
+Gambar 1. Grafik Perbandingan Pasien Liver dan Non-liver
 
 Berdasarkan informasi yang tertera pada Gambar di atas, terdapat dua kelas pada variabel target:
 
@@ -109,9 +109,13 @@ Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **ad
 
       ![Gender](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_gender.png)
 
+      Gambar 2. Grafik Perbandingan Pasien Berdasarkan kategori Gender
+
    - Visualisasi Variabel Fitur (Numerik)
 
       ![Histogram](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_histogram.png)
+
+      Gambar 3. Histogram Variabel Numerik
 
    - Statistik Deskriptif Variabel Fitur Numerik dan Kadar Normal Enzim dan Protein dalam Darah
 
@@ -138,7 +142,7 @@ Berdasarkan tabel di atas:
 
    ![Korelasi](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/korelasi%20fitur.png)
 
-
+   Gambar 4. Tabel Korelasi Variabel Numerik
 
 ### Outlier
 
@@ -157,10 +161,13 @@ Algoritma KNN sensitif terhadap data pencilan (outlier), karena kehadiran data p
 
    ![outlier_ilustrator](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Outlier-Ilustrasi.png)
 
+   Gambar 5. Ilustrasi Letak Outlier
+
    Berikut adalah visualsiasi outlier menggunakan Boxplot
 
    ![outlier_box](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_boxplot.png)
 
+   Gambar 6. Boxplot Outlier Variabel Numerik
 
    Informasi yang didapatkan dari gambar di atas, antara lain:
    - Ada 2 variabel yang tidak memiliki outlier, yaitu Age dan ALB. Sedangkan sisanya, 7 variabel memiliki outlier.
@@ -274,6 +281,8 @@ Ilustrasi teknik SMOTE dapat dilihat pada gambar di bawah ini:
 
 
 ![smote](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/SMOTE.JPG)
+
+Gambar 7. Ilustrasi Cara Kerja SMOTE
 
 
 Teknik SMOTE bekerja dengan cara berikut:
