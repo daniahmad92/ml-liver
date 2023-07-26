@@ -559,7 +559,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
 
 ## Kesimpulan
 
-
+Berdasarkan penelitian yang dilakukan pada deteksi dini penyakit liver dengan metode klasifikasi K-Nearest Neighbors (KNN) yang dioptimasi menggunakan Hyperparameter Tuning Optuna dihasilkan akurasi testing sebesar 71 %,presesi sebesar 67%, recall sebesar 88 % dan f1-score sebesar 76% dengan parameter metrik perhitungan jarak menggunakan metode Manhattan,pembobotan menggunakan *distance*,serta nilai *n_neighbors* yaitu 5. Nilai akurasi testing menggunakan tuning hyperparamter optuna menghasilkan nilai akurasi sebesar 71% lebih tinggi dibandingkan tanpa optuna yang hanya 66%.Dengan demikian bahwa mengintegrasikan tunning hyperparameter Optuna ke dalam model K-Nearest Neighbors (KNN) dapat meningkatkan performa akurasi model.
 
 ## Referensi
 
