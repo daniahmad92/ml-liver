@@ -119,6 +119,8 @@ Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **ad
 
    - Statistik Deskriptif Variabel Fitur Numerik dan Kadar Normal Enzim dan Protein dalam Darah
 
+Tabel 2. Statistik Deskriptif Variabel Numerik dan Kadar Normal
+
 | Variabel   |Mean |Min  |Max  |Kadar Normal |
 | -----------| ----| ----| ----| ------------|
 | *Age*      | 45  |4    |90   |-            |
@@ -178,7 +180,7 @@ Algoritma KNN sensitif terhadap data pencilan (outlier), karena kehadiran data p
    Interquartile Range (IQR) adalah selisih antara kuartil ketiga (Q3) dan kuartil pertama (Q1). Nilai yang berada di luar batas atas (Q3 + 1.5 * IQR) dan batas bawah (Q1 - 1.5 * IQR) dapat dianggap sebagai outlier
 
 
-Tabel Jumlah Outlier tiap variabel Numerik
+Tabel 3.Jumlah Outlier tiap variabel Numerik
 
 | Variabel   |Jumlah Outlier|
 | -----------| -------------|
@@ -221,6 +223,8 @@ Untuk melakukan Label Encoding, penelitian ini akan menggunakan kelas LabelEncod
 
 Output yang dihasilkan adalah sebagai berikut:
 
+Tabel 4. Output Label Encoding Variabel Gender
+
 | Kategori  | Numerik  |
 | ----------| ---------|
 |  Female   |   0      |
@@ -239,6 +243,7 @@ x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=0.20,random_state=1
 
 Perubahan jumlah data awal menjadi "data training dan data testing" dapat dilihat dari tabel di bawah ini.
 
+Tabel 5. Jumlah Data Awal,Training dan Testing
 
 | data awal | data training| data testing |
 | ----------| ------------ |--------------|
@@ -246,6 +251,7 @@ Perubahan jumlah data awal menjadi "data training dan data testing" dapat diliha
 
 Sedangkan jumlah pasien dengan penyakit liver dan non-liver pada data training dan testing dapat dilihat dari tabel di bawah ini.
 
+Tabel 6. Jumlah Class Liver dan Non-liver pada Data Awal,Training dan Testing
 
 | Class     | data awal    | data training| data testing |
 | ----------| ------------ |--------------|--------------|
@@ -307,6 +313,8 @@ X_resampled, y_resampled = smote.fit_resample(X, y)
 ```
 
 Setelah dilakukan resampling pada data training, sekarang jumlah kelas Liver dan Non-liver menjadi seimbang.
+
+Tabel 7. Jumlah Class Liver dan Non-liver SMOTE
 
 | Class     | data training| data testing SMOTE |
 | ----------| ------------ |--------------------|
@@ -420,6 +428,7 @@ Pada tahap ini, model KNN dievaluasi pada data uji untuk mendapatkan estimasi pe
 
 Confusion matrix adalah alat yang digunakan untuk mengevaluasi kinerja model klasifikasi dengan menggambarkan hasil prediksi model terhadap data yang sebenarnya
 
+Tabel 8. Confusion Matrix
 
 |            | Predicted Positive  | Predicted Negative |
 | ---------- | -------------- |-------------- |
@@ -488,7 +497,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
 
    Pada eksperimen ke-1, model dilatih dengan menggunakan data latih hasil nomralisasi dari StandardScaler, adapun hasil prediksinya dapat dilihat pada gambar dibawah ini
    
-   Tabel Confusion Matriks Eksperimen Ke-1
+   Tabel 9.Confusion Matriks Eksperimen Ke-1
 
    |                 | Predicted Liver  | Predicted Non-Liver |
    | ----------      | --------------   |---------------------|
@@ -496,7 +505,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Actual Non-Liver |  22              | 12                  |
 
    
-   Tabel Classification Report Eksperimen Ke-1
+   Tabel 10.Classification Report Eksperimen Ke-1
 
    |Class     | Precision | recall  | f1-score| support |
    | ---------| ----------|---------|---------|---------|
@@ -511,7 +520,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
 
    Eksperimen Ke-2 dilakukan untuk memperbaiki kinerja model pada eksperimen pertama, yaitu menggunakan data latih hasil resample SMOTE untuk mengatasi ketidakseimbangan kelas (imbalance). Adapun hasil prediksinya sebagai berikut:
 
-   Tabel Confusion Matriks Eksperimen Ke-2
+   Tabel 11.Confusion Matriks Eksperimen Ke-2
 
    |                 | Predicted Liver  | Predicted Non-Liver |
    | ----------      | --------------   |---------------------|
@@ -519,7 +528,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Actual Non-Liver |  8               | 26                  |
 
 
-   Tabel Classification Report Eksperimen Ke-2
+   Tabel 12.Classification Report Eksperimen Ke-2
 
    |Class     | Precision | recall  | f1-score| support |
    | ---------| ----------|---------|---------|---------|
@@ -535,7 +544,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    Eksperimen Ke-3 merupakan hasil optimalisasi model dengan melakukan tuning hyperparameter menggunakan **Optuna**. Adapun hasil prediksinya sebagai berikut:
 
 
-   Tabel Confusion Matriks Eksperimen Ke-3
+   Tabel 13. Confusion Matriks Eksperimen Ke-3
 
    |                 | Predicted Liver  | Predicted Non-Liver |
    | ----------      | --------------   |---------------------|
@@ -543,7 +552,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Actual Non-Liver |  7               | 27                  |
 
 
-   Tabel Classification Report Eksperimen Ke-3
+   Tabel 14. Classification Report Eksperimen Ke-3
 
    |Class     | Precision | recall  | f1-score| support |
    | ---------| ----------|---------|---------|---------|
@@ -553,7 +562,10 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
 
    Berdasarkan Tabel Classification Report Eksperimen Ke-3, Nilai Akurasi model meningkat dari 0,67 menjadi 0,71 setelah dilakukan tunning hyperparameter optuna.
    
-   #### Perbandingan ***Accuracy,Precision,Recall,F1-Score*** dari Eksperimen ke 1,2,3
+   #### Perbandingan ***Accuracy,Precision,Recall,F1-Score*** dari Eksperimen ke 1,2 dan 3
+
+
+   Tabel 15. Performa Model Hasil Eksperimen
 
    |          | Accuracy  | Precision  | Recall  |F1-Score |
    | ---------------| ----------|------------|---------|---------|
