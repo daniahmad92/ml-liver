@@ -133,7 +133,7 @@ Tabel 2. Statistik Deskriptif Variabel Numerik dan Kadar Normal
 | *ALB*      | 3,1 |0,9  |5,5  |3.5 - 5.0    |
 | *A/G*      | 0,9 |0,3  |2,8  |1.0 - 2.5    | 
 
-Berdasarkan tabel di atas:
+Berdasarkan informasi pada tabel 2 di atas:
 - Usia pasien yang paling muda adalah 4 tahun dan yang paling tua adalah 90 tahun. Sedangkan secara rata-rata (Mean) usia pasien termasuk kategori Dewasa (usia 45 tahun).
 - Ada 5 variabel (TB, DB, Alkhpos, Sgot, Sgpt) dimana nilai rata-ratanya (Mean) berada di luar kadar normal.
 - Ada 3 variabel (Akphos, Sgpt, dan Sgot) nilai Maksimumnya sangat jauh dari nilai rata-rata (Mean).
@@ -171,7 +171,7 @@ Algoritma KNN sensitif terhadap data pencilan (outlier), karena kehadiran data p
 
    Gambar 6. Boxplot Outlier Variabel Numerik
 
-   Informasi yang didapatkan dari gambar di atas, antara lain:
+   Informasi yang didapatkan dari gambar 6 di atas, antara lain:
    - Ada 2 variabel yang tidak memiliki outlier, yaitu Age dan ALB. Sedangkan sisanya, 7 variabel memiliki outlier.
    - Variabel yang hanya memiliki outlier di luar batas atas (maximum) di antaranya TB, DB, Alkhpos, Sgpt, Sgot, dan A/G.
 
@@ -194,7 +194,7 @@ Tabel 3.Jumlah Outlier tiap variabel Numerik
 | *ALB*      | 0            |
 | *A/G*      | 10           |
 
-Informasi yang didapatkan dari tabel di atas, antara lain:
+Informasi yang didapatkan dari Tabel 3 di atas, antara lain:
 - Ada 2 variabel yang tidak memiliki outlier, yaitu Age dan ALB.
 - Ada 2 variabel yang memiliki outlier yang sedikit, yaitu TP dan A/G.
 - Ada 5 variabel yang memiliki outlier yang banyak, yaitu TB, DB, Alkphos, Sgpt, dan Sgot.
@@ -241,7 +241,7 @@ x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=0.20,random_state=1
 
 ```
 
-Perubahan jumlah data awal menjadi "data training dan data testing" dapat dilihat dari tabel di bawah ini.
+Perubahan jumlah data awal menjadi "data training dan data testing" dapat dilihat dari tabel 5 di bawah ini.
 
 Tabel 5. Jumlah Data Awal,Training dan Testing
 
@@ -249,7 +249,7 @@ Tabel 5. Jumlah Data Awal,Training dan Testing
 | ----------| ------------ |--------------|
 |  583  rows|   466 rows   |  117  rows   |
 
-Sedangkan jumlah pasien dengan penyakit liver dan non-liver pada data training dan testing dapat dilihat dari tabel di bawah ini.
+Sedangkan jumlah pasien dengan penyakit liver dan non-liver pada data training dan testing dapat dilihat dari tabel 6 di bawah ini.
 
 Tabel 6. Jumlah Class Liver dan Non-liver pada Data Awal,Training dan Testing
 
@@ -495,7 +495,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
 
    #### Hasil Prediksi Eksperimen Ke-1:
 
-   Pada eksperimen ke-1, model dilatih dengan menggunakan data latih hasil nomralisasi dari StandardScaler, adapun hasil prediksinya dapat dilihat pada gambar dibawah ini
+   Pada eksperimen ke-1, model dilatih dengan menggunakan data latih hasil nomralisasi dari StandardScaler, adapun hasil prediksinya dapat dilihat pada pada Tabel 9 dan Tabel 10 dibawah ini
    
    Tabel 9.Confusion Matriks Eksperimen Ke-1
 
@@ -513,7 +513,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Non-Liver |  0,40     | 0,35    | 0,38    | 34      |
    |Accuracy = 0,66|||                        | 117     |
 
-   Bila dilihat dari Tabel Classification Report Eksperimen Ke-1, **Recall** untuk Non-liver nilainya sangat kecil, yaitu 0,35. Ini hanya 35% pasien Non-liver yang dapat diprediksi benar oleh model. Hal ini disebabkan karena ada ketidakseimbangan kelas (imbalance) pada data target, yaitu jumlah data kelas liver (71,4%) lebih banyak daripada kelas Non-Liver (28,6%). Dengan demikian, kelemahan model ini adalah belum bisa memprediksi dengan benar untuk kelas minoritas (Non-Liver). Selanjutnya, model pertama ini akan diperbaiki melalui eksperimen ke-2.
+   Bila dilihat dari Tabel 10 , **Recall** untuk Non-liver nilainya sangat kecil, yaitu 0,35. Ini hanya 35% pasien Non-liver yang dapat diprediksi benar oleh model. Hal ini disebabkan karena ada ketidakseimbangan kelas (imbalance) pada data target, yaitu jumlah data kelas liver (71,4%) lebih banyak daripada kelas Non-Liver (28,6%). Dengan demikian, kelemahan model ini adalah belum bisa memprediksi dengan benar untuk kelas minoritas (Non-Liver). Selanjutnya, model pertama ini akan diperbaiki melalui eksperimen ke-2.
 
 
    #### Hasil Prediksi Eksperimen Ke-2:
@@ -536,7 +536,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Non-Liver |  0,46     | 0,76    | 0,57    | 34      |
    |Accuracy = 0,67|||                         | 117     |
 
-   Bila dilihat dari Tabel Classification Report Eksperimen Ke-2, nilai *Recall* untuk Non-Liver berhasil meningkat menjadi 0,76 (sebelumnya 0,35). Dengan demikian, diterapkannya resample SMOTE pada data training berhasil mengatasi ketidakseimbangan data. Dalam hal ini, model dapat memprediksi kelas minoritas (Non-liver) dengan cukup baik. Namun, akurasi yang dihasilkan oleh model ini masih rendah, yaitu 0,67. Untuk mengatasi hal ini, dilakukanlah Eksperimen Ke-3 untuk mengoptimalkan nilai akurasi dari model tersebut.
+   Bila dilihat dari Tabel 12, nilai *Recall* untuk Non-Liver berhasil meningkat menjadi 0,76 (sebelumnya 0,35). Dengan demikian, diterapkannya resample SMOTE pada data training berhasil mengatasi ketidakseimbangan data. Dalam hal ini, model dapat memprediksi kelas minoritas (Non-liver) dengan cukup baik. Namun, akurasi yang dihasilkan oleh model ini masih rendah, yaitu 0,67. Untuk mengatasi hal ini, dilakukanlah Eksperimen Ke-3 untuk mengoptimalkan nilai akurasi dari model tersebut.
 
 
    #### Hasil Prediksi Eksperimen Ke-3:
@@ -560,7 +560,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Non-Liver |  0,50     | 0,79    | 0,61    | 34      |
    |Accuracy = 0,71 |||                       | 117     |
 
-   Berdasarkan Tabel Classification Report Eksperimen Ke-3, Nilai Akurasi model meningkat dari 0,67 menjadi 0,71 setelah dilakukan tunning hyperparameter optuna.
+   Berdasarkan Tabel 14, Nilai Akurasi model meningkat dari 0,67 menjadi 0,71 setelah dilakukan tunning hyperparameter optuna.
    
    #### Perbandingan ***Accuracy,Precision,Recall,F1-Score*** dari Eksperimen ke 1,2 dan 3
 
@@ -573,7 +573,7 @@ Akurasi mengukur seberapa banyak dari seluruh kasus (positif dan negatif) yang b
    |Eksperiman Ke-2 |  0,66     | 0,62       | 0,86    | 0,72    |
    |Eksperiman Ke-3 |  0,71     | 0,67       | 0,88    | 0,76    |
 
-   Bila dilihat dari tabel diatas, bahwa Eksperimen ke-3 (mengintegrasikan model KNN dan Optuna) berhasil meningkatkan nilai Akurasi,Presisi,Recall,dan F1-Score.
+   Bila dilihat dari Tabel 15, bahwa Eksperimen ke-3 (mengintegrasikan model KNN dan Optuna) berhasil meningkatkan nilai Akurasi,Presisi,Recall,dan F1-Score.
 
    Dengan demikian bahwa mengintegrasikan tunning hyperparameter Optuna ke dalam model KNN dapat meningkatkan performa model
 
