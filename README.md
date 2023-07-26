@@ -95,7 +95,7 @@ Melalui deteksi missing value menggunakan `.isnull()`, didapatkan ada 4 nilai ya
 
 Gambar 1. Grafik Perbandingan Pasien Liver dan Non-liver
 
-Berdasarkan informasi yang tertera pada Gambar di atas, terdapat dua kelas pada variabel target:
+Berdasarkan informasi yang tertera pada Gambar 1 di atas, terdapat dua kelas pada variabel target:
 
 1. Kelas "Liver" (positive class) dengan persentase 71,4%.
 2. Kelas "Non-Liver" (negative class) dengan persentase 28,6%.
@@ -133,7 +133,7 @@ Tabel 2. Statistik Deskriptif Variabel Numerik dan Kadar Normal
 | *ALB*      | 3,1 |0,9  |5,5  |3.5 - 5.0    |
 | *A/G*      | 0,9 |0,3  |2,8  |1.0 - 2.5    | 
 
-Berdasarkan informasi pada tabel 2 di atas:
+Berdasarkan informasi pada Tabel 2 di atas:
 - Usia pasien yang paling muda adalah 4 tahun dan yang paling tua adalah 90 tahun. Sedangkan secara rata-rata (Mean) usia pasien termasuk kategori Dewasa (usia 45 tahun).
 - Ada 5 variabel (TB, DB, Alkhpos, Sgot, Sgpt) dimana nilai rata-ratanya (Mean) berada di luar kadar normal.
 - Ada 3 variabel (Akphos, Sgpt, dan Sgot) nilai Maksimumnya sangat jauh dari nilai rata-rata (Mean).
@@ -159,7 +159,7 @@ Algoritma KNN sensitif terhadap data pencilan (outlier), karena kehadiran data p
 
 ##### 1. Visualisasi Outlier menggunakan Boxplot
 
-   Cara melihat outlier dengan box plot (diagram kotak) adalah dengan memperhatikan titik-titik yang berada di luar batas maksimum (Q1 - 1.5 * IQR) dan batas minimum (Q3 + 1.5 * IQR) pada box plot seperti yang terlihat pada gambar di bawah ini.
+   Cara melihat outlier dengan box plot (diagram kotak) adalah dengan memperhatikan titik-titik yang berada di luar batas maksimum (Q1 - 1.5 * IQR) dan batas minimum (Q3 + 1.5 * IQR) pada box plot seperti yang terlihat pada Gambar 5 di bawah ini.
 
    ![outlier_ilustrator](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Outlier-Ilustrasi.png)
 
@@ -171,7 +171,7 @@ Algoritma KNN sensitif terhadap data pencilan (outlier), karena kehadiran data p
 
    Gambar 6. Boxplot Outlier Variabel Numerik
 
-   Informasi yang didapatkan dari gambar 6 di atas, antara lain:
+   Informasi yang didapatkan dari Gambar 6 di atas, antara lain:
    - Ada 2 variabel yang tidak memiliki outlier, yaitu Age dan ALB. Sedangkan sisanya, 7 variabel memiliki outlier.
    - Variabel yang hanya memiliki outlier di luar batas atas (maximum) di antaranya TB, DB, Alkhpos, Sgpt, Sgot, dan A/G.
 
@@ -241,7 +241,7 @@ x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=0.20,random_state=1
 
 ```
 
-Perubahan jumlah data awal menjadi "data training dan data testing" dapat dilihat dari tabel 5 di bawah ini.
+Perubahan jumlah data awal menjadi "data training dan data testing" dapat dilihat dari Tabel 5 di bawah ini.
 
 Tabel 5. Jumlah Data Awal,Training dan Testing
 
@@ -249,7 +249,7 @@ Tabel 5. Jumlah Data Awal,Training dan Testing
 | ----------| ------------ |--------------|
 |  583  rows|   466 rows   |  117  rows   |
 
-Sedangkan jumlah pasien dengan penyakit liver dan non-liver pada data training dan testing dapat dilihat dari tabel 6 di bawah ini.
+Sedangkan jumlah pasien dengan penyakit liver dan non-liver pada data training dan testing dapat dilihat dari Tabel 6 di bawah ini.
 
 Tabel 6. Jumlah Class Liver dan Non-liver pada Data Awal,Training dan Testing
 
@@ -283,7 +283,7 @@ Berdasarkan pemaparan sebelumnya, terdapat ketidakseimbangan kelas (imblance) pa
 Untuk penanganan ketidakseimbangan kelas, teknik yang digunakan pada penelitian ini adalah dengan cara mengoversampling sampel dari kelas minoritas. Tujuannya adalah agar jumlah sampel kelas mayoritas dan kelas minoritas menjadi lebih seimbang.
 Teknik oversampling yang akan digunakan adalah teknik SMOTE (Synthetic Minority Over-sampling Technique).
 
-Ilustrasi teknik SMOTE dapat dilihat pada gambar di bawah ini:
+Ilustrasi teknik SMOTE dapat dilihat pada Gambar 7 di bawah ini:
 
 
 ![smote](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/SMOTE.JPG)
