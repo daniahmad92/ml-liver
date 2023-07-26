@@ -122,7 +122,7 @@ Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **ad
 
    Secara visual bahwa histogram pada gambar 3 terbagi menjadi 2 kelompok,diantaranya:
    - Kelompok pertama, Bentuk histogram cenderung simetris terlihat pada variabel Age,TP,Alb,serta A/g dikarenakan data memiliki kecenderungan untuk terpusat disekitar nilai tengah
-   - Kelompok kedua, bentuk histogram memiliki puncak disebelah kiri dan ekor yang lebih panjang membentang ke sebelah kiri (Skewness Positif).Terlihat pada variabel TB,DB,Alkphos,Sgpt,Sgot.  
+   - Kelompok kedua, bentuk histogram memiliki puncak disebelah kiri dan ekor yang lebih panjang membentang ke sebelah kanan (Skewness Positif).Terlihat pada variabel TB,DB,Alkphos,Sgpt,Sgot.  
 
 
 ##### Statistik Deskriptif Variabel Fitur Numerik dan Kadar Normal Enzim dan Protein dalam Darah
