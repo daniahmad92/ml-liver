@@ -109,13 +109,21 @@ Perbedaan persentase yang cukup besar antara dua kelas tersebut menunjukkan **ad
 
       ![Gender](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_gender.png)
 
-      Gambar 2. Grafik Perbandingan Pasien Berdasarkan kategori Gender
+      Gambar 2. Grafik Perbandingan Pasien Berdasarkan kategori Gender 
+
+      Berdasarkan informasi pada Gambar 2, bahwa jumlah pasien Laki-Laki (Male=75,6%) lebih banyak dari pasien perempuan (Female=24,4%)
 
    - Visualisasi Variabel Fitur (Numerik)
 
       ![Histogram](https://raw.githubusercontent.com/daniahmad92/ml-liver/main/Gambar_histogram.png)
 
       Gambar 3. Histogram Variabel Numerik
+
+
+      Secara visual bahwa histogram pada gambar 3 terbagi menjadi 2 kelompok,diantaranya:
+      - Kelompok pertama, Bentuk histogram cenderung simetris terlihat pada variabel Age,TP,Alb,serta A/g dikarenakan data memiliki kecenderungan untuk terpusat disekitar nilai tengah
+      - Kelompok kedua, bentuk histogram memiliki puncak disebelah kiri dan ekor yang lebih panjang membentang ke sebelah kiri (Skewness Positif).Terlihat pada variabel TB,DB,Alkphos,Sgpt,Sgot.  
+
 
    - Statistik Deskriptif Variabel Fitur Numerik dan Kadar Normal Enzim dan Protein dalam Darah
 
