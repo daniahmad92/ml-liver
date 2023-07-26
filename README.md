@@ -1,4 +1,4 @@
-# Penerapan Model *K-Nearest Neighbors (KNN)* Menggunakan *Hyperparameter Tuning Optuna* untuk Deteksi Penyakit Liver- Dadan Ahmad Dani
+# Integrasi Model *K-Nearest Neighbors (KNN)* dengan *Hyperparameter Tuning Optuna* Untuk Memprediksi Penyakit Liver - Dadan Ahmad Dani
 
 ## Domain Proyek
 Hati adalah salah satu organ penting yang perlu dijaga kesehatannya. Pasalnya, organ terbesar dalam tubuh ini berperan besar dalam semua proses pencernaan dan penyerapan zat gizi dalam tubuh serta membuang racun.
