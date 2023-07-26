@@ -1,4 +1,4 @@
-# Optimisasi Model *K-Nearest Neighbors (KNN)* Menggunakan *Hyperparameter Tuning Optuna* untuk Deteksi Penyakit Liver- Dadan Ahmad Dani
+# Penerapan Model *K-Nearest Neighbors (KNN)* Menggunakan *Hyperparameter Tuning Optuna* untuk Deteksi Penyakit Liver- Dadan Ahmad Dani
 
 ## Domain Proyek
 Hati adalah salah satu organ penting yang perlu dijaga kesehatannya. Pasalnya, organ terbesar dalam tubuh ini berperan besar dalam semua proses pencernaan dan penyerapan zat gizi dalam tubuh serta membuang racun.
@@ -34,7 +34,7 @@ Solusi yang ditawarkan untuk mendeteksi penyakit liver sejak dini adalah dengan 
 
 Model KNN sangat bergantung pada parameter *n_neighbors*, *weight*, dan *metric*. Parameter *n_neighbors* menentukan jumlah tetangga terdekat yang akan digunakan dalam proses klasifikasi. Parameter *weight* mengatur bagaimana bobot (weight) akan diberikan pada tetangga terdekat saat melakukan prediksi, sedangkan parameter *metric* menentukan metrik jarak yang digunakan untuk mengukur kedekatan antara titik data dalam ruang fitur[[3]](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html).
 
-PPemilihan parameter *n_neighbors*, *weight*, dan *metric* yang optimal dapat sangat mempengaruhi performa model KNN. Namun, menemukan kombinasi parameter yang tepat secara manual dapat menjadi proses yang memakan waktu dan rumit, terutama jika ada banyak opsi parameter yang harus dijelajahi. Oleh karena itu, penting untuk mencari pendekatan otomatis yang dapat mengoptimalkan parameter-parameter ini untuk meningkatkan kinerja model KNN dalam tugas klasifikasi.
+Pemilihan parameter *n_neighbors*, *weight*, dan *metric* yang optimal dapat sangat mempengaruhi performa model KNN. Namun, menemukan kombinasi parameter yang tepat secara manual dapat menjadi proses yang memakan waktu dan rumit, terutama jika ada banyak opsi parameter yang harus dijelajahi. Oleh karena itu, penting untuk mencari pendekatan otomatis yang dapat mengoptimalkan parameter-parameter ini untuk meningkatkan kinerja model KNN dalam tugas klasifikasi.
 
 Di sinilah peran Hyperparameter Tuning Optuna menjadi relevan. Optuna merupakan salah satu pustaka (library) Python yang menerapkan teknik optimasi hiperparameter dengan menggunakan algoritma cerdas dan efisien[[4]](https://optuna.org/). Dengan mengintegrasikan Optuna pada Model KNN, kemungkinan untuk mencari kombinasi hiperparameter yang optimal dapat dilakukan dengan lebih efisien dan akurat.
 
@@ -332,9 +332,9 @@ Untuk mendapatkan performa model KNN yang optimal, dalam pembuatan model ini dil
    
    Adapun opsi dari parameter yang diset kedalam optuna diantaranya:
 
-   - n_neighbors: nilainya dari 1 sampai 10
-   - weight: ['uniform', 'distance']
-   - metric : ['euclidean', 'manhattan', 'minkowski']
+   - `n_neighbors`: nilainya dari 1 sampai 10
+   - `weights`: ['uniform', 'distance']
+   - `metric` : ['euclidean', 'manhattan', 'minkowski']
 
 ### K-Nearest Neighbors (KNN)
 
